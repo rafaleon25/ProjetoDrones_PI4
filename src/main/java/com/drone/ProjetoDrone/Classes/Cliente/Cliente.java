@@ -12,8 +12,8 @@ import java.util.Date;
  * @author Rafael Rodrigues
  */
 public class Cliente {
-    private int idCli, numero, celular;
-    private String nome, sobrenome, email, cpf, sexo, estado, cidade,
+    private int idCli, numero;
+    private String nome, sobrenome, email, cpf, celular, sexo, estado, cidade,
             rua, cep, senha;
     
     private Date dataNascimento;
@@ -37,11 +37,11 @@ public class Cliente {
         this.numero = numero;
     }
 
-    public int getCelular() {
+    public String getCelular() {
         return celular;
     }
 
-    public void setCelular(int celular) {
+    public void setCelular(String celular) {
         this.celular = celular;
     }
 
