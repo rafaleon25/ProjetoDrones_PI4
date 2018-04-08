@@ -11,9 +11,9 @@ package com.drone.ProjetoDrone.Classes.Produto;
  */
 public class Produto {
     
-    private int idProd, precoId, velocidadeMax, bateriaDuracao, camera;
+    private Integer idProd, precoId, velocidadeMax, bateriaDuracao, camera;
     private String nome, descricao, fabricante;
-    private double peso;
+    private Double peso;
 
     public Produto() {
     }
@@ -82,11 +82,11 @@ public class Produto {
         this.fabricante = fabricante;
     }
 
-    public double getPeso() {
+    public Double getPeso() {
         return peso;
     }
 
-    public void setPeso(double peso) {
+    public void setPeso(Double peso) {
         this.peso = peso;
     }
     

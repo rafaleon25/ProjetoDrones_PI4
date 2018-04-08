@@ -12,7 +12,7 @@ import java.util.Date;
  * @author Rafael Rodrigues
  */
 public class Precos {
-    private int IdPrrco, criadoPor, AlteradoPor;
+    private int IdPreco, criadoPor, AlteradoPor;
     private Date dataAlteracao;
     private double preco;
 
@@ -20,11 +20,11 @@ public class Precos {
     }
 
     public int getIdPrrco() {
-        return IdPrrco;
+        return IdPreco;
     }
 
     public void setIdPrrco(int IdPrrco) {
-        this.IdPrrco = IdPrrco;
+        this.IdPreco = IdPrrco;
     }
 
     public int getCriadoPor() {
