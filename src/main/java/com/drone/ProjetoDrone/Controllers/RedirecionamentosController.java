@@ -16,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 @RequestMapping("/home")
-public class HomeController {
+public class RedirecionamentosController {
 
     @GetMapping("/paginaInicial")
     public ModelAndView home() {
@@ -32,4 +32,21 @@ public class HomeController {
     public ModelAndView carrinho() {
         return new ModelAndView("Cart");
     }
+    
+    @GetMapping("/contato")
+    public ModelAndView contato(){
+        return new ModelAndView("Contato");
+    }
+    
+    @GetMapping("/ajuda")
+    public ModelAndView ajuda(){
+        return new ModelAndView("Ajuda");
+    }
+    
+    @GetMapping("/cadastro")
+    public ModelAndView cadastroCli(){
+        return new ModelAndView ("Cadastro");
+    }
+    
+    
 }

@@ -10,13 +10,13 @@
 <body>
   <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <div class="container">
-      <a class="navbar-brand" href="#">Drones
+      <a class="navbar-brand" th:href="@{/home/paginaInicial}">Drones
         <br> </a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#">Home
+            <a class="nav-link" th:href="@{/home/paginaInicial}">Home
               <br> </a>
           </li>
           <li class="nav-item">
@@ -24,14 +24,14 @@
               <br> </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Carrinho</a>
+            <a class="nav-link" th:href="@{/home/carrinho}">Carrinho</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Contato
+            <a class="nav-link" th:href="@{/home/contato}">Contato
               <br> </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link " href="#">Ajuda
+            <a class="nav-link " th:href="@{/home/ajuda}">Ajuda
               <br> </a>
           </li>
         </ul>
@@ -41,11 +41,11 @@
         </form>
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link text-white" href="#">Cadastrar-se
+            <a class="nav-link text-white" th:href="@{/home/cadastro}">Cadastrar-se
               <br> </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Login
+            <a class="nav-link" th:href="@{/home/login}">Login
               <br> </a>
           </li>
         </ul>
