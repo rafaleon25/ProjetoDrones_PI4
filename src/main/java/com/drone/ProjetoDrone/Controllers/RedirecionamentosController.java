@@ -48,5 +48,8 @@ public class RedirecionamentosController {
         return new ModelAndView ("Cadastro");
     }
     
-    
+    @GetMapping("/listProd")
+    public ModelAndView produtosList(){
+        return new ModelAndView("Produtos");
+    }
 }
