@@ -1,8 +1,1 @@
-{
-    "elements": {},
-    "attributes": {
-        "integrity": {
-            "context": "script"
-        }
-    }
-}
+{"elements":{},"attributes":{"integrity":{"context":"script"},"th:href":{"context":"a"}}}
