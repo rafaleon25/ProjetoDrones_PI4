@@ -5,13 +5,30 @@
  */
 package com.drone.ProjetoDrone.Classes.Venda;
 
+import com.sun.istack.internal.NotNull;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Size;
+
 /**
  *
  * @author Rafael Rodrigues
  */
 public class Venda {
-    private int idVenda, parcelas, idCli;
-    private String formaPagamento, numeroCartao;
+    private int idVenda;
+    private int idCli;
+    
+    //parcelas
+    @NotNull
+    @Digits(integer = 2, fraction = 0)
+    private int parcelas;
+    //forma de pagamento
+    @NotNull
+    private String formaPagamento;
+    //numero do cartão
+    @NotNull
+    @Size(min = 16, max = 16)
+    private String numeroCartao;
+    //total venda
     private double totalVenda;
 
     public Venda() {
