@@ -6,21 +6,95 @@
 package com.drone.ProjetoDrone.Classes.Cliente;
 
 import java.util.Date;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Future;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
  *
  * @author Rafael Rodrigues
  */
 public class Cliente {
-    private int idCli, numero;
-    private String nome, sobrenome, email, cpf, celular, sexo, estado, cidade,
-            rua, cep, senha;
+
+    private int idCli;
     
+    //numero
+    @NotNull
+    @Digits(integer = 5, fraction = 0)
+    private int numero;
+    //nome
+    @NotNull
+    @Size(min = 1, max = 45)
+    private String nome;
+    //sobrenome
+    @NotNull
+    @Size(min = 1, max = 45)
+    private String sobrenome;
+    //email
+    @NotNull
+    @Size(min = 1, max = 45)
+    private String email;
+    //CPF
+    @NotNull
+    @Size(min = 11, max = 11)
+    private String cpf;
+    //celular
+    @NotNull
+    @Size(min = 9, max = 11)
+    private String celular;
+    //sexo
+    @NotNull
+    @Size(min = 1, max =1)
+    private String sexo;
+    //estado
+    @NotNull
+    @Size(min = 1, max = 45)
+    private String estado;
+    //cidade
+    @NotNull
+    @Size(min = 1, max = 45)
+    private String cidade;
+    //rua
+    @NotNull
+    @Size(min = 1, max = 45)
+    private String rua;
+    //cep
+    @NotNull
+    @Size(min = 8, max = 8)
+    private String cep;
+    //Senha
+    @NotNull
+    @Size(min = 1, max = 45)
+    private String senha;
+    //Data de nascimento
+    @NotNull
+    @Future
     private Date dataNascimento;
 
+    //----------------Construtores-------------------
+    
     public Cliente() {
     }
 
+    public Cliente(int numero, String nome, String sobrenome, String email, String cpf, String celular, String sexo, String estado, String cidade, String rua, String cep, String senha, Date dataNascimento) {
+        this.numero = numero;
+        this.nome = nome;
+        this.sobrenome = sobrenome;
+        this.email = email;
+        this.cpf = cpf;
+        this.celular = celular;
+        this.sexo = sexo;
+        this.estado = estado;
+        this.cidade = cidade;
+        this.rua = rua;
+        this.cep = cep;
+        this.senha = senha;
+        this.dataNascimento = dataNascimento;
+    }
+
+    //--------------------fim construtores---------------------
+    
     public int getIdCli() {
         return idCli;
     }
@@ -132,6 +206,5 @@ public class Cliente {
     public void setDataNascimento(Date dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
-    
-    
+
 }

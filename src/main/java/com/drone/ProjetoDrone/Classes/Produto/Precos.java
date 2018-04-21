@@ -6,19 +6,32 @@
 package com.drone.ProjetoDrone.Classes.Produto;
 
 import java.util.Date;
+import javax.validation.constraints.Digits;
 
 /**
  *
  * @author Rafael Rodrigues
  */
 public class Precos {
-    private int IdPreco, criadoPor, AlteradoPor;
+    private int IdPreco; 
+    private int criadoPor;
+    private int AlteradoPor;
     private Date dataAlteracao;
+    
+    @Digits(integer = 6, fraction = 2)
     private double preco;
 
+    
+    //-------------------------Construtor-----------------------
     public Precos() {
     }
 
+    public Precos(double preco) {
+        this.preco = preco;
+    }
+
+    
+    //------------------------Fim dos construtores---------------
     public int getIdPrrco() {
         return IdPreco;
     }
