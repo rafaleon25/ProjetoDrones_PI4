@@ -5,6 +5,13 @@
  */
 package com.drone.ProjetoDrone.Classes.Funcionario;
 
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -12,28 +19,43 @@ import javax.validation.constraints.Size;
  *
  * @author Rafael Rodrigues
  */
-public class Funcionario {
+@Entity
+@Table(name = "Funcionario")
+public class Funcionario implements Serializable {
 
+    @Id
+    @Column(name = "funcionario_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int idFunc;
+    
     //nome
     @NotNull
     @Size(min = 1, max = 45)
+    @Column(name = "nome", length = 45, nullable = false, unique = false)
     private String nome;
+    
     //sobrenome
     @NotNull
     @Size(min = 1, max = 45)
+    @Column(name = "sobrenome", length = 45, nullable = false, unique = false)
     private String sobrenome;
+    
     //login
     @NotNull
-    @Size(min = 1, max = 45)
+    @Size(min = 1, max = 10)
+    @Column(name = "login", length = 10, nullable = false, unique = false)
     private String login;
+    
     //senha
     @NotNull
-    @Size(min = 1, max = 45)
+    @Size(min = 1, max = 10)
+    @Column(name = "senha", length = 10, nullable = false, unique = false)
     private String senha;
+    
     //cpf
     @NotNull
     @Size(min = 11, max = 11)
+    @Column(name = "cpf", length = 11, nullable = false, unique = false)
     private String cpf;
 
     //--------------------------Construtores---------------------
@@ -49,7 +71,6 @@ public class Funcionario {
     }
 
     //----------------------- Fim dos Construtores---------------------
-    
     public int getIdFunc() {
         return idFunc;
     }

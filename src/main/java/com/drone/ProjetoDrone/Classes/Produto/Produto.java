@@ -5,6 +5,13 @@
  */
 package com.drone.ProjetoDrone.Classes.Produto;
 
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -13,40 +20,53 @@ import javax.validation.constraints.Size;
  *
  * @author Rafael Rodrigues
  */
-public class Produto {
-    
+@Entity
+@Table(name = "Produtos")
+public class Produto implements Serializable {
+
+    @Id
+    @Column(name = "produto_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int idProd;
+
     private int precoId;
+
     //velicidade maxima 
     @NotNull
     @Digits(integer = 3, fraction = 0)
+    @Column(name = "velocidadeMax", precision = 3, scale = 0, nullable = false)
     private int velocidadeMax;
     //duração da bateria
     @NotNull
     @Digits(integer = 2, fraction = 0)
+    @Column(name = "bateriaDuracao", precision = 2, scale = 0, nullable = false)
     private int bateriaDuracao;
     //camera
     @NotNull
-    @Digits(integer =1, fraction = 0)
+    @Digits(integer = 1, fraction = 0)
+    @Column(name = "camera", precision = 1, scale = 0, nullable = false)
     private int camera;
     //nome 
     @NotNull
     @Size(min = 1, max = 45)
+    @Column(name = "nome", length = 45, nullable = false, unique = false)
     private String nome;
     //descrição
     @NotNull
     @Size(min = 1, max = 100)
+    @Column(name = "descricao", length = 100, nullable = false, unique = false)
     private String descricao;
     //fabricante 
     @NotNull
     @Size(min = 1, max = 45)
+    @Column(name = "fabricante", length = 45, nullable = false, unique = false)
     private String fabricante;
     //peso
     @NotNull
-    @Digits(integer = 3, fraction = 2)
+    @Digits(integer = 3, fraction = 0)
+    @Column(name = "peso", precision = 3, scale = 2, nullable = false)
     private double peso;
 
-    
     //-------------------------Construtores--------------------
     public Produto() {
     }
@@ -61,7 +81,6 @@ public class Produto {
         this.peso = peso;
     }
 
-    
     //--------------------Fim dos construtores------------------
     public int getIdProd() {
         return idProd;
@@ -134,7 +153,5 @@ public class Produto {
     public void setPeso(Double peso) {
         this.peso = peso;
     }
-    
-    
-     
+
 }

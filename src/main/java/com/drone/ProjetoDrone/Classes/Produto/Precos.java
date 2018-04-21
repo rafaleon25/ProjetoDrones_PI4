@@ -5,23 +5,37 @@
  */
 package com.drone.ProjetoDrone.Classes.Produto;
 
+import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.Digits;
 
 /**
  *
  * @author Rafael Rodrigues
  */
-public class Precos {
-    private int IdPreco; 
+@Entity
+@Table(name = "Precos")
+public class Precos implements Serializable {
+
+    @Id
+    @Column(name = "preco_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int IdPreco;
+    
     private int criadoPor;
     private int AlteradoPor;
     private Date dataAlteracao;
-    
+
     @Digits(integer = 6, fraction = 2)
+    @Column(name = "preco", precision = 6, scale = 2, nullable = false)
     private double preco;
 
-    
     //-------------------------Construtor-----------------------
     public Precos() {
     }
@@ -30,7 +44,6 @@ public class Precos {
         this.preco = preco;
     }
 
-    
     //------------------------Fim dos construtores---------------
     public int getIdPrrco() {
         return IdPreco;
