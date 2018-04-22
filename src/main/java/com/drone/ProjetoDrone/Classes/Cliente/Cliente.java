@@ -5,13 +5,17 @@
  */
 package com.drone.ProjetoDrone.Classes.Cliente;
 
+import com.drone.ProjetoDrone.Classes.Venda.Venda;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -28,6 +32,10 @@ import javax.validation.constraints.Size;
 @Table(name = "Clientes")
 public class Cliente implements Serializable {
 
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cliente_id", nullable = false)
+    private Venda venda;
+    
     @Id
     @Column(name = "cliente_id")
     @GeneratedValue(strategy = GenerationType.AUTO)

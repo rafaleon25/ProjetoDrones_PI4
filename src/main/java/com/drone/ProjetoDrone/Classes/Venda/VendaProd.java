@@ -5,7 +5,19 @@
  */
 package com.drone.ProjetoDrone.Classes.Venda;
 
+import com.drone.ProjetoDrone.Classes.Produto.Produto;
+import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 
@@ -13,14 +25,34 @@ import javax.validation.constraints.NotNull;
  *
  * @author Rafael Rodrigues
  */
-public class VendaProd {
+@Entity
+@Table(name = "VendaProd")
+public class VendaProd implements Serializable {
+
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "venda_id", nullable = false)
+    private Venda venda;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "produto_id", nullable = false)
+    private Produto produto;
+
+    @Id
+    @Column(name = "venda_id")
     private int vendaId;
-    
+
     @NotNull
     @Digits(integer = 3, fraction = 0)
     private int qtd;
+
+    @Id
+    @Column(name = "produto_id")
     private int produtoId;
-    private Date dataVenda;
+
+    @NotNull
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "dt_venda")
+    private Date dataVenda = new Date();
 
     public VendaProd() {
     }
@@ -60,6 +92,5 @@ public class VendaProd {
     public void setDataVenda(Date dataVenda) {
         this.dataVenda = dataVenda;
     }
-    
-    
+
 }
