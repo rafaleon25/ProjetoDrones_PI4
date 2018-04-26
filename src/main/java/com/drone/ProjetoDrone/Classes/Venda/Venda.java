@@ -6,7 +6,6 @@
 package com.drone.ProjetoDrone.Classes.Venda;
 
 import com.drone.ProjetoDrone.Classes.Cliente.Cliente;
-import com.sun.istack.internal.NotNull;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,6 +17,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
@@ -29,16 +29,16 @@ import javax.validation.constraints.Size;
 public class Venda implements Serializable {
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "cliente_id", nullable = false)
+   // @JoinColumn(name = "cliente_id", nullable = false)
     private Cliente cliente;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "venda_id", nullable = false)
+    //@JoinColumn(name = "venda_id", nullable = false)
     private VendaProd vendaProd;
 
     @Id
-    @Column(name = "venda_id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "vendaID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idVenda;
 
     private int idCli;

@@ -8,6 +8,7 @@ package com.drone.ProjetoDrone.Classes.Venda;
 import com.drone.ProjetoDrone.Classes.Produto.Produto;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -29,12 +30,11 @@ import javax.validation.constraints.NotNull;
 @Table(name = "VendaProd")
 public class VendaProd implements Serializable {
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "venda_id", nullable = false)
-    private Venda venda;
+    @OneToMany(mappedBy = "vendaProd")
+    private Set<Venda> venda;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "produto_id", nullable = false)
+   // @JoinColumn(name = "produto_id", nullable = false)
     private Produto produto;
 
     @Id
@@ -46,7 +46,7 @@ public class VendaProd implements Serializable {
     private int qtd;
 
     @Id
-    @Column(name = "produto_id")
+    @Column(name = "produtoID")
     private int produtoId;
 
     @NotNull

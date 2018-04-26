@@ -8,6 +8,7 @@ package com.drone.ProjetoDrone.Classes.Produto;
 import com.drone.ProjetoDrone.Classes.Funcionario.Funcionario;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -33,7 +34,7 @@ public class Precos implements Serializable {
 
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "preco_id", nullable = false)
-    private Produto produto;
+    private Set<Produto> produto;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "criado_por", nullable = false)
@@ -41,7 +42,7 @@ public class Precos implements Serializable {
 
     @Id
     @Column(name = "preco_id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int IdPreco;
 
     @NotNull
@@ -54,15 +55,23 @@ public class Precos implements Serializable {
     @Column(name = "dt_criacao")
     private Date dataCriacao = new Date();
 
-    Funcionario func;
-
-    @NotNull
-    @Column(name = "criado_por")
-    private int criadoPor = func.getIdFunc();
-
-    @NotNull
-    @Column(name = "alterado_por")
-    private int AlteradoPor = func.getIdFunc();
+//    Funcionario func;
+//
+//    @NotNull
+//    @Column(name = "criado_por")
+//    private int criadoPor = func.getIdFunc();
+//
+//    @NotNull
+//    @Column(name = "alterado_por")
+//    private int AlteradoPor = func.getIdFunc();
+    
+    @ManyToOne
+    @JoinColumn(name = "ID_FUNC_CRIACAO")
+    private Funcionario funcCriacao;
+   
+    @ManyToOne
+    @JoinColumn(name = "ID_FUNC_ALTERACAO")
+    private Funcionario funcAlteracao;
 
     @Digits(integer = 6, fraction = 2)
     @Column(name = "preco", precision = 6, scale = 2, nullable = false)
@@ -84,22 +93,22 @@ public class Precos implements Serializable {
     public void setIdPrrco(int IdPrrco) {
         this.IdPreco = IdPrrco;
     }
-
-    public int getCriadoPor() {
-        return criadoPor;
-    }
-
-    public void setCriadoPor(int criadoPor) {
-        this.criadoPor = criadoPor;
-    }
-
-    public int getAlteradoPor() {
-        return AlteradoPor;
-    }
-
-    public void setAlteradoPor(int AlteradoPor) {
-        this.AlteradoPor = AlteradoPor;
-    }
+//
+//    public int getCriadoPor() {
+//        return criadoPor;
+//    }
+//
+//    public void setCriadoPor(int criadoPor) {
+//        this.criadoPor = criadoPor;
+//    }
+//
+//    public int getAlteradoPor() {
+//        return AlteradoPor;
+//    }
+//
+//    public void setAlteradoPor(int AlteradoPor) {
+//        this.AlteradoPor = AlteradoPor;
+//    }
 
     public Date getDataAlteracao() {
         return dataAlteracao;
@@ -115,6 +124,22 @@ public class Precos implements Serializable {
 
     public Date getDataCriacao() {
         return dataCriacao;
+    }
+
+    public Funcionario getFuncCriacao() {
+        return funcCriacao;
+    }
+
+    public void setFuncCriacao(Funcionario funcCriacao) {
+        this.funcCriacao = funcCriacao;
+    }
+
+    public Funcionario getFuncAlteracao() {
+        return funcAlteracao;
+    }
+
+    public void setFuncAlteracao(Funcionario funcAlteracao) {
+        this.funcAlteracao = funcAlteracao;
     }
 
 }

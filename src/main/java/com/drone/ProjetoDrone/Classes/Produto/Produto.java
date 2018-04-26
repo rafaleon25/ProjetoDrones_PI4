@@ -7,6 +7,7 @@ package com.drone.ProjetoDrone.Classes.Produto;
 
 import com.drone.ProjetoDrone.Classes.Venda.VendaProd;
 import java.io.Serializable;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -31,18 +32,18 @@ public class Produto implements Serializable {
 
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "produto_id", nullable = false)
-    private VendaProd vendaProd;
+    private Set<VendaProd> vendaProd;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "preco_id", nullable = false)
+    //@JoinColumn(name = "preco_id", nullable = false)
     private Precos precos;
 
     @Id
     @Column(name = "produto_id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idProd;
 
-    private int precoId;
+//    private int precoId;
 
     //velicidade maxima 
     @NotNull
@@ -102,14 +103,14 @@ public class Produto implements Serializable {
     public void setIdProd(int idProd) {
         this.idProd = idProd;
     }
-
-    public int getPrecoId() {
-        return precoId;
-    }
-
-    public void setPrecoId(int precoId) {
-        this.precoId = precoId;
-    }
+//
+//    public int getPrecoId() {
+//        return precoId;
+//    }
+//
+//    public void setPrecoId(int precoId) {
+//        this.precoId = precoId;
+//    }
 
     public int getVelocidadeMax() {
         return velocidadeMax;

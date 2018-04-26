@@ -7,6 +7,7 @@ package com.drone.ProjetoDrone.Classes.Funcionario;
 
 import com.drone.ProjetoDrone.Classes.Produto.Precos;
 import java.io.Serializable;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -16,6 +17,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -27,13 +29,20 @@ import javax.validation.constraints.Size;
 @Table(name = "Funcionario")
 public class Funcionario implements Serializable {
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "criado_por", nullable = false)
+    //@OneToMany(fetch = FetchType.LAZY)
+    //@JoinColumn(name = "criado_por", nullable = false)
+    @Transient
     private Precos precos;
+    
+    @OneToMany(mappedBy = "funcCriacao")
+    private Set<Precos> precosCriados;
+    
+    @OneToMany(mappedBy = "funcAlteracao")
+    private Set<Precos> precosAlterados;
 
     @Id
     @Column(name = "funcionario_id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idFunc;
 
     //nome
@@ -125,5 +134,21 @@ public class Funcionario implements Serializable {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    public Set<Precos> getPrecosCriados() {
+        return precosCriados;
+    }
+
+    public void setPrecosCriados(Set<Precos> precosCriados) {
+        this.precosCriados = precosCriados;
+    }
+
+    public Set<Precos> getPrecosAlterados() {
+        return precosAlterados;
+    }
+
+    public void setPrecosAlterados(Set<Precos> precosAlterados) {
+        this.precosAlterados = precosAlterados;
     }
 }

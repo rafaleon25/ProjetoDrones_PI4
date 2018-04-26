@@ -8,6 +8,7 @@ package com.drone.ProjetoDrone.Classes.Cliente;
 import com.drone.ProjetoDrone.Classes.Venda.Venda;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -34,11 +35,11 @@ public class Cliente implements Serializable {
 
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "cliente_id", nullable = false)
-    private Venda venda;
+    private Set<Venda> venda;
     
     @Id
     @Column(name = "cliente_id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idCli;
 
     //numero
