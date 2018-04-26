@@ -5,20 +5,87 @@
  */
 package com.drone.ProjetoDrone.Classes.Produto;
 
+import com.drone.ProjetoDrone.Classes.Funcionario.Funcionario;
+import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotNull;
 
 /**
  *
  * @author Rafael Rodrigues
  */
-public class Precos {
-    private int IdPreco, criadoPor, AlteradoPor;
-    private Date dataAlteracao;
+@Entity
+@Table(name = "Precos")
+public class Precos implements Serializable {
+
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "preco_id", nullable = false)
+    private Set<Produto> produto;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "criado_por", nullable = false)
+    private Funcionario funcionario;
+
+    @Id
+    @Column(name = "preco_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int IdPreco;
+
+    @NotNull
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "dt_alteracao")
+    private Date dataAlteracao = new Date();
+
+    @NotNull
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "dt_criacao")
+    private Date dataCriacao = new Date();
+
+//    Funcionario func;
+//
+//    @NotNull
+//    @Column(name = "criado_por")
+//    private int criadoPor = func.getIdFunc();
+//
+//    @NotNull
+//    @Column(name = "alterado_por")
+//    private int AlteradoPor = func.getIdFunc();
+    
+    @ManyToOne
+    @JoinColumn(name = "ID_FUNC_CRIACAO")
+    private Funcionario funcCriacao;
+   
+    @ManyToOne
+    @JoinColumn(name = "ID_FUNC_ALTERACAO")
+    private Funcionario funcAlteracao;
+
+    @Digits(integer = 6, fraction = 2)
+    @Column(name = "preco", precision = 6, scale = 2, nullable = false)
     private double preco;
 
+    //-------------------------Construtor-----------------------
     public Precos() {
     }
 
+    public Precos(double preco) {
+        this.preco = preco;
+    }
+
+    //------------------------Fim dos construtores---------------
     public int getIdPrrco() {
         return IdPreco;
     }
@@ -26,29 +93,25 @@ public class Precos {
     public void setIdPrrco(int IdPrrco) {
         this.IdPreco = IdPrrco;
     }
-
-    public int getCriadoPor() {
-        return criadoPor;
-    }
-
-    public void setCriadoPor(int criadoPor) {
-        this.criadoPor = criadoPor;
-    }
-
-    public int getAlteradoPor() {
-        return AlteradoPor;
-    }
-
-    public void setAlteradoPor(int AlteradoPor) {
-        this.AlteradoPor = AlteradoPor;
-    }
+//
+//    public int getCriadoPor() {
+//        return criadoPor;
+//    }
+//
+//    public void setCriadoPor(int criadoPor) {
+//        this.criadoPor = criadoPor;
+//    }
+//
+//    public int getAlteradoPor() {
+//        return AlteradoPor;
+//    }
+//
+//    public void setAlteradoPor(int AlteradoPor) {
+//        this.AlteradoPor = AlteradoPor;
+//    }
 
     public Date getDataAlteracao() {
         return dataAlteracao;
-    }
-
-    public void setDataAlteracao(Date dataAlteracao) {
-        this.dataAlteracao = dataAlteracao;
     }
 
     public double getPreco() {
@@ -58,4 +121,25 @@ public class Precos {
     public void setPreco(double preco) {
         this.preco = preco;
     }
+
+    public Date getDataCriacao() {
+        return dataCriacao;
+    }
+
+    public Funcionario getFuncCriacao() {
+        return funcCriacao;
+    }
+
+    public void setFuncCriacao(Funcionario funcCriacao) {
+        this.funcCriacao = funcCriacao;
+    }
+
+    public Funcionario getFuncAlteracao() {
+        return funcAlteracao;
+    }
+
+    public void setFuncAlteracao(Funcionario funcAlteracao) {
+        this.funcAlteracao = funcAlteracao;
+    }
+
 }
