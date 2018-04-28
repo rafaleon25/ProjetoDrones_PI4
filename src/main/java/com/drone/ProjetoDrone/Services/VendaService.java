@@ -5,7 +5,7 @@
  */
 package com.drone.ProjetoDrone.Services;
 
-import com.drone.ProjetoDrone.Classes.Cliente.Cliente;
+import com.drone.ProjetoDrone.Classes.Venda.Venda;
 import java.io.Serializable;
 import java.util.List;
 
@@ -13,12 +13,15 @@ import java.util.List;
  *
  * @author Josué
  */
-public interface ClienteService extends Serializable {
+public interface VendaService extends Serializable {
 
-    public List<Cliente> listar(int offset, int quantidade);
+    public List<Venda> listar(int offset, int quantidade);
 
-    public Cliente obter(long idCliente);
+    public Venda obter(long idVenda);
 
-    public void incluir(Cliente c);
+    public void incluir(Venda v);
 
+    public void alterar(Venda v);
+
+    public void remover(long idVenda);
 }

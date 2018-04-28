@@ -24,14 +24,17 @@ public class ClienteRepository implements ClienteService {
 
     @Override
     public List<Cliente> listar(int offset, int quantidade) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Query query = entityManager.createQuery(
+                "SELECT DISTINCT c FROM clientes c");
+        List<Cliente> resultados = query.getResultList();
+        return resultados;
     }
 
     @Override
     public Cliente obter(long idCliente) {
         Query query = entityManager.createQuery(
-                "SELECT DISTINCT c FROM Cliente c "
-                + "WHERE c.id = :idCli");
+                "SELECT DISTINCT c FROM clientes c "
+                + "WHERE c.cliente_id = :idCli");
         query.setParameter("idCli", idCliente);
         Cliente resultado = (Cliente) query.getSingleResult();
         return resultado;
@@ -48,21 +51,21 @@ public class ClienteRepository implements ClienteService {
         entityManager.persist(c);
     }
 
-    @Override
-    @Transactional
-    public void alterar(Cliente c) {
-        if (c.getIdCli() == null) {
-            entityManager.persist(c);
-        } else {
-            entityManager.merge(c);
-        }
-        entityManager.persist(c);
-    }
-
-    @Override
-    @Transactional
-    public void remover(long idCliente) {
-        Cliente c = entityManager.find(Cliente.class, idCliente);
-        entityManager.remove(c);
-    }
+//    @Override
+//    @Transactional
+//    public void alterar(Cliente c) {
+//        if (c.getIdCli() == null) {
+//            entityManager.persist(c);
+//        } else {
+//            entityManager.merge(c);
+//        }
+//        entityManager.persist(c);
+//    }
+//
+//    @Override
+//    @Transactional
+//    public void remover(long idCliente) {
+//        Cliente c = entityManager.find(Cliente.class, idCliente);
+//        entityManager.remove(c);
+//    }
 }
