@@ -7,18 +7,12 @@ package com.drone.ProjetoDrone.Classes.Venda;
 
 import com.drone.ProjetoDrone.Classes.Produto.Produto;
 import java.io.Serializable;
-import java.util.Date;
-import java.util.Set;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 
@@ -30,29 +24,29 @@ import javax.validation.constraints.NotNull;
 @Table(name = "VendaProd")
 public class VendaProd implements Serializable {
 
-    @OneToMany(mappedBy = "vendaProd")
-    private Set<Venda> venda;
-
+    @Id
     @ManyToOne(fetch = FetchType.LAZY)
-   // @JoinColumn(name = "produto_id", nullable = false)
-    private Produto produto;
+    @JoinColumn(name = "venda_id", nullable = false)
+    private Venda venda;
 
     @Id
-    @Column(name = "venda_id")
-    private int vendaId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "produto_id", nullable = false)
+    private Produto produto;
+
+//    @Id
+//    @Transient
+//    @Column(name = "venda_id")
+//    private int vendaId;
 
     @NotNull
     @Digits(integer = 3, fraction = 0)
     private int qtd;
 
-    @Id
-    @Column(name = "produtoID")
-    private int produtoId;
-
-    @NotNull
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "dt_venda")
-    private Date dataVenda = new Date();
+//    @Id
+//    @Transient
+//    @Column(name = "produtoID")
+//    private int produtoId;
 
     public VendaProd() {
     }
@@ -61,13 +55,13 @@ public class VendaProd implements Serializable {
         this.qtd = qtd;
     }
 
-    public int getVendaId() {
-        return vendaId;
-    }
-
-    public void setVendaId(int vendaId) {
-        this.vendaId = vendaId;
-    }
+//    public int getVendaId() {
+//        return vendaId;
+//    }
+//
+//    public void setVendaId(int vendaId) {
+//        this.vendaId = vendaId;
+//    }
 
     public int getQtd() {
         return qtd;
@@ -77,20 +71,12 @@ public class VendaProd implements Serializable {
         this.qtd = qtd;
     }
 
-    public int getProdutoId() {
-        return produtoId;
-    }
-
-    public void setProdutoId(int produtoId) {
-        this.produtoId = produtoId;
-    }
-
-    public Date getDataVenda() {
-        return dataVenda;
-    }
-
-    public void setDataVenda(Date dataVenda) {
-        this.dataVenda = dataVenda;
-    }
+//    public int getProdutoId() {
+//        return produtoId;
+//    }
+//
+//    public void setProdutoId(int produtoId) {
+//        this.produtoId = produtoId;
+//    }
 
 }

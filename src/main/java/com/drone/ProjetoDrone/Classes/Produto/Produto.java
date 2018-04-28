@@ -44,6 +44,11 @@ public class Produto implements Serializable {
     private int idProd;
 
 //    private int precoId;
+    //estoque 
+    @NotNull
+    @Digits(integer = 3, fraction = 0)
+    @Column(name = "estoque", precision = 3, scale = 0, nullable = false)
+    private int estoque;
 
     //velicidade maxima 
     @NotNull

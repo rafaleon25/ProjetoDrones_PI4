@@ -7,6 +7,9 @@ package com.drone.ProjetoDrone.Classes.Venda;
 
 import com.drone.ProjetoDrone.Classes.Cliente.Cliente;
 import java.io.Serializable;
+import java.util.Date;
+import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,7 +18,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -32,17 +38,21 @@ public class Venda implements Serializable {
     @JoinColumn(name = "cliente_id", nullable = false)
     private Cliente cliente;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    //@JoinColumn(name = "venda_id", nullable = false)
-    private VendaProd vendaProd;
+    @OneToMany(mappedBy = "venda", fetch = FetchType.LAZY,
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private Set<VendaProd> vendaProd;
 
     @Id
     @Column(name = "vendaID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idVenda;
 
-    //private int idCli;
+    @NotNull
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "dt_venda")
+    private Date dataVenda = new Date();
 
+    //private int idCli;
     //parcelas
     @NotNull
     @Digits(integer = 2, fraction = 0)
@@ -89,7 +99,6 @@ public class Venda implements Serializable {
 //    public void setIdCli(int idCli) {
 //        this.idCli = idCli;
 //    }
-
     public String getFormaPagamento() {
         return formaPagamento;
     }
@@ -113,4 +122,9 @@ public class Venda implements Serializable {
     public void setTotalVenda(double totalVenda) {
         this.totalVenda = totalVenda;
     }
+
+    public Date getDataVenda() {
+        return dataVenda;
+    }
+
 }
