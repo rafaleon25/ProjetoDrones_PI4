@@ -8,6 +8,7 @@ package com.drone.ProjetoDrone.Classes.Produto;
 import com.drone.ProjetoDrone.Classes.Venda.VendaProd;
 import java.io.Serializable;
 import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -30,12 +31,13 @@ import javax.validation.constraints.Size;
 @Table(name = "Produtos")
 public class Produto implements Serializable {
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "produto_id", nullable = false)
+    @OneToMany(mappedBy = "produto", fetch = FetchType.LAZY,
+          cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    //@JoinColumn(name = "produto_id", nullable = false)
     private Set<VendaProd> vendaProd;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    //@JoinColumn(name = "preco_id", nullable = false)
+    @JoinColumn(name = "preco_id", nullable = false)
     private Precos precos;
 
     @Id

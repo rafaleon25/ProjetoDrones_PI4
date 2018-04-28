@@ -5,18 +5,16 @@
  */
 package com.drone.ProjetoDrone.Classes.Produto;
 
-import com.drone.ProjetoDrone.Classes.Funcionario.Funcionario;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -32,14 +30,11 @@ import javax.validation.constraints.NotNull;
 @Table(name = "Precos")
 public class Precos implements Serializable {
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "preco_id", nullable = false)
+    @OneToMany(mappedBy = "precos", fetch = FetchType.LAZY,
+          cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    //@JoinColumn(name = "preco_id", nullable = false)
     private Set<Produto> produto;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "criado_por", nullable = false)
-    private Funcionario funcionario;
-
+    
     @Id
     @Column(name = "preco_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -64,14 +59,6 @@ public class Precos implements Serializable {
 //    @NotNull
 //    @Column(name = "alterado_por")
 //    private int AlteradoPor = func.getIdFunc();
-    
-    @ManyToOne
-    @JoinColumn(name = "ID_FUNC_CRIACAO")
-    private Funcionario funcCriacao;
-   
-    @ManyToOne
-    @JoinColumn(name = "ID_FUNC_ALTERACAO")
-    private Funcionario funcAlteracao;
 
     @Digits(integer = 6, fraction = 2)
     @Column(name = "preco", precision = 6, scale = 2, nullable = false)
@@ -125,21 +112,4 @@ public class Precos implements Serializable {
     public Date getDataCriacao() {
         return dataCriacao;
     }
-
-    public Funcionario getFuncCriacao() {
-        return funcCriacao;
-    }
-
-    public void setFuncCriacao(Funcionario funcCriacao) {
-        this.funcCriacao = funcCriacao;
-    }
-
-    public Funcionario getFuncAlteracao() {
-        return funcAlteracao;
-    }
-
-    public void setFuncAlteracao(Funcionario funcAlteracao) {
-        this.funcAlteracao = funcAlteracao;
-    }
-
 }
