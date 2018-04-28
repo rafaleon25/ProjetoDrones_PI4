@@ -29,7 +29,7 @@ import javax.validation.constraints.Size;
 public class Venda implements Serializable {
 
     @ManyToOne(fetch = FetchType.LAZY)
-   // @JoinColumn(name = "cliente_id", nullable = false)
+    @JoinColumn(name = "cliente_id", nullable = false)
     private Cliente cliente;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -41,7 +41,7 @@ public class Venda implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idVenda;
 
-    private int idCli;
+    //private int idCli;
 
     //parcelas
     @NotNull
@@ -82,13 +82,13 @@ public class Venda implements Serializable {
         this.parcelas = parcelas;
     }
 
-    public int getIdCli() {
-        return idCli;
-    }
-
-    public void setIdCli(int idCli) {
-        this.idCli = idCli;
-    }
+//    public int getIdCli() {
+//        return idCli;
+//    }
+//
+//    public void setIdCli(int idCli) {
+//        this.idCli = idCli;
+//    }
 
     public String getFormaPagamento() {
         return formaPagamento;

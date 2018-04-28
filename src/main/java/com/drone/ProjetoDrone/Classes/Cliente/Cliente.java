@@ -9,13 +9,13 @@ import com.drone.ProjetoDrone.Classes.Venda.Venda;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -33,14 +33,15 @@ import javax.validation.constraints.Size;
 @Table(name = "Clientes")
 public class Cliente implements Serializable {
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "cliente_id", nullable = false)
+    @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY,
+          cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    //@JoinColumn(name = "cliente_id", nullable = false)
     private Set<Venda> venda;
     
     @Id
     @Column(name = "cliente_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idCli;
+    private Integer idCli;
 
     //numero
     @NotNull
@@ -130,11 +131,11 @@ public class Cliente implements Serializable {
     }
 
     //--------------------fim construtores---------------------
-    public int getIdCli() {
+    public Integer getIdCli() {
         return idCli;
     }
 
-    public void setIdCli(int idCli) {
+    public void setIdCli(Integer idCli) {
         this.idCli = idCli;
     }
 
