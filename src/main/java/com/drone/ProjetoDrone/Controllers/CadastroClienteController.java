@@ -6,7 +6,9 @@
 package com.drone.ProjetoDrone.Controllers;
 
 import com.drone.ProjetoDrone.Classes.Cliente.Cliente;
+import com.drone.ProjetoDrone.Repository.ClienteRepository;
 import javax.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -23,6 +25,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("/cadastro")
 public class CadastroClienteController {
 
+    @Autowired
+    private ClienteRepository repository;
+    
     @PostMapping("/salvar")
     public ModelAndView realizarCadastro(@ModelAttribute("produto") @Valid Cliente cliente,
             BindingResult bindingResult,
@@ -33,14 +38,8 @@ public class CadastroClienteController {
             return new ModelAndView("/home/cadastro");
         }
         
+        repository.incluir(cliente);
         
-        // falta codigo para incluir objeto no banco 
-        //será add abaixo assim que o banco estiver adaptado para isso nas classes
-        
-        
-        
-        // verificar se esse sera relamente o redirect e se é assim
-        //msm que se faz o redirect
         return new ModelAndView("Login");
     }
 
