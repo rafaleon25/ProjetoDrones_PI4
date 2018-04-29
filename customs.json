@@ -1,1 +1,17 @@
-{"elements":{},"attributes":{"integrity":{"context":"script"},"th:href":{"context":"a"}}}
+{
+    "elements": {},
+    "attributes": {
+        "integrity": {
+            "context": "script"
+        },
+        "th:action": {
+            "context": "form"
+        },
+        "th:href": {
+            "context": "a"
+        },
+        "th:field": {
+            "context": "input"
+        }
+    }
+}

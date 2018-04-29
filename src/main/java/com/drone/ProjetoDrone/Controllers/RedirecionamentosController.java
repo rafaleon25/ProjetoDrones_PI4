@@ -5,6 +5,7 @@
  */
 package com.drone.ProjetoDrone.Controllers;
 
+import com.drone.ProjetoDrone.Classes.Cliente.Cliente;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,9 +44,11 @@ public class RedirecionamentosController {
         return new ModelAndView("Ajuda");
     }
     
+    // O /cadastro é o redirecionamento para a tela de formulario de cadastro de cliente
+    // retorno um html CADASTRO e add um objeto que o html irá preencher pelos metodos definidos.
     @GetMapping("/cadastro")
     public ModelAndView cadastroCli(){
-        return new ModelAndView ("Cadastro");
+        return new ModelAndView ("Cadastro").addObject("cliente", new Cliente());
     }
     
     @GetMapping("/listProd")

@@ -67,7 +67,7 @@
                     <div class="col-md-12">
                         <div class="card text-white bg-info p-3" id="Cadastro">
                             <div class="card-body text-dark">
-                                <form th:action="@{/CadastroClienteController/salvar}" th:object="${cliente}" method="post">
+                                <form th:action="@{/cadastrar/salvar}" th:object="${cliente}" method="post">
                                     <div class="form-group text-dark w-75 form-row"> <label for="nome" class="col-sm-2 col-form-label">Nome<br></label>
                                         <div class="col-sm-10">
                                             <input type="text" name="nome" th:field="*{nome}" id="nome" class="form-control" placeholder="Insira seu nome"> </div>

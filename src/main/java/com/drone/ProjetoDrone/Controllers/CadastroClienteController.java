@@ -22,7 +22,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  * @author Rafael Rodrigues
  */
 @Controller
-@RequestMapping("/cadastro")
+@RequestMapping("/cadastrar")
 public class CadastroClienteController {
 
     @Autowired
