@@ -17,7 +17,7 @@ import org.springframework.stereotype.Repository;
  *
  * @author Josué
  */
-
+@Repository
 public class ProdutoRepository implements ProdutoService {
 
     @PersistenceContext

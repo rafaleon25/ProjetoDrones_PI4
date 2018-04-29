@@ -23,7 +23,9 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -105,7 +107,8 @@ public class Cliente implements Serializable {
     private String senha;
     //Data de nascimento
     @NotNull
-    @Future
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Past
     @Column(name = "dataNascimento", nullable = false)
     @Temporal(TemporalType.DATE)
     private Date dataNascimento;

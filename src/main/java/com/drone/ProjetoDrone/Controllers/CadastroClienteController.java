@@ -11,6 +11,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,25 +23,34 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  * @author Rafael Rodrigues
  */
 @Controller
-@RequestMapping("/cadastrar")
+@RequestMapping("/cadastrar/cliente")
 public class CadastroClienteController {
 
     @Autowired
     private ClienteRepository repository;
     
+    // O /cadastro é o redirecionamento para a tela de formulario de cadastro de cliente
+    // retorno um html CADASTRO e add um objeto que o html irá preencher pelos metodos definidos.
+    @GetMapping("/cadastro")
+    public ModelAndView cadastroCli(){
+        return new ModelAndView ("Cadastro").addObject("cliente", new Cliente());
+    }
+    
+    
     @PostMapping("/salvar")
-    public ModelAndView realizarCadastro(@ModelAttribute("produto") @Valid Cliente cliente,
-            BindingResult bindingResult,
+    public ModelAndView realizarCadastro(@ModelAttribute("cliente") @Valid Cliente cliente,BindingResult bindingResult,
             RedirectAttributes redirectAttributes) {
-        
-        
+
         if (bindingResult.hasErrors()) {
-            return new ModelAndView("/home/cadastro");
+            return new ModelAndView("/cadastro");
         }
-        
+
         repository.incluir(cliente);
-        
-        return new ModelAndView("Login");
+
+        return new ModelAndView("redirect:/home/login");
     }
 
+    
+    
+    
 }
