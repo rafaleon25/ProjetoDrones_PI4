@@ -4,17 +4,29 @@
         "th:if": {
             "context": "div"
         },
+        "th:text": {
+            "context": "a"
+        },
         "integrity": {
             "context": "script"
         },
+        "th:unless": {
+            "context": "a"
+        },
         "th:action": {
             "context": "form"
+        },
+        "th:switch": {
+            "context": "li"
         },
         "th:href": {
             "context": "a"
         },
         "th:field": {
             "context": "input"
+        },
+        "th:case": {
+            "context": "a"
         }
     }
 }

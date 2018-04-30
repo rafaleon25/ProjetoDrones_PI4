@@ -1,95 +1,95 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-  <link rel="stylesheet" th:href="@{/theme.css}" type="text/css"/> </head>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+        <link rel="stylesheet" th:href="@{/theme.css}" type="text/css"/> </head>
 
-<body>
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <div class="container">
-      <a class="navbar-brand" th:href="@{/home/paginaInicial}">Drones
-        <br> </a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" th:href="@{/home/paginaInicial}">Home
-              <br> </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" th:href="@{/home/listProd}">Produtos
-              <br> </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" th:href="@{/home/carrinho}">Carrinho</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link " th:href="@{/home/contato}">Contato
-              <br> </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link " th:href="@{/home/ajuda}">Ajuda
-              <br> </a>
-          </li>
-        </ul>
-        <form class="form-inline m-0">
-          <input class="form-control mr-2 w-50 m-0" type="text" placeholder="Search">
-          <button class="btn btn-info" type="submit">Search</button>
-        </form>
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link " th:href="@{/home/cadastro}">Cadastrar-se
-              <br> </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white" th:href="@{/home/login}">Login
-              <br> </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <div class="py-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-3"> </div>
-        <div class="col-md-6">
-          <div class="card text-white p-5 bg-dark">
-            <div class="card-body bg-dark">
-              <h1 class="mb-4"><b>Login</b></h1>
-              <form action="https://formspree.io/YOUREMAILHERE">
-                <div class="form-group"> <label>Email&nbsp;</label>
-                  <input type="email" class="form-control" placeholder="Email"> </div>
-                <div class="form-group"> <label>Senha</label>
-                  <input type="password" class="form-control" placeholder="Senha"> </div>
-                <button type="submit" class="btn btn-info btn-lg">Login</button>
-              </form>
-              <a class="btn btn-danger btn-lg my-1" href="#">&nbsp; &nbsp;Login with Google &nbsp;&nbsp;
-                <br> </a>
-              <a class="btn btn-secondary btn-lg my-1" href="#">&nbsp;Login with Facebook &nbsp;</a>
+    <body>
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" th:href="@{/home/paginaInicial}">Drones
+                    <br> </a>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/home/paginaInicial}">Home
+                                <br> </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/home/listProd}">Produtos
+                                <br> </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/home/carrinho}">Carrinho</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " th:href="@{/home/contato}">Contato
+                                <br> </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " th:href="@{/home/ajuda}">Ajuda
+                                <br> </a>
+                        </li>
+                    </ul>
+                    <form class="form-inline m-0">
+                        <input class="form-control mr-2 w-50 m-0" type="text" placeholder="Search">
+                        <button class="btn btn-info" type="submit">Search</button>
+                    </form>
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link " th:href="@{/home/cadastro}">Cadastrar-se
+                                <br> </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" th:href="@{/home/login}">Login
+                                <br> </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-          </div>
+        </nav>
+        <div class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3"> </div>
+                    <div class="col-md-6">
+                        <div class="card text-white p-5 bg-dark">
+                            <div class="card-body bg-dark">
+                                <h1 class="mb-4"><b>Login</b></h1>
+                                <form th:action="@{/login/logando}" th:object="${login}" method="post">
+                                    <div class="form-group"> <label>Email&nbsp;</label>
+                                        <input type="email" th:field="*{user}" class="form-control" placeholder="Email"> </div>
+                                    <div class="form-group"> <label>Senha</label>
+                                        <input type="password" th:field="*{senha}"s class="form-control" placeholder="Senha"> </div>
+                                    <button type="submit" class="btn btn-info btn-lg">Login</button>
+                                </form>
+                                <a class="btn btn-danger btn-lg my-1" href="#">&nbsp; &nbsp;Login with Google &nbsp;&nbsp;
+                                    <br> </a>
+                                <a class="btn btn-secondary btn-lg my-1" href="#">&nbsp;Login with Facebook &nbsp;</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
-  <div class="py-5 bg-dark text-white">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <p class="text-muted">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;contato@drone.com | Av Engenheiro Eugênio Estevaux, 823 - Jurubatuba - são Paulo/SP | Telefone:
-            (11)1234-55555</p>
+        <div class="py-5 bg-dark text-white">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p class="text-muted">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;contato@drone.com | Av Engenheiro Eugênio Estevaux, 823 - Jurubatuba - são Paulo/SP | Telefone:
+                            (11)1234-55555</p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  
-</body>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    </body>
 
 </html>
