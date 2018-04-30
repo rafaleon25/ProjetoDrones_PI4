@@ -24,10 +24,7 @@ public class RedirecionamentosController {
         return new ModelAndView("Home");
     }
 
-    @GetMapping("/login")
-    public ModelAndView login() {
-        return new ModelAndView("Login");
-    }
+    
 
     @GetMapping("/carrinho")
     public ModelAndView carrinho() {
