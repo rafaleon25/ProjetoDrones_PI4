@@ -13,6 +13,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
+
 /**
  *
  * @author Josué
@@ -69,4 +70,15 @@ public class ClienteRepository implements ClienteService {
 //        Cliente c = entityManager.find(Cliente.class, idCliente);
 //        entityManager.remove(c);
 //    }
+    @Override
+    public Cliente logar(String email, String senha) {
+        Query query = entityManager.createQuery(
+                "SELECT DISTINCT c FROM clientes c "
+                + "WHERE c.email = :mail"
+                        + " and c.senha = :pass");
+        query.setParameter("mail", email);
+        query.setParameter("pass", senha);
+        Cliente resultado = (Cliente) query.getSingleResult();
+        return resultado;
+    }
 }

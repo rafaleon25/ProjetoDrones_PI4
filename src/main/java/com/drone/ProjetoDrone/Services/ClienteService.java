@@ -20,5 +20,7 @@ public interface ClienteService extends Serializable {
     public Cliente obter(long idCliente);
 
     public void incluir(Cliente c);
+    
+    public Cliente logar (String email, String senha);
 
 }
