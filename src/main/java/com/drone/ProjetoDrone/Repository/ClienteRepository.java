@@ -27,7 +27,7 @@ public class ClienteRepository implements ClienteService {
     @Override
     public List<Cliente> listar(int offset, int quantidade) {
         Query query = entityManager.createQuery(
-                "SELECT DISTINCT c FROM clientes c");
+                "SELECT DISTINCT c FROM Cliente c");
         List<Cliente> resultados = query.getResultList();
         return resultados;
     }
@@ -35,9 +35,9 @@ public class ClienteRepository implements ClienteService {
     @Override
     public Cliente obter(long idCliente) {
         Query query = entityManager.createQuery(
-                "SELECT DISTINCT c FROM clientes c "
-                + "WHERE c.cliente_id = :idCli");
-        query.setParameter("idCli", idCliente);
+                "SELECT DISTINCT c FROM Cliente c "
+                + "WHERE c.idCli = :idCliente");
+        query.setParameter("idCliente", idCliente);
         Cliente resultado = (Cliente) query.getSingleResult();
         return resultado;
     }
@@ -71,13 +71,11 @@ public class ClienteRepository implements ClienteService {
 //        entityManager.remove(c);
 //    }
     @Override
-    public Cliente logar(String email, String senha) {
+    public Cliente logar(String email) {
         Query query = entityManager.createQuery(
-                "SELECT DISTINCT c FROM clientes c "
-                + "WHERE c.email = :mail"
-                        + " and c.senha = :pass");
+                "SELECT DISTINCT c FROM Cliente c "
+                + "WHERE c.email = :mail");
         query.setParameter("mail", email);
-        query.setParameter("pass", senha);
         Cliente resultado = (Cliente) query.getSingleResult();
         return resultado;
     }
