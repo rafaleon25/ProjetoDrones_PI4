@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html>
-
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
         <link rel="stylesheet" th:href="@{/theme.css}" type="text/css"/>
     </head>
-
     <body>
         <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top ">
             <div class="container">
@@ -21,7 +19,7 @@
                                 <br> </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" th:href="@{/home/listProd}">Produtos
+                            <a class="nav-link" th:href="@{/produtos/telaProdutos}">Produtos
                                 <br> </a>
                         </li>
                         <li class="nav-item">
@@ -45,7 +43,6 @@
                             <a class="nav-link" th:href="@{/cadastrar/cliente/cadastro}">Cadastrar-se
                                 <br> </a>
                         </li>
-
                         <li class="nav-item" th:if="${session.usuario == null}">
                             <a class="nav-link" th:href="@{/login/telaLogin}">Login
                                 <br> </a>
@@ -68,53 +65,56 @@
                 </div>
             </div>
         </nav>
-        <div class="py-3 bg-dark">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h1 class="display-3">Bem Vindo a Drones Store
-                            <br> </h1>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="py-5">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="carousel slide" data-ride="carousel" id="carousel">
-                            <div class="carousel-inner">
-                                <div class="carousel-item">
-                                    <img class="d-block img-fluid w-100" src="http://do1.cbinsight.com/wp-content/uploads/2016/07/bigstock-Hovering-drone-that-takes-pict-118141880-e1467826439497.jpg">
-                                    <div class="carousel-caption">
-                                        <h3>Nova antena com range melhorado!!</h3>
-                                        <h4>De perto ou de longe, esta antena vai te ajudar!</h4>
-                                    </div>
-                                </div>
-                                <div class="carousel-item active">
-                                    <img class="d-block img-fluid w-100" src="http://static1.uk.businessinsider.com/image/577cd8c74321f171088b60bd-1190-625/these-are-3-of-the-best-drones-weve-seen-yet.jpg">
-                                    <div class="carousel-caption">
-                                        <h3>Novidades em drones</h3>
-                                        <h4>Novos drones incríveis para sua coleção!!!</h4>
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <img class="d-block img-fluid w-100" src="https://geek360.com.br/wp-content/uploads/2018/03/comparacao-de-tamanho-drones.jpg">
-                                    <div class="carousel-caption">
-                                        <h3>MUITOS DRONES</h3>
-                                        <h4 class="">O drone perfeito para você em vários tamanhos!</h4>
-                                    </div>
-                                </div>
-                            </div>
-                            <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a>
-                            <a class="carousel-control-next" href="#carousel" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
+        <!-- CONTENT START OF REFERENCE -->
+        <main role="main" layout:fragment="conteudo">
+            <div class="py-3 bg-dark">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 class="display-3">Bem Vindo a Drones Store
+                                <br> 
+                            </h1>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-
+            <div class="py-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="carousel slide" data-ride="carousel" id="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item">
+                                        <img class="d-block img-fluid w-100" src="http://do1.cbinsight.com/wp-content/uploads/2016/07/bigstock-Hovering-drone-that-takes-pict-118141880-e1467826439497.jpg">
+                                        <div class="carousel-caption">
+                                            <h3>Nova antena com range melhorado!!</h3>
+                                            <h4>De perto ou de longe, esta antena vai te ajudar!</h4>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item active">
+                                        <img class="d-block img-fluid w-100" src="http://static1.uk.businessinsider.com/image/577cd8c74321f171088b60bd-1190-625/these-are-3-of-the-best-drones-weve-seen-yet.jpg">
+                                        <div class="carousel-caption">
+                                            <h3>Novidades em drones</h3>
+                                            <h4>Novos drones incríveis para sua coleção!!!</h4>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img class="d-block img-fluid w-100" src="https://geek360.com.br/wp-content/uploads/2018/03/comparacao-de-tamanho-drones.jpg">
+                                        <div class="carousel-caption">
+                                            <h3>MUITOS DRONES</h3>
+                                            <h4 class="">O drone perfeito para você em vários tamanhos!</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a>
+                                <a class="carousel-control-next" href="#carousel" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- CONTENT END OF REFERENCE -->
         <div class="py-5 bg-dark text-white">
             <div class="container">
                 <div class="row">
@@ -127,7 +127,5 @@
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
     </body>
-
 </html>

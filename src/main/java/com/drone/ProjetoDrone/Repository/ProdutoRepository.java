@@ -24,7 +24,7 @@ public class ProdutoRepository implements ProdutoService {
     private EntityManager entityManager;
 
     @Override
-    public List<Produto> listar(int offset, int quantidade) {
+    public List<Produto> listar() {
                 Query query = entityManager.createQuery(
                 "SELECT DISTINCT p FROM Produto p");
         List<Produto> resultados = query.getResultList();
