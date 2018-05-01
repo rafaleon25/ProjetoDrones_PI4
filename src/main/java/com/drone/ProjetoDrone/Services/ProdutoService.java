@@ -15,7 +15,7 @@ import java.util.List;
  */
 public interface ProdutoService extends Serializable {
 
-    public List<Produto> listar(int offset, int quantidade);
+    public List<Produto> listar();
 
     public Produto obter(long idProduto);
 
