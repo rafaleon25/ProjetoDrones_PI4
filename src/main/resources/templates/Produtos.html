@@ -64,37 +64,34 @@
         </div>
         <div class="py-5">
             <div class="container">
-
                 <div class="row">
                     <div class="col-md-3" th:each="p :${produtos}">
-                        <div class="card" >
-
+                        <div class="card">
+                            <img class="card-img-top" src="data:image/jpeg;base64,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"
+                                 alt="Card image cap">
                             <div class="card-body">
                                 <h5 class="card-title" th:text="${p.nome}">
-                                    <br></h5>
-                                <p class="card-text" th:text="${p.descricao}"></p>
+                                    <br>Card title</h5>
+                                <p class="card-text" th:text="${p.descricao}">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                                 <a href="#" class="btn btn-lg btn-success">Adicionar ao carrinho</a>
                             </div>
                         </div>
                     </div>
-
                 </div>
-            </div>
-        </div>
-       
-        <div class="py-5 bg-dark text-white">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <p class="text-muted text-center">contato@drone.com | Av Engenheiro Eugênio Estevaux, 823 - Jurubatuba - são Paulo/SP | Telefone: (11)1234-55555</p>
+                
+                <div class="py-5 bg-dark text-white">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p class="text-muted text-center">contato@drone.com | Av Engenheiro Eugênio Estevaux, 823 - Jurubatuba - são Paulo/SP | Telefone: (11)1234-55555</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+                <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-    </body>
+                </body>
 
-</html>
+                </html>

@@ -41,10 +41,5 @@ public class RedirecionamentosController {
         return new ModelAndView("Ajuda");
     }
     
-   
     
-    @GetMapping("/listProd")
-    public ModelAndView produtosList(){
-        return new ModelAndView("Produtos");
-    }
 }
