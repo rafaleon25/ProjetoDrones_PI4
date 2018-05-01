@@ -9,7 +9,7 @@
     </head>
 
     <body>
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top ">
             <div class="container">
                 <a class="navbar-brand" th:href="@{/home/paginaInicial}">Drones
                     <br> </a>
@@ -45,71 +45,65 @@
                             <a class="nav-link" th:href="@{/cadastrar/cliente/cadastro}">Cadastrar-se
                                 <br> </a>
                         </li>
-                        
+
                         <li class="nav-item" th:if="${session.usuario == null}">
                             <a class="nav-link" th:href="@{/login/telaLogin}">Login
                                 <br> </a>
                         </li>
-                       
-                        <li class="nav-item" th:if="${session.usuario != null}">
-                            <a th:text="${session.usuario.nome}" th:unless="${session == null}">Login user
-                                <br> </a>
+                        <li>
+                            <div class="dropdown" th:if="${session.usuario != null}">
+                                <button type="button" class="btn btn-primary btn-dark dropdown-toggle" data-toggle="dropdown">
+                                    <a th:text="${session.usuario.nome}" th:unless="${session == null}"></a>
+                                </button>
+                                <div class="dropdown-menu btn-light">
+                                    <a class="dropdown-item" href="#">Alterar Cadastro</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Acompanhar Pedido</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" th:href="@{/login/logout}">Logout</a>
+                                </div>
+                            </div>
                         </li>
-                        
-                         <li class="nav-item" th:if="${session.usuario != null}">
-                            <a class="nav-link" th:href="@{/login/logout}">Logout
-                                <br> </a>
-                        </li>
-                        
                     </ul>
                 </div>
             </div>
         </nav>
+        <div class="py-3 bg-dark">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="display-3">Bem Vindo a Drones Store
+                            <br> </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="py-5">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-4">
-                        <ul class="nav nav-pills flex-column">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">DJI Osmo</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">DJI Phamtom</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">DJI Mavic Pro
-                                    <br> </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">DJI OSMO Mobile</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">DJI Matrice 100
-                                    <br> </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">Baterias</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">Kits de Antenas </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-md-8">
+                    <div class="col-md-12">
                         <div class="carousel slide" data-ride="carousel" id="carousel">
                             <div class="carousel-inner">
                                 <div class="carousel-item">
-                                    <img class="d-block img-fluid w-100" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRy4H7HepsHQQTNbgI01oV0V-gF8e6hycqHMtzQhL5w18ReKt4GvA">
+                                    <img class="d-block img-fluid w-100" src="http://do1.cbinsight.com/wp-content/uploads/2016/07/bigstock-Hovering-drone-that-takes-pict-118141880-e1467826439497.jpg">
                                     <div class="carousel-caption">
                                         <h3>Nova antena com range melhorado!!</h3>
-                                        <p>De perto ou de longe, esta antena vai te ajudar!</p>
+                                        <h4>De perto ou de longe, esta antena vai te ajudar!</h4>
                                     </div>
                                 </div>
                                 <div class="carousel-item active">
-                                    <img class="d-block img-fluid w-100" src="https://timedotcom.files.wordpress.com/2017/12/drone-crash.jpg">
+                                    <img class="d-block img-fluid w-100" src="http://static1.uk.businessinsider.com/image/577cd8c74321f171088b60bd-1190-625/these-are-3-of-the-best-drones-weve-seen-yet.jpg">
                                     <div class="carousel-caption">
                                         <h3>Novidades em drones</h3>
-                                        <p>Novos drones incríveis para sua coleção!!!</p>
+                                        <h4>Novos drones incríveis para sua coleção!!!</h4>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <img class="d-block img-fluid w-100" src="https://geek360.com.br/wp-content/uploads/2018/03/comparacao-de-tamanho-drones.jpg">
+                                    <div class="carousel-caption">
+                                        <h3>MUITOS DRONES</h3>
+                                        <h4 class="">O drone perfeito para você em vários tamanhos!</h4>
                                     </div>
                                 </div>
                             </div>
@@ -120,120 +114,7 @@
                 </div>
             </div>
         </div>
-        <div class="py-5">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="card">
-                            <img class="card-img-top" src="https://pingendo.com/assets/photos/wireframe/photo-1.jpg" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">DJI Spark</h5>
-                                <h5 class="card-title">R$2.200,00</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-light btn-lg">Detalhes</a>
-                                <a href="#" class="btn btn-success btn-lg">Comprar</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card">
-                            <img class="card-img-top" src="https://pingendo.com/assets/photos/wireframe/photo-1.jpg" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">DJI OSMO
-                                    <br> </h5>
-                                <h5 class="card-title">R$3.500,00</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-light btn-lg">Detalhes</a>
-                                <a href="#" class="btn btn-success btn-lg">Comprar</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card">
-                            <img class="card-img-top" src="https://pingendo.com/assets/photos/wireframe/photo-1.jpg" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">DJI Phantom
-                                    <br> </h5>
-                                <h5 class="card-title">R$4.800,00
-                                    <br> </h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-light btn-lg">Detalhes</a>
-                                <a href="#" class="btn btn-success btn-lg">Comprar</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card">
-                            <img class="card-img-top" src="https://pingendo.com/assets/photos/wireframe/photo-1.jpg" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">DJI Mavic Pro</h5>
-                                <h5 class="card-title">R$5.500,00</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-light btn-lg">Detalhes</a>
-                                <a href="#" class="btn btn-success btn-lg">Comprar</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="py-5">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="card">
-                            <img class="card-img-top" src="https://pingendo.com/assets/photos/wireframe/photo-1.jpg" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">DJI Osmo Mobile&nbsp;</h5>
-                                <h5 class="card-title">R$1.400,00</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-light btn-lg">Detalhes</a>
-                                <a href="#" class="btn btn-success btn-lg">Comprar</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card">
-                            <img class="card-img-top" src="https://pingendo.com/assets/photos/wireframe/photo-1.jpg" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">DJI Matrice 100
-                                    <br> </h5>
-                                <h5 class="card-title">R$3.500,00</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-light btn-lg">Detalhes</a>
-                                <a href="#" class="btn btn-success btn-lg">Comprar</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card">
-                            <img class="card-img-top" src="https://pingendo.com/assets/photos/wireframe/photo-1.jpg" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">Baterias
-                                    <br> </h5>
-                                <h5 class="card-title">à partir de: R$800,00
-                                    <br> </h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-light btn-lg">Detalhes</a>
-                                <a href="#" class="btn btn-success btn-lg">Comprar</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card">
-                            <img class="card-img-top" src="https://pingendo.com/assets/photos/wireframe/photo-1.jpg" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">Antenas</h5>
-                                <h5 class="card-title">à partir de: R$500,00</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-light btn-lg">Detalhes</a>
-                                <a href="#" class="btn btn-success btn-lg">Comprar</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
         <div class="py-5 bg-dark text-white">
             <div class="container">
                 <div class="row">
