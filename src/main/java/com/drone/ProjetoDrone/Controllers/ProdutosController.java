@@ -26,7 +26,7 @@ public class ProdutosController {
     
     @GetMapping("/telaProdutos")
     public ModelAndView listarProd() {
-        List <Produto> produtos = repository.listar();
-        return new ModelAndView("produto/lista2").addObject("produtos", produtos);
+        List<Produto> produtos = repository.listar();
+        return new ModelAndView("Produtos").addObject("produtos", produtos);
     }
 }
