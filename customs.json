@@ -10,6 +10,9 @@
         "integrity": {
             "context": "script"
         },
+        "th:type": {
+            "context": "p"
+        },
         "th:unless": {
             "context": "a"
         },
@@ -30,6 +33,9 @@
         },
         "th:each": {
             "context": "div"
+        },
+        "type": {
+            "context": "p"
         }
     }
 }

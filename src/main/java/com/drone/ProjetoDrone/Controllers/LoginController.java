@@ -45,14 +45,13 @@ public class LoginController {
         }
 
         Cliente cli = new Cliente();
-
-        cli = repository.logar(login.getUser());
-
-        if (cli == null) {
-            return new ModelAndView("Login");
+        try {
+            cli = repository.logar(login.getUser());
+        } catch (Exception e) {
+            return new ModelAndView ("Login");
         }
 
-        if (cli.getEmail().equals(login.getUser()) && cli.getSenha().equals(login.getSenha())) {
+        if(cli.getEmail().equals(login.getUser()) && cli.getSenha().equals(login.getSenha())) {
             session.setAttribute("usuario", cli);
             return new ModelAndView("redirect:/home/paginaInicial");
         }else{
