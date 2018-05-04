@@ -32,16 +32,16 @@ public class ProdutosController {
         return new ModelAndView("Produtos").addObject("produtos", produtos);
     }
     
-    @GetMapping("/{id}")
-    public ModelAndView detalheProd(@PathVariable("id") Integer id){
-        Produto produto = repository.obter(id);
-        return new ModelAndView("Produtos").addObject("produto", produto);
-    }
-    
-    
 //    @GetMapping("/{id}")
-//  public ModelAndView detalhe(@PathVariable("id") long id) {
-//    Produto produto = servico.obter(id);
-//    return new ModelAndView("produto/detalhe").addObject("produto", produto);
-//  }
+//    public ModelAndView detalheProd(@PathVariable("id") Integer id){
+//        Produto produto = repository.obter(id);
+//        return new ModelAndView("DescProd").addObject("produto", produto);
+//    }
+    
+    
+    @GetMapping("/{id}")
+  public ModelAndView detalhe(@PathVariable("id") long id) {
+    Produto produto = repository.obter(id);
+    return new ModelAndView("DescProd").addObject("produto", produto);
+  }
 }
