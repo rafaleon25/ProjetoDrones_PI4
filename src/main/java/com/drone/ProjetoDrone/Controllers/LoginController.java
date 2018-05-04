@@ -35,7 +35,7 @@ public class LoginController {
     public ModelAndView login() {
         return new ModelAndView("Login").addObject("login", new Login());
     }
-    
+
     @PostMapping("/logando")
     public ModelAndView logando(@ModelAttribute("login") @Valid Login login, BindingResult bindingResult,
             RedirectAttributes redirectAttributes, HttpSession session) {
@@ -48,19 +48,24 @@ public class LoginController {
         try {
             cli = repository.logar(login.getUser());
         } catch (Exception e) {
-            return new ModelAndView ("Login");
-        }
-
-        if(cli.getEmail().equals(login.getUser()) && cli.getSenha().equals(login.getSenha())) {
-            session.setAttribute("usuario", cli);
-            return new ModelAndView("redirect:/home/paginaInicial");
-        }else{
             return new ModelAndView("Login");
         }
+
+        if (cli == null) {
+            return new ModelAndView("Login");
+        } else {
+
+            if (cli.getEmail().equals(login.getUser()) && cli.getSenha().equals(login.getSenha())) {
+                session.setAttribute("usuario", cli);
+                return new ModelAndView("redirect:/home/paginaInicial");
+            } else {
+                return new ModelAndView("Login");
+            }
+        }
     }
-    
+
     @GetMapping("/logout")
-    public ModelAndView logout (HttpSession session){
+    public ModelAndView logout(HttpSession session) {
         session.invalidate();
         return new ModelAndView("Home");
     }

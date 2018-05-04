@@ -47,7 +47,7 @@ public class CadastroClienteController {
 
         repository.incluir(cliente);
 
-        return new ModelAndView("redirect:/home/login");
+        return new ModelAndView("redirect:/login/telaLogin");
     }
 
     

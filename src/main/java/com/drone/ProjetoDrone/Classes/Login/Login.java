@@ -30,9 +30,6 @@ public class Login implements Serializable{
         this.user = user;
         this.senha = senha;
     }
-    
-    
-    
 
     public String getUser() {
         return user;
