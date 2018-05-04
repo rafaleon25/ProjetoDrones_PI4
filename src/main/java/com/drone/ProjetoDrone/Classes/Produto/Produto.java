@@ -87,6 +87,11 @@ public class Produto implements Serializable {
     @Digits(integer = 3, fraction = 0)
     @Column(name = "peso", precision = 3, scale = 2, nullable = false)
     private double peso;
+    
+    @NotNull
+    @Size(min = 1, max = 100)
+    @Column(name = "url", length = 100, nullable = false, unique = false)
+    private String imagem_url;
 
     //-------------------------Construtores--------------------
     public Produto() {
