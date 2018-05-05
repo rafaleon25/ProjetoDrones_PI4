@@ -31,8 +31,8 @@
                               <label for="nome" class="col-sm-2 col-form-label">Nome*
                               <br></label>
                               <div class="col-sm-10">
-                                 <input type="text" name="nome" th:field="*{nome}" id="nome" class="form-control" placeholder="Insira seu nome"> 
-                                 <p th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">name incorreto
+                                 <input type="text" name="nome" th:field="*{nome}" id="nome" class="form-control " placeholder="Insira seu nome"> 
+                                 <p class="text-danger" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">name incorreto
                                  </p>
                               </div>
                            </div>
@@ -41,7 +41,7 @@
                               <br></label>
                               <div class="col-sm-10">
                                  <input type="text" name="sobrenome" th:field="*{sobrenome}" id="sobrenome" class="form-control" placeholder="Insira seu sobrenome"> 
-                                 <p th:if="${#fields.hasErrors('sobrenome')}" th:errors="*{sobrenome}">sobrenome incorreto
+                                 <p class="text-danger" th:if="${#fields.hasErrors('sobrenome')}" th:errors="*{sobrenome}">sobrenome incorreto
                                  </p>
                               </div>
                            </div>
@@ -50,7 +50,7 @@
                               <br></label>
                               <div class="col-sm-10">
                                  <input type="text" name="cpf" th:field="*{cpf}" id="cpf" class="form-control" placeholder="Insira seu CPF"> 
-                                 <p th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}">cpf incorreto
+                                 <p class="text-danger" th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}">cpf incorreto
                                  </p>
                               </div>
                            </div>
@@ -59,7 +59,7 @@
                               <br></label>
                               <div class="col-sm-5">
                                  <input type="date" name="dataNascimento" th:field="*{dataNascimento}" id="cpf" class="form-control col-sm-6" placeholder="Insira seu CPF"> 
-                                 <p th:if="${#fields.hasErrors('dataNascimento')}" th:errors="*{dataNascimento}">dataNascimento incorreta
+                                 <p class="text-danger" th:if="${#fields.hasErrors('dataNascimento')}" th:errors="*{dataNascimento}">dataNascimento incorreta
                                  </p>
                               </div>
                               <label class="col-sm-1 col-form-label">Sexo*
@@ -67,13 +67,13 @@
                               <div class="col-sm-2 mt-1">
                                  <label for="male">Masculino</label>
                                  <input type="radio" name="sexo" th:field="*{sexo}" id="male" value="m" checked="checked"><br>
-                                 <p th:if="${#fields.hasErrors('sexo')}" th:errors="*{sexo}">sexo incorreto
+                                 <p class="text-danger" th:if="${#fields.hasErrors('sexo')}" th:errors="*{sexo}">sexo incorreto
                                  </p>
                               </div>
                               <div class="col-sm-2  pt-1">
                                  <label for="female">Feminino</label>
                                  <input type="radio" name="sexo" th:field="*{sexo}" id="female" value="f"  checked="checked"><br>
-                                 <p th:if="${#fields.hasErrors('sexo')}" th:errors="*{sexo}">sexo incorreto
+                                 <p class="text-danger" th:if="${#fields.hasErrors('sexo')}" th:errors="*{sexo}">sexo incorreto
                                  </p>
                               </div>
                            </div>
@@ -82,7 +82,7 @@
                               <br></label>
                               <div class="col-sm-10">
                                  <input type="text" name="cep" th:field="*{cep}" id="cep" class="form-control" placeholder="Insira seu CEP"> 
-                                 <p th:if="${#fields.hasErrors('cep')}" th:errors="*{cep}">sexo incorreto
+                                 <p class="text-danger" th:if="${#fields.hasErrors('cep')}" th:errors="*{cep}">sexo incorreto
                                  </p>
                               </div>
                            </div>
@@ -91,14 +91,14 @@
                               </label>
                               <div class="col-sm-5">
                                  <input type="text" name="rua" th:field="*{rua}" id="rua" class="form-control" placeholder="Insira o Logradouro"> 
-                                  <p th:if="${#fields.hasErrors('rua')}" th:errors="*{rua}">rua incorreto
+                                  <p class="text-danger" th:if="${#fields.hasErrors('rua')}" th:errors="*{rua}">rua incorreto
                                   </p>
                               </div>
                               <label for="numero" class="col-sm-2 col-form-label">Número*
                               </label>
                               <div class="col-sm-3">
                                  <input type="number" name="numero" th:field="*{numero}" id="numero" class="form-control" placeholder="Insira o número"> 
-                                 <p th:if="${#fields.hasErrors('numero')}" th:errors="*{numero}">numero incorreto
+                                 <p class="text-danger" th:if="${#fields.hasErrors('numero')}" th:errors="*{numero}">numero incorreto
                                  </p>
                               </div>
                            </div>
@@ -107,7 +107,7 @@
                               <br></label>
                               <div class="col-sm-10">
                                  <input type="text" name="cidade" th:field="*{cidade}" id="cidade" class="form-control" placeholder="Insira sua Cidade"> 
-                                 <p th:if="${#fields.hasErrors('cidade')}" th:errors="*{cidade}">cidade incorreto
+                                 <p class="text-danger" th:if="${#fields.hasErrors('cidade')}" th:errors="*{cidade}">cidade incorreto
                                  </p>
                               </div>
                            </div>
@@ -116,7 +116,7 @@
                               <br></label>
                               <div class="col-sm-10">
                                  <input type="text" name="estado" th:field="*{estado}" id="estado" class="form-control" placeholder="Insira seu Estado"> 
-                                 <p th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}">estado incorreto
+                                 <p class="text-danger" th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}">estado incorreto
                                  </p>
                               </div>
                            </div>
@@ -125,7 +125,7 @@
                               <br></label>
                               <div class="col-sm-10">
                                  <input type="text" name="celular" th:field="*{celular}" id="celular" class="form-control" placeholder="Insira seu Celular"> 
-                                 <p th:if="${#fields.hasErrors('celular')}" th:errors="*{celular}">celular incorreto
+                                 <p class="text-danger" th:if="${#fields.hasErrors('celular')}" th:errors="*{celular}">celular incorreto
                                  </p>
                               </div>
                            </div>
@@ -134,7 +134,7 @@
                               <br></label>
                               <div class="col-sm-10">
                                  <input type="email" name="email" th:field="*{email}" id="email" class="form-control" placeholder="Insira seu e-mail"> 
-                                 <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}">email 
+                                 <p class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">email 
                                  </p>
                               </div>
                            </div>
@@ -143,7 +143,7 @@
                               </label>
                               <div class="col-sm-4">
                                  <input type="password" name="senha" th:field="*{senha}" id="senha" class="form-control" placeholder="Insira sua senha"> 
-                                 <p th:if="${#fields.hasErrors('senha')}" th:errors="*{senha}">senha incorreto
+                                 <p class="text-danger" th:if="${#fields.hasErrors('senha')}" th:errors="*{senha}">senha incorreto
                                  </p>
                               </div>
                               <label for="senhaConfirm" class="col-sm-2 col-form-label">Confirmar Senha*
