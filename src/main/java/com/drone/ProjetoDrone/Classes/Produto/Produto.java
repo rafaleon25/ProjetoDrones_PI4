@@ -89,8 +89,8 @@ public class Produto implements Serializable {
     private double peso;
     
     @NotNull
-    @Size(min = 1, max = 100)
-    @Column(name = "url", length = 100, nullable = false, unique = false)
+    @Size(min = 1, max = 200)
+    @Column(name = "url", length = 200, nullable = false, unique = false)
     private String imagem_url;
 
     //-------------------------Construtores--------------------
@@ -180,4 +180,13 @@ public class Produto implements Serializable {
         this.peso = peso;
     }
 
+    public String getImagem_url() {
+        return imagem_url;
+    }
+
+    public void setImagem_url(String imagem_url) {
+        this.imagem_url = imagem_url;
+    }
+
+    
 }
