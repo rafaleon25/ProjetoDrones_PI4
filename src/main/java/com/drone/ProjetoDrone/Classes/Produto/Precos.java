@@ -6,6 +6,7 @@
 package com.drone.ProjetoDrone.Classes.Produto;
 
 import java.io.Serializable;
+import java.text.DecimalFormat;
 import java.util.Date;
 import java.util.Set;
 import javax.persistence.CascadeType;
@@ -21,6 +22,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
+import java.text.NumberFormat;
+import javax.persistence.Transient;
 
 /**
  *
@@ -31,10 +34,10 @@ import javax.validation.constraints.NotNull;
 public class Precos implements Serializable {
 
     @OneToMany(mappedBy = "precos", fetch = FetchType.LAZY,
-          cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     //@JoinColumn(name = "preco_id", nullable = false)
     private Set<Produto> produto;
-    
+
     @Id
     @Column(name = "preco_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -49,6 +52,8 @@ public class Precos implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "dt_criacao")
     private Date dataCriacao = new Date();
+    
+  
 
 //    Funcionario func;
 //
@@ -59,7 +64,6 @@ public class Precos implements Serializable {
 //    @NotNull
 //    @Column(name = "alterado_por")
 //    private int AlteradoPor = func.getIdFunc();
-
     @Digits(integer = 6, fraction = 2)
     @Column(name = "preco", precision = 6, scale = 2, nullable = false)
     private double preco;
@@ -101,15 +105,23 @@ public class Precos implements Serializable {
         return dataAlteracao;
     }
 
-    public double getPreco() {
-        return preco;
+    public String getPreco() {
+        String precoFormatado;
+        NumberFormat nf = NumberFormat.getCurrencyInstance();
+        precoFormatado = nf.format(preco);
+        return precoFormatado;
     }
 
     public void setPreco(double preco) {
         this.preco = preco;
+      
     }
 
     public Date getDataCriacao() {
         return dataCriacao;
     }
+
+
+    
+    
 }

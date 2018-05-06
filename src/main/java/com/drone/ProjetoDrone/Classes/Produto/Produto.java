@@ -7,6 +7,7 @@ package com.drone.ProjetoDrone.Classes.Produto;
 
 import com.drone.ProjetoDrone.Classes.Venda.VendaProd;
 import java.io.Serializable;
+import java.text.NumberFormat;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -19,6 +20,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -64,7 +66,7 @@ public class Produto implements Serializable {
     private int bateriaDuracao;
     //camera
     @NotNull
-    @Digits(integer = 1, fraction = 0)
+    @Digits(integer = 3, fraction = 0)
     @Column(name = "camera", precision = 1, scale = 0, nullable = false)
     private int camera;
     //nome 
@@ -92,6 +94,8 @@ public class Produto implements Serializable {
     @Size(min = 1, max = 200)
     @Column(name = "url", length = 200, nullable = false, unique = false)
     private String imagem_url;
+    
+
 
     //-------------------------Construtores--------------------
     public Produto() {
@@ -188,5 +192,14 @@ public class Produto implements Serializable {
         this.imagem_url = imagem_url;
     }
 
+    public Precos getPrecos() {
+        return precos;
+    }
+
+    public void setPrecos(Precos precos) {
+        this.precos = precos;
+    }
+
+  
     
 }
