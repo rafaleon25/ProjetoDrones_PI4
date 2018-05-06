@@ -5,12 +5,14 @@
  */
 package com.drone.ProjetoDrone.Controllers;
 
-import com.drone.ProjetoDrone.Classes.Cliente.Cliente;
+
+import java.util.Set;
+import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-
+import com.drone.ProjetoDrone.Classes.Produto.Produto;
 /**
  *
  * @author Rafael Rodrigues
@@ -20,7 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class RedirecionamentosController {
 
     @GetMapping("/paginaInicial")
-    public ModelAndView home() {
+    public ModelAndView home(HttpSession session) {
         return new ModelAndView("Home");
     }
     @GetMapping("/desc")

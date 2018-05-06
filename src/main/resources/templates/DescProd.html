@@ -92,8 +92,10 @@
                      <div class="form-check">
                         <input class="form-check-input" name="group100" type="radio" id="radio102" value="on"> <label class="form-check-label" for="radio102">Padrão - 14 dias</label> 
                      </div>
-                     <button class="btn btn-success w-100 m-0 py-2 btn-lg" type="submit">Comprar</button>
-                     <button class="btn btn-light py-2 btn-lg" type="submit">Carrinho</button>
+                      <form method="post" th:action="@{/carrinho/{id}(id=${produto.idProd})}">
+                      <button class="btn btn-success w-100 m-0 py-2 btn-lg" type="submit">Comprar</button>
+                     </form>
+                      <button class="btn btn-light py-2 btn-lg" type="submit">Carrinho</button>
                   </div>
                </div>
             </div>
