@@ -65,9 +65,6 @@ public class Precos implements Serializable {
     @Column(name = "preco", precision = 6, scale = 2, nullable = false)
     private double preco;
 
-    @Transient
-    private double precoFormatado = preco;
-
     //-------------------------Construtor-----------------------
     public Precos() {
     }
