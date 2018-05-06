@@ -6,7 +6,6 @@
 package com.drone.ProjetoDrone.Classes.Produto;
 
 import java.io.Serializable;
-import java.text.DecimalFormat;
 import java.util.Date;
 import java.util.Set;
 import javax.persistence.CascadeType;
@@ -52,8 +51,6 @@ public class Precos implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "dt_criacao")
     private Date dataCriacao = new Date();
-    
-  
 
 //    Funcionario func;
 //
@@ -67,6 +64,9 @@ public class Precos implements Serializable {
     @Digits(integer = 6, fraction = 2)
     @Column(name = "preco", precision = 6, scale = 2, nullable = false)
     private double preco;
+
+    @Transient
+    private double precoFormatado = preco;
 
     //-------------------------Construtor-----------------------
     public Precos() {
@@ -105,7 +105,11 @@ public class Precos implements Serializable {
         return dataAlteracao;
     }
 
-    public String getPreco() {
+    public double getPreco() {
+        return preco;
+    }
+
+    public String getPrecoFormatado() {
         String precoFormatado;
         NumberFormat nf = NumberFormat.getCurrencyInstance();
         precoFormatado = nf.format(preco);
@@ -114,14 +118,11 @@ public class Precos implements Serializable {
 
     public void setPreco(double preco) {
         this.preco = preco;
-      
+
     }
 
     public Date getDataCriacao() {
         return dataCriacao;
     }
 
-
-    
-    
 }
