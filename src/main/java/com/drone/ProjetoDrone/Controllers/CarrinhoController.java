@@ -40,7 +40,19 @@ public class CarrinhoController {
             RedirectAttributes redirectAttributes, HttpSession sessao) {
     
     Produto p = repository.obter(idProduto);
-    carrinho.add(p);
+    boolean naoEstaNaLista = true;
+    if(carrinho != null){
+        for (int i = 0; i < carrinho.size(); i++) {
+            if(p.getIdProd() == carrinho.get(i).getIdProd()){
+                naoEstaNaLista = false;
+            }
+        }
+        
+        if(naoEstaNaLista){
+            carrinho.add(p);
+        }
+    }
+
 
      redirectAttributes.addFlashAttribute("carrinho", p);
     return new ModelAndView("Cart");
@@ -50,7 +62,7 @@ public class CarrinhoController {
     return carrinho;
   }
   
-  @GetMapping("/Cart")
+  @GetMapping("/telaCarrinho")
   public ModelAndView visualizar() {
     return new ModelAndView("Cart");
   }
