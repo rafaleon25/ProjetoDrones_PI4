@@ -7,50 +7,8 @@
       <link rel="stylesheet" th:href="@{/theme.css}" type="text/css"/>
    </head>
    <body>
-      <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-         <div class="container">
-            <a class="navbar-brand" th:href="@{/home/paginaInicial}">Drones
-            <br> </a>
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-               <ul class="navbar-nav mr-auto">
-                  <li class="nav-item">
-                     <a class="nav-link" th:href="@{/home/paginaInicial}">Home
-                     <br> </a>
-                  </li>
-                  <li class="nav-item">
-                     <a class="nav-link text-white" th:href="@{/home/listProd}">Produtos
-                     <br> </a>
-                  </li>
-                  <li class="nav-item">
-                     <a class="nav-link" th:href="@{/home/carrinho}">Carrinho</a>
-                  </li>
-                  <li class="nav-item">
-                     <a class="nav-link" th:href="@{/home/contato}">Contato
-                     <br> </a>
-                  </li>
-                  <li class="nav-item">
-                     <a class="nav-link " th:href="@{/home/ajuda}">Ajuda
-                     <br> </a>
-                  </li>
-               </ul>
-               <form class="form-inline m-0">
-                  <input class="form-control mr-2 w-50 p-0" type="text" placeholder="Search">
-                  <button class="btn btn-info" type="submit">Search</button>
-               </form>
-               <ul class="navbar-nav mr-auto">
-                  <li class="nav-item">
-                     <a class="nav-link" th:href="@{/home/cadastro}">Cadastrar-se
-                     <br> </a>
-                  </li>
-                  <li class="nav-item">
-                     <a class="nav-link" th:href="@{/home/login}">Login
-                     <br> </a>
-                  </li>
-               </ul>
-            </div>
-         </div>
-      </nav>
+      <div th:replace="Master:: nav">
+      </div>
       <div class="py-3 bg-dark">
          <div class="container">
             <div class="row">
@@ -81,7 +39,7 @@
             <div class="row mt-6 ">
                <div class="col-md-4 mt-6" th:each="p :${produtos}">
                   <div class="card ">
-                      <img class="card-img-top mt-6" th:src="${p.imagem_url}" alt="Card image cap">
+                     <img class="card-img-top mt-6" th:src="${p.imagem_url}" alt="Card image cap">
                      <div class="card-body">
                         <h5 class="card-title" th:text="${p.nome}"><br></h5>
                         <h5 class="card-title" th:text="${p.precos.preco}"><br></h5>
@@ -95,17 +53,7 @@
          </div>
       </div>
       <!-- thymeleaf do rafa -->
-      <div class="py-5 bg-dark text-white">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-12">
-                  <p class="text-muted text-center">contato@drone.com | Av Engenheiro Eugênio Estevaux, 823 - Jurubatuba - são Paulo/SP | Telefone: (11)1234-55555</p>
-               </div>
-            </div>
-         </div>
+      <div th:replace="footer">
       </div>
-      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
    </body>
 </html>
