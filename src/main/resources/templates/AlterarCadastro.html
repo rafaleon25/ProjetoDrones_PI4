@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+      <link rel="stylesheet" th:href="@{/theme.css}" type="text/css"/>
+   </head>
+   <body>
+      <p th:replace="Master :: nav">
+      </p>
+      <div class="py-3 bg-dark">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <h3 class="display-3">Alterar Cadastro
+                     <br>
+                  </h3>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="py-3">
+         <div class="container col-sm-20">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="card bg-info p-1" id="Cadastro">
+                     <div class="card-body text-dark">
+                        <form th:action="@{/cadastrar/cliente/salvar}" th:object="${cliente}" method="post">
+                           <div class="form-group text-dark w-75 form-row">
+                              <label for="nome" class="col-sm-2 col-form-label">Nome*
+                              <br></label>
+                              <div class="col-sm-10">
+                                 <input type="text" name="nome" th:field="*{nome}" id="nome" class="form-control " placeholder="Insira seu nome"> 
+                                 <p class="text-danger" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">name incorreto
+                                 </p>
+                              </div>
+                           </div>
+                           <div class="form-group text-dark w-75 form-row">
+                              <label for="sobrenome" class="col-sm-2 col-form-label">Sobrenome*
+                              <br></label>
+                              <div class="col-sm-10">
+                                 <input type="text" name="sobrenome" th:field="*{sobrenome}" id="sobrenome" class="form-control" placeholder="Insira seu sobrenome"> 
+                                 <p class="text-danger" th:if="${#fields.hasErrors('sobrenome')}" th:errors="*{sobrenome}">sobrenome incorreto
+                                 </p>
+                              </div>
+                           </div>
+                           <div class="form-group text-dark w-75 form-row">
+                              <label for="cpf" class="col-sm-2 col-form-label">CPF*
+                              <br></label>
+                              <div class="col-sm-10">
+                                 <input type="text" name="cpf" th:field="*{cpf}" id="cpf" class="form-control" placeholder="Insira seu CPF"> 
+                                 <p class="text-danger" th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}">cpf incorreto
+                                 </p>
+                              </div>
+                           </div>
+                           <div class="form-group text-dark w-75 form-row">
+                              <label for="dataNascimento" class="col-sm-2 col-form-label">Nascimento*
+                              <br></label>
+                              <div class="col-sm-5">
+                                 <input type="date" name="dataNascimento" th:field="*{dataNascimento}" id="cpf" class="form-control col-sm-6" placeholder="Insira seu CPF"> 
+                                 <p class="text-danger" th:if="${#fields.hasErrors('dataNascimento')}" th:errors="*{dataNascimento}">dataNascimento incorreta
+                                 </p>
+                              </div>
+                              <label class="col-sm-1 col-form-label">Sexo*
+                              <br></label>
+                              <div class="col-sm-2 mt-1">
+                                 <label for="male">Masculino</label>
+                                 <input type="radio" name="sexo" th:field="*{sexo}" id="male" value="m" checked="checked"><br>
+                                 <p class="text-danger" th:if="${#fields.hasErrors('sexo')}" th:errors="*{sexo}">sexo incorreto
+                                 </p>
+                              </div>
+                              <div class="col-sm-2  pt-1">
+                                 <label for="female">Feminino</label>
+                                 <input type="radio" name="sexo" th:field="*{sexo}" id="female" value="f"  checked="checked"><br>
+                                 <p class="text-danger" th:if="${#fields.hasErrors('sexo')}" th:errors="*{sexo}">sexo incorreto
+                                 </p>
+                              </div>
+                           </div>
+                           <div class="form-group text-dark w-75 form-row">
+                              <label for="cep" class="col-sm-2 col-form-label">Cep*
+                              <br></label>
+                              <div class="col-sm-10">
+                                 <input type="text" name="cep" th:field="*{cep}" id="cep" class="form-control" placeholder="Insira seu CEP"> 
+                                 <p class="text-danger" th:if="${#fields.hasErrors('cep')}" th:errors="*{cep}">sexo incorreto
+                                 </p>
+                              </div>
+                           </div>
+                           <div class="form-group text-dark w-75 form-row">
+                              <label for="rua" class="col-sm-2 col-form-label">Endereço*
+                              </label>
+                              <div class="col-sm-5">
+                                 <input type="text" name="rua" th:field="*{rua}" id="rua" class="form-control" placeholder="Insira o Logradouro"> 
+                                 <p class="text-danger" th:if="${#fields.hasErrors('rua')}" th:errors="*{rua}">rua incorreto
+                                 </p>
+                              </div>
+                              <label for="numero" class="col-sm-2 col-form-label">Número*
+                              </label>
+                              <div class="col-sm-3">
+                                 <input type="number" name="numero" th:field="*{numero}" id="numero" class="form-control" placeholder="Insira o número"> 
+                                 <p class="text-danger" th:if="${#fields.hasErrors('numero')}" th:errors="*{numero}">numero incorreto
+                                 </p>
+                              </div>
+                           </div>
+                           <div class="form-group text-dark w-75 form-row">
+                              <label for="cidade" class="col-sm-2 col-form-label">Cidade*
+                              <br></label>
+                              <div class="col-sm-10">
+                                 <input type="text" name="cidade" th:field="*{cidade}" id="cidade" class="form-control" placeholder="Insira sua Cidade"> 
+                                 <p class="text-danger" th:if="${#fields.hasErrors('cidade')}" th:errors="*{cidade}">cidade incorreto
+                                 </p>
+                              </div>
+                           </div>
+                           <div class="form-group text-dark w-75 form-row">
+                              <label for="estado" class="col-sm-2 col-form-label">Estado*
+                              <br></label>
+                              <div class="col-sm-10">
+                                 <input type="text" name="estado" th:field="*{estado}" id="estado" class="form-control" placeholder="Insira seu Estado"> 
+                                 <p class="text-danger" th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}">estado incorreto
+                                 </p>
+                              </div>
+                           </div>
+                           <div class="form-group text-dark w-75 form-row">
+                              <label for="celular" class="col-sm-2 col-form-label">Celular*
+                              <br></label>
+                              <div class="col-sm-10">
+                                 <input type="text" name="celular" th:field="*{celular}" id="celular" class="form-control" placeholder="Insira seu Celular"> 
+                                 <p class="text-danger" th:if="${#fields.hasErrors('celular')}" th:errors="*{celular}">celular incorreto
+                                 </p>
+                              </div>
+                           </div>
+                           <div class="form-group text-dark w-75 form-row">
+                              <label for="email" class="col-sm-2 col-form-label">E-mail*
+                              <br></label>
+                              <div class="col-sm-10">
+                                 <input type="email" name="email" th:field="*{email}" id="email" class="form-control" placeholder="Insira seu e-mail"> 
+                                 <p class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">email 
+                                 </p>
+                              </div>
+                           </div>
+                           <div class="form-group w-75 form-row">
+                              <label for="senha" class="col-sm-2 col-form-label">Senha*
+                              </label>
+                              <div class="col-sm-4">
+                                 <input type="password" name="senha" th:field="*{senha}" id="senha" class="form-control" placeholder="Insira sua senha"> 
+                                 <p class="text-danger" th:if="${#fields.hasErrors('senha')}" th:errors="*{senha}">senha incorreto
+                                 </p>
+                              </div>
+                              <label for="senhaConfirm" class="col-sm-2 col-form-label">Confirmar Senha*
+                              </label>
+                              <div class="col-sm-4">
+                                 <input type="password" name="senhaConfirm" id="senhaConfirm" class="form-control" placeholder="Insira sua senha novamente"> 
+                              </div>
+                           </div>
+                           <button type="submit" class="btn btn-dark text-left btn-lg">Cadastrar
+                           </button>
+                        </form>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div th:replace="Master :: footer">
+      </div>
+   </body>
+</html>
