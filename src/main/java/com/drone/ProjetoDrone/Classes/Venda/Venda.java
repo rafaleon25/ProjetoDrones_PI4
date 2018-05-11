@@ -127,4 +127,20 @@ public class Venda implements Serializable {
         return dataVenda;
     }
 
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public Set<VendaProd> getVendaProd() {
+        return vendaProd;
+    }
+
+    public void setVendaProd(Set<VendaProd> vendaProd) {
+        this.vendaProd = vendaProd;
+    }
+
 }

@@ -9,7 +9,7 @@
    <body>
       <div th:replace="Master :: nav">
       </div>
-      <div class="py-3"  th:each="c : ${@carrinhoController.carrinho}">
+      <div class="py-3" th:each="c : ${session.carrinho}">
          <div class="container">
             <div class="row">
                <div class="col-md-3">
@@ -22,10 +22,18 @@
                   <p class="lead" th:text="${c.precos.precoFormatado}">Por: R$2.200,00
                      <br>ou, à vista : R$ 1.980,00
                   </p>
-                  <button class="btn btn-lg btn-danger" type="submit">Remover do Carrinho</button>
-                  <br></br>
-                  <label for="qtd">Quantidade:</label> 
-                  <input id="qtd" class="btn-light col-md-3 rounded btn-md" type="number">
+                  
+               
+                  <a class="btn btn-lg btn-danger" th:href="@{/carrinho/remover/{id}(id=${c.idProd})}" type="submit">Remover do Carrinho</a>
+                 
+                  <br>
+                  
+                  <form th:action="@{/carrinho/update/{id}(id=${c.idProd})}" th:Object="${prodQtd}" method="post"> 
+                    <label for="qtd">Quantidade:</label>
+                   
+                    <input id="qtd" class="btn-light col-md-3 rounded btn-md" th:text="${c.quantidadeUsu}"  th:field="*{quantidade}" type="number">
+                    <button type="submit" class="btn btn-dark text-left btn-lg">+</button>
+                  </form>
                </div>
             </div>
          </div>
@@ -63,7 +71,10 @@
                            <br><strike></strike>
                            <br>TOTAL: --
                         </p>
-                        <button class="btn btn-success btn-lg" type="submit">Comprar</button>
+                        
+                        
+                        <a class="btn btn-success btn-lg" type="submit" th:if="${session.usuario != null}" th:href="@{/venda}">Comprar</a>
+                        <a class="btn btn-success btn-lg" type="submit" th:if="${session.usuario == null}" th:href="@{/login/telaLogin}">Comprar</a>
                      </div>
                   </div>
                </div>
