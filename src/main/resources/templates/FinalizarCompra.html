@@ -9,7 +9,8 @@
    <body>
       <div th:replace="Master :: nav">
       </div>
-      <div class="py-3 bg-dark">
+       <form th:action="@{/venda/finalizar}" th:object="${venda}" method="post">
+       <div class="py-3 bg-dark">
          <div class="container">
             <div class="row">
                <div class="col-md-12">
@@ -31,11 +32,14 @@
                            </div>
                            <div class="blockquote" th:each="c : ${session.carrinho}">
                               <div class="blockquote-footer " th:text="${c.nome}">Prod</div>
-                              <div class="col-md-4" th:text="${c.quantidadeUsu}">qtd</div>
+                              <div class="col-md-4" th:text="'Quantidade: '+${c.quantidadeUsu}">qtd</div>
+                              <div class="col-md-4" th:text="'preco '+${c.precos.precoFormatado}">qtd</div>
                            </div>
+                            <div class="col-md-4" th:text="'SubTotal: ' + ${venda.totalVenda}">total</div>
                         </div>
                         <div class=" col-md-4" >
-                           <div class="blockquote">
+                            
+                            <div class="blockquote">
                               <p class="mb-0">Dados de entrega:</p>
                               <label for="End">Endereço:</label>
                               <input id="End" class="blockquote-footer" th:value="${session.usuario.rua}">
@@ -46,74 +50,20 @@
                            </div>
                         </div>
                         <div class="col-md-4 ">
-                           <p class="mb-0">Método de pagamento:</p>
-                           <!-- acordeon Start -->
-                           <div id="accordion">
-                              <div class="card">
-                                 <div class="card-header" id="headingOne">
-                                    <h5 class="mb-0">
-                                       <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                       Cartão de Crédito
-                                       </button>
-                                    </h5>
-                                 </div>
-                                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                                    <div class="card-body">
-                                       <label for="numCard">Número do Cartão:</label><br>
-                                       <input type="text" id="numCard" ><br>
-                                       <label for="valCard">Validade:</label><br>
-                                       <input type="date" id="valCard" ><br>
-                                       <label for="nomeCard">Nome Impresso:</label><br>
-                                       <input type="text" id="nomeCard" ><br>
-                                       <label for="codCard">Codigo de segurança:</label><br>
-                                       <input type="num" id="codCard" ><br>
-                                    </div>
-                                 </div>
-                              </div>
-                              <!-- acordeon first group end -->
-                              <!-- acordeon second group start -->
-                              <div class="card">
-                                 <div class="card-header" id="headingTwo">
-                                    <h5 class="mb-0">
-                                       <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                       Cartão de débito
-                                       </button>
-                                    </h5>
-                                 </div>
-                                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                                    <div class="card-body">
-                                       <label for="numCard">Número do Cartão:</label><br>
-                                       <input type="text" id="numCard" ><br>
-                                       <label for="valCard">Validade:</label><br>
-                                       <input type="date" id="valCard" ><br>
-                                       <label for="nomeCard">Nome impresso no cartão:</label><br>
-                                       <input type="text" id="nomeCard" ><br>
-                                       <label for="codCard">Codigo de segurança:</label><br>
-                                       <input type="num" id="codCard" ><br>
-                                    </div>
-                                 </div>
-                              </div>
-                              <!-- acordeon second group end -->
-                              <!-- acordeon third group start -->
-                              <div class="card">
-                                 <div class="card-header" id="headingThree">
-                                    <h5 class="mb-0">
-                                       <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                       Boleto Bancário
-                                       </button>
-                                    </h5>
-                                 </div>
-                                 <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                                    <div class="card-body">
-                                       <label for="nomeBol">Nome do pagante:</label><br>
-                                       <input type="text" id="nomeBol" ><br>
-                                       <label for="e-mailBol">E-Mail:</label><br>
-                                       <input type="date" id="e-mailBol" ><br>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                           <!-- acordeon third group end -->
+                            <p class="mb-0">Dados de Pagamento:</p>
+                           <label for="NumeroCartao" th:field="*{numeroCartao}">Numero do Cartão: </label>
+                              <input id="NumeroCartao" class="blockquote-footer" >
+                              <label for="nome">Nome:</label>
+                              <input id="nome" class="blockquote-footer" >
+                              <label for="parcelas" th:field="*{parcelas}">Parcelas</label>
+                              <input id="parcelas" class="blockquote-footer" >
+                              <select id="formaPag" th:field="*{formaPagamento}">
+                                  <option value="MC">MC</option>
+                                  <option value="VI">VI</option>
+                                  <option value="HE">HE</option>
+                                  <option value="AX">AX</option>
+                              </select>
+                              
                         </div>
                      </div>
                   </div>
@@ -124,13 +74,12 @@
       <div class="py-5">
          <div class="container">
             <div class="row">
-               <div class="col-md-3"><a class="btn btn-dark" href="#">Carrinho</a></div>
-               <div class="col-md-3"></div>
-               <div class="col-md-3"></div>
-               <div class="col-md-3"><a class="btn btn-dark" href="#">Finalizar compra! </a></div>
+               <button class="col-md-3" th:type="submit">Finalizar</button>
+               
             </div>
          </div>
       </div>
+       </form>
       <div th:replace="master :: footer">
       </div>
    </body>

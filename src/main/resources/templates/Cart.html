@@ -6,14 +6,18 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
         <link rel="stylesheet" th:href="@{/theme.css}" type="text/css"/>
         <script type="text/javascript">
-            function increaseQuantity(){
-            if(document.getElementById("inp").value==
-            document.getElementById("inp").value=Number(document.getElementById("inp").value)+1;
+            function pegarQtd() {
+                let qtd;
+                let id;
+                qtd = document.getElementById("qtdUsu").value;
+                id = document.getElementById("ProdId").value;
+                for (var i = 0; i < id.length; i++) {
+                    if (id[i] === document.getElementById("ProdId").value) {
+                        document.getElementById("inp").value = qtd;
+                    }
+                }
+                
             }
-            function decreaseQuantity(){
-            document.getElementById("inp").value=Number(document.getElementById("inp").value)-1;
-            }
-
         </script>
 
     </head>
@@ -39,18 +43,13 @@
                         <br>
 
                         <form th:action="@{/carrinho/update/{id}(id=${c.idProd})}" th:Object="${prodQtd}" method="post">
+                            <div id="ProdId"  th:value="${c.idProd}"></div>
+                            <div id="qtdUsu"  th:value="${c.quantidadeUsu}">Quantidade: [[${c.quantidadeUsu}]]</div>
+                            <input id="inp" class="btn-light col-md-3 rounded btn-md"  th:field="*{quantidade}" th:type="number" >
 
-                            <div>[[${c.quantidadeUsu}]]</div>
+                            <button id="qtdBtnPlus" th:type="submit" class="btn btn-dark text-left btn-lg" onclick="pegarQtd()">Atualizar Quantidade</button>
 
-                            <button id="qtdBtnMinus" type="button" class="btn btn-lg btn-dark text-left btn-lg"  onclick="decreaseQuantity()" >-</button>
-                            
-                            <input id="inp" class="btn-light col-md-3 rounded btn-md"  th:field="*{quantidade}" th:type="number" disabled >
-
-                            <button id="qtdBtnPlus" type="button" class="btn btn-dark text-left btn-lg" onclick="increaseQuantity()" >+</button>
-                            
-                            <button id="sub" style="display: none" th:type="submit" class="btn btn-lg btn-dark text-left btn-lg" ></button>
-                            
-                            <p><span style="display: none" th:text="${c.precos.precoFormatado}"></span></p>
+                            <p><span  style="display: none" th:text="${c.precos.precoFormatado}"></span></p>
                         </form>
                     </div>
                 </div>
