@@ -19,18 +19,22 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public class VendaRepository implements VendaService {
-    
+
     @PersistenceContext
     private EntityManager entityManager;
 
     @Override
     @Transactional
-    public void incluir(Venda v) {   
-            if (v.getIdVenda() == null) {
-                entityManager.persist(v);
-            } else {
-                entityManager.merge(v);
-            }
+    public void incluir(Venda v) {
+
         entityManager.persist(v);
+//        entityManager.flush();
+//        Integer id = v.getIdVenda();
+//
+//        for (VendaProd vp : v.getVendaProd()) {
+//            vp.getVenda().setIdVenda(id);
+//            entityManager.persist(vp);
+//        }
+
     }
 }

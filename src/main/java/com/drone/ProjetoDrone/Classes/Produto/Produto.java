@@ -76,8 +76,8 @@ public class Produto implements Serializable {
     private String nome;
     //descrição
     @NotNull
-    @Size(min = 1, max = 100)
-    @Column(name = "descricao", length = 100, nullable = false, unique = false)
+    @Size(min = 1, max = 1000)
+    @Column(name = "descricao", length = 1000, nullable = false, unique = false)
     private String descricao;
     //fabricante 
     @NotNull
