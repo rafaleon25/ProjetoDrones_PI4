@@ -45,7 +45,7 @@ public class Venda implements Serializable {
     @Id
     @Column(name = "vendaID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idVenda;
+    private Integer idVenda;
 
     @NotNull
     @Temporal(TemporalType.TIMESTAMP)
@@ -76,11 +76,11 @@ public class Venda implements Serializable {
     public Venda() {
     }
 
-    public int getIdVenda() {
+    public Integer getIdVenda() {
         return idVenda;
     }
 
-    public void setIdVenda(int idVenda) {
+    public void setIdVenda(Integer idVenda) {
         this.idVenda = idVenda;
     }
 
@@ -125,6 +125,22 @@ public class Venda implements Serializable {
 
     public Date getDataVenda() {
         return dataVenda;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public Set<VendaProd> getVendaProd() {
+        return vendaProd;
+    }
+
+    public void setVendaProd(Set<VendaProd> vendaProd) {
+        this.vendaProd = vendaProd;
     }
 
 }
