@@ -1,1 +1,59 @@
-{"elements":{},"attributes":{"th:text":{"context":"a"},"th:action":{"context":"form"},"th:field":{"context":"input"},"th:each":{"context":"div"},"type":{"context":"p"},"th:if":{"context":"div"},"integrity":{"context":"script"},"th:type":{"context":"p"},"th:unless":{"context":"a"},"th:src":{"context":"img"},"th:switch":{"context":"li"},"th:href":{"context":"a"},"th:case":{"context":"a"},"th:attr":{"context":"img"}}}
+{
+    "elements": {},
+    "attributes": {
+        "th:text": {
+            "context": "a"
+        },
+        "th:object": {
+            "context": "form"
+        },
+        "th:action": {
+            "context": "form"
+        },
+        "th:field": {
+            "context": "input"
+        },
+        "th:each": {
+            "context": "div"
+        },
+        "type": {
+            "context": "p"
+        },
+        "th:fragment": {
+            "context": "div"
+        },
+        "th:if": {
+            "context": "div"
+        },
+        "integrity": {
+            "context": "script"
+        },
+        "th:type": {
+            "context": "p"
+        },
+        "th:unless": {
+            "context": "a"
+        },
+        "th::replace": {
+            "context": "div"
+        },
+        "th:src": {
+            "context": "img"
+        },
+        "th:switch": {
+            "context": "li"
+        },
+        "th:replace": {
+            "context": "div"
+        },
+        "th:href": {
+            "context": "a"
+        },
+        "th:case": {
+            "context": "a"
+        },
+        "th:attr": {
+            "context": "img"
+        }
+    }
+}

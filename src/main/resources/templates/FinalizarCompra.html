@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+        <link rel="stylesheet" th:href="@{/theme.css}" type="text/css"/>
+    </head>
+    <body>
+        <div th:replace="Master :: nav">
+        </div>
+        <div class="py-3 bg-dark">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="display-4">Finalizar Compra
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class=" col-md-12">
+            <div class="container">
+                <div class="row">
+                    <div class="card-header py-5" style="">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-4" style="">
+                                    <div class="blockquote">
+                                        <p class="mb-0">Produtos:</p>
+                                    </div>
+                                    <div class="blockquote" th:each="c : ${session.carrinho}">
+                                        <div class="blockquote-footer" th:text="${c.nome}">Produto1</div>
+                                         <div class="blockquote-footer" th:text="${c.quantidadeUsu}">qtd</div>
+                                    </div>
+                                    
+                                    <button class="btn-dark">Alterar produtos</button>
+                                </div>
+                                <div class=" col-md-4" >
+                                    <div class="blockquote">
+                                        <p class="mb-0">Dados de entrega:</p>
+                                        <div class="blockquote-footer" th:text="${session.usuario.rua}">Endereço:RUA DA PUT* QUE TE PARIU, 2469
+                                        </div>
+                                        <div class="blockquote-footer" th:text="${session.usuario.nome}">Destinatário: Lúcifer da silva
+                                        </div>
+                                        <div class="blockquote-footer" th:text="${session.usuario.celular}">Telefone de contato : (11)6669-6669
+                                        </div>
+                                    </div>
+                                    <button class="btn-dark">Alterar dados de entrega
+                                    </button>
+                                </div>
+                                <div class="col-md-4 ">
+                                    <div class="blockquote">
+                                        <p class="mb-0">Método de pagamento:</p>
+                                        <label for="numCard">Número de Crédito:</label>
+                                        <input type="text" id="numCard" ><br></br>
+                                        <label for="valCard">Validade:</label>
+                                        <input type="date" id="valCard" ><br></br>
+                                        <label for="nomeCard">Nome Impresso:</label>
+                                        <input type="text" id="nomeCard" ><br></br>
+                                        <label for="codCard">CVC:</label>
+                                        <input type="date" id="codCard" ><br></br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3"><a class="btn btn-dark" href="#">Carrinho</a></div>
+                    <div class="col-md-3"></div>
+                    <div class="col-md-3"></div>
+                    <div class="col-md-3"><a class="btn btn-dark" href="#">Finalizar compra! </a></div>
+                </div>
+            </div>
+        </div>
+        <div th:replace="master :: footer">
+      </div>
+    </body>
+</html>

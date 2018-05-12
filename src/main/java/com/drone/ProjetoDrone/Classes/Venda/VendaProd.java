@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 
@@ -41,18 +42,14 @@ public class VendaProd implements Serializable {
 
     @NotNull
     @Digits(integer = 3, fraction = 0)
-    private int qtd;
+    private long qtd;
 
-//    @Id
-//    @Transient
-//    @Column(name = "produtoID")
-//    private int produtoId;
+    @Id
+    @Transient
+    private int produtoId;
 
     public VendaProd() {
-    }
-
-    public VendaProd(int qtd) {
-        this.qtd = qtd;
+        this.qtd = 1;
     }
 
 //    public int getVendaId() {
@@ -63,20 +60,30 @@ public class VendaProd implements Serializable {
 //        this.vendaId = vendaId;
 //    }
 
-    public int getQtd() {
+    public long getQtd() {
         return qtd;
     }
 
-    public void setQtd(int qtd) {
+    public void setQtd(long qtd) {
         this.qtd = qtd;
     }
 
-//    public int getProdutoId() {
-//        return produtoId;
-//    }
-//
-//    public void setProdutoId(int produtoId) {
-//        this.produtoId = produtoId;
-//    }
+    public int getProdutoId() {
+        return produtoId;
+    }
+
+    public void setProdutoId(int produtoId) {
+        this.produtoId = produtoId;
+    }
+
+    public Produto getProduto() {
+        return produto;
+    }
+
+    public void setProduto(Produto produto) {
+        this.produto = produto;
+    }
+    
+    
 
 }

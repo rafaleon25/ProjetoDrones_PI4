@@ -1,131 +1,97 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-        <link rel="stylesheet" th:href="@{/theme.css}" type="text/css"/>
-    </head>
-    <body>
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top ">
-            <div class="container">
-                <a class="navbar-brand" th:href="@{/home/paginaInicial}">Drones
-                    <br> </a>
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link text-white" th:href="@{/home/paginaInicial}">Home
-                                <br> </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" th:href="@{/produtos/telaProdutos}">Produtos
-                                <br> </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" th:href="@{/home/carrinho}">Carrinho</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " th:href="@{/home/contato}">Contato
-                                <br> </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " th:href="@{/home/desc}">Ajuda
-                                <br> </a>
-                        </li>
-                    </ul>
-                    <form class="form-inline m-0">
-                        <input class="form-control mr-2 m-0 w-50" type="text" placeholder="Search">
-                        <button class="btn btn-info" type="submit">Search</button>
-                    </form>
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item" th:if="${session.usuario == null}">
-                            <a class="nav-link" th:href="@{/cadastrar/cliente/cadastro}">Cadastrar-se
-                                <br> </a>
-                        </li>
-                        <li class="nav-item" th:if="${session.usuario == null}">
-                            <a class="nav-link" th:href="@{/login/telaLogin}">Login
-                                <br> </a>
-                        </li>
-                        <li>
-                            <div class="dropdown" th:if="${session.usuario != null}">
-                                <button type="button" class="btn btn-primary btn-dark dropdown-toggle" data-toggle="dropdown">
-                                    <a th:text="${session.usuario.nome}" th:unless="${session == null}"></a>
-                                </button>
-                                <div class="dropdown-menu btn-light">
-                                    <a class="dropdown-item" href="#">Alterar Cadastro</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Acompanhar Pedido</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" th:href="@{/login/logout}">Logout</a>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+      <link rel="stylesheet" th:href="@{/theme.css}" type="text/css"/>
+   </head>
+   <body>
+      <div th:replace="Master :: nav ">
+      </div>
+      <!-- Cover -->
+      <div class="d-flex align-items-center py-5 cover" style="background-image: url(https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/pexels-photo-drone-1512930874.jpeg);">
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-12 text-white mt-5">
+                  <h1 class="display-2 d-none d-md-block">Drones Store</h1>
+                  <h1 class="display-4 d-block d-md-none">Drones Store</h1>
+                  <a href="#" class="btn btn-lg mt-4 btn-outline-light">Comprar Agora!</a><i class="d-block fa fa-angle-down pt-5 fa-3x"></i> 
+               </div>
             </div>
-        </nav>
-        <!-- CONTENT START OF REFERENCE -->
-        <main role="main" layout:fragment="conteudo">
-            <div class="py-3 bg-dark">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h1 class="display-3">Bem Vindo a Drones Store
-                                <br> 
-                            </h1>
-                        </div>
-                    </div>
-                </div>
+         </div>
+      </div>
+      <!-- Parallax section -->
+      <div class="py-5 section-parallax" style="background-image: url(https://visitgreenland.com/wp-content/uploads/2017/09/aningaaq-_-drone3-e1505397720880-1500x630.jpg);">
+         <div class="container my-5 bg-light p-4">
+            <div class="row mx-auto">
+               <div class="col-md-12">
+                  <h1 class="mb-3">Sobre drones</h1>
+                  <p class="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam suscipit in purus id malesuada. Praesent semper vel tellus in placerat. Proin eget viverra arcu. Nunc molestie odio non nulla finibus lacinia. Sed eget tincidunt lorem, nec placerat est. Suspendisse imperdiet, nisl nec dignissim hendrerit, magna ex viverra urna, ut convallis lacus eros ut ipsum. Maecenas molestie ex et ex facilisis, vel gravida metus sagittis. Nunc finibus sem in massa bibendum egestas..</p>
+                  <a href="#" class="btn btn-outline-dark btn-lg m-2">Compre agora</a>
+                  <a class="btn btn-light btn-lg m-2" href="#register">Cadastre-se</a>
+               </div>
             </div>
-            <div class="py-5">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="carousel slide" data-ride="carousel" id="carousel">
-                                <div class="carousel-inner">
-                                    <div class="carousel-item">
-                                        <img class="d-block img-fluid w-100" src="http://do1.cbinsight.com/wp-content/uploads/2016/07/bigstock-Hovering-drone-that-takes-pict-118141880-e1467826439497.jpg">
-                                        <div class="carousel-caption">
-                                            <h3>Nova antena com range melhorado!!</h3>
-                                            <h4>De perto ou de longe, esta antena vai te ajudar!</h4>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item active">
-                                        <img class="d-block img-fluid w-100" src="http://static1.uk.businessinsider.com/image/577cd8c74321f171088b60bd-1190-625/these-are-3-of-the-best-drones-weve-seen-yet.jpg">
-                                        <div class="carousel-caption">
-                                            <h3>Novidades em drones</h3>
-                                            <h4>Novos drones incríveis para sua coleção!!!</h4>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img class="d-block img-fluid w-100" src="https://geek360.com.br/wp-content/uploads/2018/03/comparacao-de-tamanho-drones.jpg">
-                                        <div class="carousel-caption">
-                                            <h3>MUITOS DRONES</h3>
-                                            <h4 class="">O drone perfeito para você em vários tamanhos!</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a>
-                                <a class="carousel-control-next" href="#carousel" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+         </div>
+      </div>
+      <!-- icon Balls -->
+      <div class="py-5 bg-light" id="drones">
+         <div class="container-fluid">
+            <div class="row">
+               <div class="col-md-12">
+                  <h1>Drones</h1>
+               </div>
             </div>
-        </main>
-        <!-- CONTENT END OF REFERENCE -->
-        <div class="py-5 bg-dark text-white">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <p class="text-muted text-center">contato@drone.com | Av Engenheiro Eugênio Estevaux, 823 - Jurubatuba - são Paulo/SP | Telefone: (11)1234-55555</p>
-                    </div>
-                </div>
+            <div class="row">
+               <div class="col-6 col-lg-4 animate-in-left" style="width: 50%; height: 90%;" >
+                  <a href="#">
+                     <img src="http://pplware.sapo.pt/wp-content/uploads/2016/05/drones-720x405.jpg" class="center-block img-fluid my-3 rounded-circle" width="300">
+                     <h3 class="mb-0"><b>Juutan</b></h3>
+                  </a>
+               </div>
+               <div class="col-6 col-lg-4" style="width: 65%; height: 80%;">
+                  <a href="#">
+                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUIY2F-4TxtDUJcHGM1XqkFOWkVsJxUzD5cUwFg6PtBB6i_44XWQ" class="center-block img-fluid my-3 rounded-circle" width="300">
+                     <h3 class="mb-0"><b>DJI</b></h3>
+                  </a>
+               </div>
+               <div class="col-6 col-lg-4 animate-in-right" style="width: 65%; height: 80%;">
+                  <a href="#">
+                     <img src="https://gazettereview.com/wp-content/uploads/2016/05/Drone.jpg" class="center-block img-fluid my-3 rounded-circle" width="300">
+                     <h3 class="mb-0"><b>OSMO</b></h3>
+                  </a>
+               </div>
             </div>
-        </div>
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    </body>
+         </div>
+      </div>
+      <!-- cover 2 -->
+      <div class="d-flex align-items-center py-5 cover" style="background-image: url(https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/pexels-photo-drone-1512930874.jpeg);">
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-12 text-white mt-5">
+                  <h1 class="display-2 d-none d-md-block">Drones Store</h1>
+                  <h1 class="display-4 d-block d-md-none">Drones Store</h1>
+                  <a href="#" class="btn btn-lg mt-4 btn-outline-light">Comprar Agora!</a><i class="d-block fa fa-angle-down pt-5 fa-3x"></i> 
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- Last text -->
+      <div class="py-5 bg-dark" id="register">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-8 text-md-left text-center">
+                  <h1 class="text-white">Registrations are open</h1>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam suscipit in purus id malesuada. Praesent semper vel tellus in placerat. Proin eget viverra arcu. Nunc molestie odio non nulla finibus lacinia. Sed eget tincidunt lorem, nec placerat est. Suspendisse imperdiet, nisl nec dignissim hendrerit, magna ex viverra urna, ut convallis lacus eros ut ipsum. Maecenas molestie ex et ex facilisis, vel gravida metus sagittis. Nunc finibus sem in massa bibendum egestas..</p>
+               </div>
+               <div class="col-md-4 align-self-center animate-in-right">
+                  <a href="#" class="btn btn-lg btn-light my-3">Register now</a>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- CONTENT END OF REFERENCE -->
+      <div th:replace="master :: footer">
+      </div>
+   </body>
 </html>

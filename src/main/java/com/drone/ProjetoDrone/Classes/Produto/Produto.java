@@ -96,6 +96,8 @@ public class Produto implements Serializable {
     private String imagem_url;
     
 
+    @Transient
+    private int quantidadeUsu;
 
     //-------------------------Construtores--------------------
     public Produto() {
@@ -200,6 +202,21 @@ public class Produto implements Serializable {
         this.precos = precos;
     }
 
+    public Set<VendaProd> getVendaProd() {
+        return vendaProd;
+    }
+
+    public void setVendaProd(Set<VendaProd> vendaProd) {
+        this.vendaProd = vendaProd;
+    }
+
+    public int getQuantidadeUsu() {
+        return quantidadeUsu;
+    }
+
+    public void setQuantidadeUsu(int qtd) {
+        this.quantidadeUsu = qtd;
+    }
   
     
 }
