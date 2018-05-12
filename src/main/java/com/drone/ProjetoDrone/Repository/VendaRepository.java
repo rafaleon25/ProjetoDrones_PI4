@@ -30,11 +30,11 @@ public class VendaRepository implements VendaService {
         entityManager.persist(v);
 //        entityManager.flush();
 //        Integer id = v.getIdVenda();
-//
-//        for (VendaProd vp : v.getVendaProd()) {
-//            vp.getVenda().setIdVenda(id);
-//            entityManager.persist(vp);
-//        }
-
+        
+        for (int i = 0; i < v.getVendaProd().size(); i++) {
+            VendaProd vp = v.getVendaProd().iterator().next();
+            vp.setVenda(v);
+            entityManager.persist(vp);
+        }
     }
 }
