@@ -51,12 +51,12 @@
                         </div>
                         <div class="col-md-4 ">
                             <p class="mb-0">Dados de Pagamento:</p>
-                           <label for="NumeroCartao" th:field="*{numeroCartao}">Numero do Cartão: </label>
-                              <input id="NumeroCartao" class="blockquote-footer" >
+                           <label for="NumeroCartao" >Numero do Cartão: </label>
+                              <input id="NumeroCartao" th:field="*{numeroCartao}" class="blockquote-footer" >
                               <label for="nome">Nome:</label>
                               <input id="nome" class="blockquote-footer" >
-                              <label for="parcelas" th:field="*{parcelas}">Parcelas</label>
-                              <input id="parcelas" class="blockquote-footer" >
+                              <label for="parcelas" >Parcelas</label>
+                              <input id="parcelas" th:field="*{parcelas}" class="blockquote-footer" >
                               <select id="formaPag" th:field="*{formaPagamento}">
                                   <option value="MC">MC</option>
                                   <option value="VI">VI</option>

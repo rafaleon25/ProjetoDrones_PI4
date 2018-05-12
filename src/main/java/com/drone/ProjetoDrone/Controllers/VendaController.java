@@ -56,13 +56,18 @@ public class VendaController {
             total = total + (carrinho.get(i).getPrecos().getPreco() * carrinho.get(i).getQuantidadeUsu());
         }
         venda.setTotalVenda(total);
-        return new ModelAndView("FinalizarCompra").addObject("venda", venda);
+        sessao.setAttribute("venda", venda);
+        return new ModelAndView("FinalizarCompra").addObject("venda", new Venda());
     }
     
     @PostMapping("/finalizar")
     public ModelAndView finalizar(HttpSession sessao, @ModelAttribute("venda") Venda venda){
         
-        repository.incluir(venda);
+        Venda vendaSession = (Venda) sessao.getAttribute("venda");
+        vendaSession.setFormaPagamento(venda.getFormaPagamento());
+        vendaSession.setNumeroCartao(venda.getNumeroCartao());
+        vendaSession.setParcelas(venda.getParcelas());
+        repository.incluir(vendaSession);
         
         return new ModelAndView("Resumo");
     }
