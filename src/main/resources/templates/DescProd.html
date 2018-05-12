@@ -1,89 +1,89 @@
 <!DOCTYPE html>
 <html>
-   <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-      <link rel="stylesheet" th:href="@{/theme.css}" type="text/css"/>
-   </head>
-   <body>
-      <div th:replace="Master :: nav ">
-      </div>
-      <div class="py-5">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-3">
-                  <img class="d-block img-fluid float-left img-thumbnail" th:src="${produto.imagem_url}"> 
-               </div>
-               <div class="col-md-5 " >
-                  <h1 class="" th:text="${produto.nome}"><b>Nome Prod</b><b>&nbsp;</b></h1>
-                  <p class="lead" th:text="${produto.precos.precoFormatado}">Preço</p>
-                  <p class="lead"><b>Acompanha:</b>
-                     <br> 
-                  </p>
-                  <ul class="">
-                     <li>1 Drone</li>
-                     <li>1 Carregador</li>
-                     <li>Antena Imbutida
-                        <br> 
-                     </li>
-                     <li>1 Bateria Recarregável &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                        <br> 
-                     </li>
-                     <li>1 Controle &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                        <br> 
-                     </li>
-                  </ul>
-               </div>
-               <div class="col-md-4  ">
-                  <div class="card">
-                     <div class="card-body">
-                        <h4 class="border">Calcular Frete:</h4>
-                        <input class="form-control mr-2" type="text" placeholder="CEP"> 
-                     </div>
-                     <div class="form-check">
-                        <input class="form-check-input" name="group100" type="radio" id="radio100" value="on"> <label class="form-check-label" for="radio100">Sedex - 3 dias</label> 
-                     </div>
-                     <div class="form-check">
-                        <input class="form-check-input" name="group100" type="radio" id="radio101" checked="" value="on"> <label class="form-check-label" for="radio101">Pac - 7 dias</label> 
-                     </div>
-                     <div class="form-check">
-                        <input class="form-check-input" name="group100" type="radio" id="radio102" value="on"> <label class="form-check-label" for="radio102">Padrão - 14 dias</label> 
-                     </div>
-                      <form method="post" th:action="@{/carrinho/{id}(id=${produto.idProd})}">
-                      <button class="btn btn-success w-100 m-0 py-2 btn-lg" type="submit">Comprar</button>
-                     </form>
-                      <button class="btn btn-light py-2 btn-lg" type="submit">Carrinho</button>
-                  </div>
-               </div>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+        <link rel="stylesheet" th:href="@{/theme.css}" type="text/css"/>
+    </head>
+    <body>
+        <div th:replace="Master :: nav ">
+        </div>
+        <div class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <img class="d-block img-fluid float-left img-thumbnail" th:src="${produto.imagem_url}"> 
+                    </div>
+                    <div class="col-md-5 " >
+                        <h1 class="" th:text="${produto.nome}"><b>Nome Prod</b><b>&nbsp;</b></h1>
+                        <p class="lead" th:text="${produto.precos.precoFormatado}">Preço</p>
+                        <p class="lead"><b>Acompanha:</b>
+                            <br> 
+                        </p>
+                        <ul class="">
+                            <li>1 Drone</li>
+                            <li>1 Carregador</li>
+                            <li>Antena Imbutida
+                                <br> 
+                            </li>
+                            <li>1 Bateria Recarregável 
+                                <br> 
+                            </li>
+                            <li>1 Controle 
+                                <br> 
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4  ">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="border">Calcular Frete:</h4>
+                                <input class="form-control mr-2" type="text" placeholder="CEP"> 
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" name="group100" type="radio" id="radio100" value="on"> <label class="form-check-label" for="radio100">Sedex - 3 dias</label> 
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" name="group100" type="radio" id="radio101" checked="" value="on"> <label class="form-check-label" for="radio101">Pac - 7 dias</label> 
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" name="group100" type="radio" id="radio102" value="on"> <label class="form-check-label" for="radio102">Padrão - 14 dias</label> 
+                            </div>
+                                <form method="post" th:action="@{/carrinho/{id}(id=${produto.idProd})}">
+                                    <button class="btn btn-light py-2 btn-lg" type="submit">Adicionar ao Carrinho</button>
+                                </form>
+                        </div>
+                    </div>
+                </div>
             </div>
-         </div>
-      </div>
-      <div class="py-5">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-8">
-                  <div class="col-md-12" style="transition: all 0.25s;">
-                     <h1 class="">Descrição do Produto
-                        <br> 
-                     </h1>
-                     <p class="" th:text="${produto.descricao}">Descrição</p>
-                  </div>
-               </div>
-               <div class="col-md-4">
-                  <h1 class="">Detalhes técnicos&nbsp;</h1>
-                  <ul class="">
-                     <li th:text="'Duração da bateria de ' + ${produto.bateriaDuracao} + ' ' + 'Horas'">Duração da bateria</li>
-                     <li th:text="'Camera de ' + ${produto.camera} + ' ' + 'Mega Pixel'">Camera</li>
-                     <li th:text="'Fabricante do drone: ' + ${produto.fabricante}">Fabricante</li>
-                     <li th:text="'Peso do Drone de: ' + ${produto.peso} + ' Kilos'">Peso</li>
-                     <li th:text="'Velocidade máxima do drone é de ' + ${produto.velocidadeMax} + ' Km/h'">Velocidade Maxima</li>
-                  </ul>
-               </div>
+        </div>
+        <div class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="col-md-12" style="transition: all 0.25s;">
+                            <h1 class="">Descrição do Produto
+                                <br> 
+                            </h1>
+                            <p class="" th:text="${produto.descricao}">Descrição</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <h1 class="">Detalhes técnicos&nbsp;</h1>
+                        <ul class="">
+                            <li th:text="'Duração da bateria de ' + ${produto.bateriaDuracao} + ' ' + 'Horas'">Duração da bateria</li>
+                            <li th:text="'Camera de ' + ${produto.camera} + ' ' + 'Mega Pixel'">Camera</li>
+                            <li th:text="'Fabricante do drone: ' + ${produto.fabricante}">Fabricante</li>
+                            <li th:text="'Peso do Drone de: ' + ${produto.peso} + ' Kilos'">Peso</li>
+                            <li th:text="'Velocidade máxima do drone é de ' + ${produto.velocidadeMax} + ' Km/h'">Velocidade Maxima</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-         </div>
-      </div>
-      <div th:replace="Master :: footer">
-      </div>
-   </body>
+        </div>
+        <div th:replace="Master :: footer">
+        </div>
+    </body>
 </html>

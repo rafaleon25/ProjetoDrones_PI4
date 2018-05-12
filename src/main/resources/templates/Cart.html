@@ -1,91 +1,107 @@
 <!DOCTYPE html>
 <html>
-   <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-      <link rel="stylesheet" th:href="@{/theme.css}" type="text/css"/>
-   </head>
-   <body>
-      <div th:replace="Master :: nav">
-      </div>
-      <div class="py-3" th:each="c : ${session.carrinho}">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-3">
-                  <img class="d-block img-fluid float-left img-thumbnail" th:src="${c.imagem_url}"> 
-               </div>
-               <div class="col-md-5 ">
-                  <h1 class="" th:text="${c.nome}"><b>Drone Super Hiper Legal Mesmo&nbsp;</b></h1>
-               </div>
-               <div class="col-md-4">
-                  <p class="lead" th:text="${c.precos.precoFormatado}">Por: R$2.200,00
-                     <br>ou, à vista : R$ 1.980,00
-                  </p>
-                  
-               
-                  <a class="btn btn-lg btn-danger" th:href="@{/carrinho/remover/{id}(id=${c.idProd})}" type="submit">Remover do Carrinho</a>
-                 
-                  <br>
-                  
-                  <form th:action="@{/carrinho/update/{id}(id=${c.idProd})}" th:Object="${prodQtd}" method="post"> 
-                    <label for="qtd">Quantidade:</label>
-                   
-                    <input id="qtd" class="btn-light col-md-3 rounded btn-md" th:text="${c.quantidadeUsu}"  th:field="*{quantidade}" type="number">
-                    <button type="submit" class="btn btn-dark text-left btn-lg">+</button>
-                  </form>
-               </div>
-            </div>
-         </div>
-      </div>
-      <!-- Frete e total COMEÇO-->    
-      <div class="py-3">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-6">
-                  <div class="card-body">
-                     <h5 class="">Calcular Frete:</h5>
-                     <input class="form-control mr-2" type="text" placeholder="CEP"> 
-                  </div>
-                  <div class="col-md-12">
-                     <div class="col-md-12  ">
-                        <div class="card">
-                           <div class="form-check m-1">
-                              <input class="form-check-input" name="group100" type="radio" id="radio100" value="on"> <label class="form-check-label" for="radio100">Sedex - 3 dias</label> 
-                           </div>
-                           <div class="form-check m-1">
-                              <input class="form-check-input" name="group100" type="radio" id="radio101" checked="" value="on"> <label class="form-check-label" for="radio101">Pac - 7 dias</label> 
-                           </div>
-                           <div class="form-check m-1">
-                              <input class="form-check-input" name="group100" type="radio" id="radio102" value="on"> <label class="form-check-label" for="radio102">Padrão - 14 dias</label> 
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-6">
-                  <div class="col-md-12">
-                     <div class="card">
-                        <p class="lead m-2">SubTotal: --
-                           <br>Frete: --
-                           <br><strike></strike>
-                           <br>TOTAL: --
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+        <link rel="stylesheet" th:href="@{/theme.css}" type="text/css"/>
+    </head>
+    <body>
+        <div th:replace="Master :: nav">
+        </div>
+        <div class="py-3" th:each="c : ${session.carrinho}">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <img class="d-block img-fluid float-left img-thumbnail" th:src="${c.imagem_url}"> 
+                    </div>
+                    <div class="col-md-5 ">
+                        <h1 class="" th:text="${c.nome}"><b>Drone Super Hiper Legal Mesmo</b></h1>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="lead" th:text="${c.precos.precoFormatado}">Por: R$2.200,00
+                            <br>ou, à vista : R$ 1.980,00
                         </p>
-                        
-                        
-                        <a class="btn btn-success btn-lg" type="submit" th:if="${session.usuario != null}" th:href="@{/venda}">Comprar</a>
-                        <a class="btn btn-success btn-lg" type="submit" th:if="${session.usuario == null}" th:href="@{/login/telaLogin}">Comprar</a>
-                     </div>
-                  </div>
-               </div>
+                        <a class="btn btn-lg btn-danger" th:href="@{/carrinho/remover/{id}(id=${c.idProd})}" type="submit">Remover do Carrinho</a>
+                        <br>
+                        <form th:action="@{/carrinho/update/{id}(id=${c.idProd})}" th:Object="${prodQtd}" method="post"> 
+                            <label for="qtd">Quantidade:</label>
+                            <button type="submit" class="btn btn-lg btn-dark text-left btn-lg">-</button>
+                            <input id="qtd" class="btn-light col-md-3 rounded btn-md" th:text="${c.quantidadeUsu}"  th:field="*{quantidade}" type="number">
+                            <button type="submit" class="btn btn-dark text-left btn-lg">+</button>
+                            
+                            
+                            <p><span style="display: none" th:text="${c.precos.precoFormatado}"></span></p>
+                            
+                            <div data-ng-app="" data-ng-init="quantity=1;price=(${c.precos.precoFormatado})">
+
+                                <h2>Cost Calculator</h2>
+
+                                Quantity: <input type="number" ng-model="quantity">
+                                Price: <input type="number" ng-model="${c.precos.precoFormatado}">
+
+                                <p><b>Total in dollar:</b> {{quantity * ${c.precos.precoFormatado}}}</p>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-         </div>
-      </div>
-      <!-- Frete e total FIM-->    
-      <div th:replace="Master :: footer">
-      </div>
-      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-   </body>
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <!-- Frete e total COMEÇO-->    
+        <div class="py-3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card-body">
+                            <h5 class="">Calcular Frete:</h5>
+                            <input class="form-control mr-2" type="text" placeholder="CEP"> 
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-12  ">
+                                <div class="card">
+                                    <div class="form-check m-1">
+                                        <input class="form-check-input" name="group100" type="radio" id="radio100" value="on"> <label class="form-check-label" for="radio100">Sedex - 3 dias</label> 
+                                    </div>
+                                    <div class="form-check m-1">
+                                        <input class="form-check-input" name="group100" type="radio" id="radio101" checked="" value="on"> <label class="form-check-label" for="radio101">Pac - 7 dias</label> 
+                                    </div>
+                                    <div class="form-check m-1">
+                                        <input class="form-check-input" name="group100" type="radio" id="radio102" value="on"> <label class="form-check-label" for="radio102">Padrão - 14 dias</label> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <p class="lead m-2">SubTotal: </p>
+                                <p class="lead m-2">Frete:  </p>
+                                <p class="lead m-2">TOTAL: </p>
+
+                                <a class="btn btn-success btn-lg" type="submit" th:if="${session.usuario != null}" th:href="@{/venda}">Comprar</a>
+                                <a class="btn btn-success btn-lg" type="submit" th:if="${session.usuario == null}" th:href="@{/login/telaLogin}">Comprar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Frete e total FIM-->    
+    <div th:replace="Master :: footer">
+    </div>
+</body>
 </html>
