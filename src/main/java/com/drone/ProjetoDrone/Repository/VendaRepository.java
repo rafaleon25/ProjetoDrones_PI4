@@ -25,16 +25,12 @@ public class VendaRepository implements VendaService {
 
     @Override
     @Transactional
-    public void incluir(Venda v) {
-                for (VendaProd vp : v.getVendaProd()) {
+    public void incluir(Venda v) {   
             if (v.getIdVenda() == null) {
                 entityManager.persist(v);
             } else {
                 entityManager.merge(v);
             }
-        }
         entityManager.persist(v);
     }
-
-
 }
