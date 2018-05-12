@@ -15,13 +15,13 @@ import java.util.List;
  */
 public interface VendaService extends Serializable {
 
-    public List<Venda> listar(int offset, int quantidade);
-
-    public Venda obter(long idVenda);
+//    public List<Venda> listar(int offset, int quantidade);
+//
+//    public Venda obter(long idVenda);
 
     public void incluir(Venda v);
 
-    public void alterar(Venda v);
-
-    public void remover(long idVenda);
+//    public void alterar(Venda v);
+//
+//    public void remover(long idVenda);
 }
