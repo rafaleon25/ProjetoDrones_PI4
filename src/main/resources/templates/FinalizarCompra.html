@@ -1,84 +1,137 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-        <link rel="stylesheet" th:href="@{/theme.css}" type="text/css"/>
-    </head>
-    <body>
-        <div th:replace="Master :: nav">
-        </div>
-        <div class="py-3 bg-dark">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h1 class="display-4">Finalizar Compra
-                        </h1>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class=" col-md-12">
-            <div class="container">
-                <div class="row">
-                    <div class="card-header py-5" style="">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-4" style="">
-                                    <div class="blockquote">
-                                        <p class="mb-0">Produtos:</p>
-                                    </div>
-                                    <div class="blockquote" th:each="c : ${session.carrinho}">
-                                        <div class="blockquote-footer" th:text="${c.nome}">Produto1</div>
-                                         <div class="blockquote-footer" th:text="${c.quantidadeUsu}">qtd</div>
-                                    </div>
-                                    
-                                    <button class="btn-dark">Alterar produtos</button>
-                                </div>
-                                <div class=" col-md-4" >
-                                    <div class="blockquote">
-                                        <p class="mb-0">Dados de entrega:</p>
-                                        <div class="blockquote-footer" th:text="${session.usuario.rua}">Endereço:RUA DA PUT* QUE TE PARIU, 2469
-                                        </div>
-                                        <div class="blockquote-footer" th:text="${session.usuario.nome}">Destinatário: Lúcifer da silva
-                                        </div>
-                                        <div class="blockquote-footer" th:text="${session.usuario.celular}">Telefone de contato : (11)6669-6669
-                                        </div>
-                                    </div>
-                                    <button class="btn-dark">Alterar dados de entrega
-                                    </button>
-                                </div>
-                                <div class="col-md-4 ">
-                                    <div class="blockquote">
-                                        <p class="mb-0">Método de pagamento:</p>
-                                        <label for="numCard">Número de Crédito:</label>
-                                        <input type="text" id="numCard" ><br></br>
-                                        <label for="valCard">Validade:</label>
-                                        <input type="date" id="valCard" ><br></br>
-                                        <label for="nomeCard">Nome Impresso:</label>
-                                        <input type="text" id="nomeCard" ><br></br>
-                                        <label for="codCard">CVC:</label>
-                                        <input type="date" id="codCard" ><br></br>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="py-5">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3"><a class="btn btn-dark" href="#">Carrinho</a></div>
-                    <div class="col-md-3"></div>
-                    <div class="col-md-3"></div>
-                    <div class="col-md-3"><a class="btn btn-dark" href="#">Finalizar compra! </a></div>
-                </div>
-            </div>
-        </div>
-        <div th:replace="master :: footer">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+      <link rel="stylesheet" th:href="@{/theme.css}" type="text/css"/>
+   </head>
+   <body>
+      <div th:replace="Master :: nav">
       </div>
-    </body>
+      <div class="py-3 bg-dark">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <h1 class="display-4">Finalizar Compra
+                  </h1>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class=" col-md-12">
+         <div class="container">
+            <div class="row">
+               <div class="card-header col-lg-12 py-4" style="">
+                  <div class="container">
+                     <div class="row">
+                        <div class="col-md-4" style="">
+                           <div class="blockquote">
+                              <p class="mb-0">Produtos:</p>
+                           </div>
+                           <div class="blockquote" th:each="c : ${session.carrinho}">
+                              <div class="blockquote-footer " th:text="${c.nome}">Prod</div>
+                              <div class="col-md-4" th:text="${c.quantidadeUsu}">qtd</div>
+                           </div>
+                        </div>
+                        <div class=" col-md-4" >
+                           <div class="blockquote">
+                              <p class="mb-0">Dados de entrega:</p>
+                              <label for="End">Endereço:</label>
+                              <input id="End" class="blockquote-footer" th:value="${session.usuario.rua}">
+                              <label for="nome">Nome:</label>
+                              <input id="nome"class="blockquote-footer" th:value="${session.usuario.nome}">
+                              <label for="tel">Telefone:</label>
+                              <input id="tel" class="blockquote-footer" th:value="${session.usuario.celular}">
+                           </div>
+                        </div>
+                        <div class="col-md-4 ">
+                           <p class="mb-0">Método de pagamento:</p>
+                           <!-- acordeon Start -->
+                           <div id="accordion">
+                              <div class="card">
+                                 <div class="card-header" id="headingOne">
+                                    <h5 class="mb-0">
+                                       <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                       Cartão de Crédito
+                                       </button>
+                                    </h5>
+                                 </div>
+                                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                    <div class="card-body">
+                                       <label for="numCard">Número do Cartão:</label><br>
+                                       <input type="text" id="numCard" ><br>
+                                       <label for="valCard">Validade:</label><br>
+                                       <input type="date" id="valCard" ><br>
+                                       <label for="nomeCard">Nome Impresso:</label><br>
+                                       <input type="text" id="nomeCard" ><br>
+                                       <label for="codCard">Codigo de segurança:</label><br>
+                                       <input type="num" id="codCard" ><br>
+                                    </div>
+                                 </div>
+                              </div>
+                              <!-- acordeon first group end -->
+                              <!-- acordeon second group start -->
+                              <div class="card">
+                                 <div class="card-header" id="headingTwo">
+                                    <h5 class="mb-0">
+                                       <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                       Cartão de débito
+                                       </button>
+                                    </h5>
+                                 </div>
+                                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                    <div class="card-body">
+                                       <label for="numCard">Número do Cartão:</label><br>
+                                       <input type="text" id="numCard" ><br>
+                                       <label for="valCard">Validade:</label><br>
+                                       <input type="date" id="valCard" ><br>
+                                       <label for="nomeCard">Nome impresso no cartão:</label><br>
+                                       <input type="text" id="nomeCard" ><br>
+                                       <label for="codCard">Codigo de segurança:</label><br>
+                                       <input type="num" id="codCard" ><br>
+                                    </div>
+                                 </div>
+                              </div>
+                              <!-- acordeon second group end -->
+                              <!-- acordeon third group start -->
+                              <div class="card">
+                                 <div class="card-header" id="headingThree">
+                                    <h5 class="mb-0">
+                                       <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                       Boleto Bancário
+                                       </button>
+                                    </h5>
+                                 </div>
+                                 <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                    <div class="card-body">
+                                       <label for="nomeBol">Nome do pagante:</label><br>
+                                       <input type="text" id="nomeBol" ><br>
+                                       <label for="e-mailBol">E-Mail:</label><br>
+                                       <input type="date" id="e-mailBol" ><br>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <!-- acordeon third group end -->
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="py-5">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-3"><a class="btn btn-dark" href="#">Carrinho</a></div>
+               <div class="col-md-3"></div>
+               <div class="col-md-3"></div>
+               <div class="col-md-3"><a class="btn btn-dark" href="#">Finalizar compra! </a></div>
+            </div>
+         </div>
+      </div>
+      <div th:replace="master :: footer">
+      </div>
+   </body>
 </html>
