@@ -37,14 +37,14 @@
          <!-- thymeleaf do rafa -->
          <div class="container mt-6">
             <div class="row mt-6 ">
-               <div class="col-md-4 mt-6" th:each="p :${produtos}">
+               <div class="col-md-4 mt-6" th:each="p :${session.prods}">
                   <div class="card ">
                      <img class="card-img-top mt-6" th:src="${p.imagem_url}" alt="Card image cap">
                      <div class="card-body">
                         <h5 class="card-title" th:text="${p.nome}"><br></h5>
                         <h5 class="card-title" th:text="${p.precos.precoFormatado}"><br></h5>
                         <p class="card-text" th:text="${p.descricao}"></p>
-                        <a href="#" class="btn btn-lg btn-success">Adicionar ao carrinho</a>
+                        <a  class="btn btn-lg btn-success" >Adicionar ao carrinho</a>
                         <a class="btn btn-lg btn-info" th:href="@{/produtos/{id}(id=${p.idProd})}">Ver Detalhes</a>
                      </div>
                   </div>
@@ -53,7 +53,7 @@
          </div>
       </div>
       <!-- thymeleaf do rafa -->
-      <div th:replace="footer">
-      </div>
+      <div th:replace="Master :: footer">
+        </div>
    </body>
 </html>

@@ -67,8 +67,11 @@ public class VendaController {
         vendaSession.setFormaPagamento(venda.getFormaPagamento());
         vendaSession.setNumeroCartao(venda.getNumeroCartao());
         vendaSession.setParcelas(venda.getParcelas());
+        
+        sessao.setAttribute("vrnda", vendaSession);
+        
         repository.incluir(vendaSession);
         
-        return new ModelAndView("Resumo");
+        return new ModelAndView("ResumoCompra");
     }
 }

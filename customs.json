@@ -54,6 +54,9 @@
         },
         "th:attr": {
             "context": "img"
+        },
+        "th:value": {
+            "context": "div"
         }
     }
 }

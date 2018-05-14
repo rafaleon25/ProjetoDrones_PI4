@@ -29,27 +29,19 @@
                            <div class="blockquote">
                               <p class="mb-0">Produtos:</p>
                            </div>
-                           <div class="blockquote">
-                              <div class="blockquote-footer">Produto1</div>
+                            <div class="blockquote" th:each="c : ${session.carrinho}">
+                              <div class="blockquote-footer" th:text="${c.nome}">Produto1</div>
                            </div>
-                           <div class="blockquote">
-                              <div class="blockquote-footer">Produto2<br></div>
-                           </div>
-                           <div class="blockquote">
-                              <div class="blockquote-footer">Produto3</div>
-                           </div>
-                           <div class="blockquote">
-                              <div class="blockquote-footer">Produto4</div>
-                           </div>
+                           
                         </div>
                         <div class=" col-md-4">
                            <div class="blockquote">
                               <p class="mb-0">Dados de entrega:</p>
-                              <div class="blockquote-footer">Endereço:RUA DA PUT* QUE TE PARIU, 2469
+                              <div class="blockquote-footer" th:text="${session.usuario.rua}">Endereço:RUA DA PUT* QUE TE PARIU, 2469
                               </div>
-                              <div class="blockquote-footer">Destinatário: Lúcifer da silva
+                              <div class="blockquote-footer" th:text="${session.usuario.nome} + ' ' + ${session.usuario.sobrenome}">Destinatário: Lúcifer da silva
                               </div>
-                              <div class="blockquote-footer">Telefone de contato : (11)6669-6669
+                              <div class="blockquote-footer" th:text="${session.usuario.celular}">Telefone de contato : (11)6669-6669
                               </div>
                            </div>
                         </div>
@@ -71,14 +63,14 @@
       <div class="py-5">
          <div class="container">
             <div class="row">
-               <div class="col-md-3"><a class="btn btn-dark" href="#">Home</a></div>
+               <div class="col-md-3"><a class="btn btn-dark" th:href="@{/home/paginaInicial}">Home</a></div>
                <div class="col-md-3"></div>
                <div class="col-md-3"></div>
-               <div class="col-md-3"><a class="btn btn-dark" href="#">Continuar comprando! </a></div>
+               <div class="col-md-3"><a class="btn btn-dark" th:href="@{/produtos/telaProdutos}">Continuar comprando! </a></div>
             </div>
          </div>
       </div>
-      <div th:replace="footer">
-      </div>
+     <div th:replace="Master :: footer">
+        </div>
    </body>
 </html>

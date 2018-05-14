@@ -32,9 +32,10 @@ public class ProdutosController {
     
 
     @GetMapping("/telaProdutos")
-    public ModelAndView listarProd() {
+    public ModelAndView listarProd(HttpSession sessao) {
         List<Produto> produtos = repository.listar();
-        return new ModelAndView("Produtos").addObject("produtos", produtos);
+        sessao.setAttribute("prods", produtos);
+        return new ModelAndView("Produtos");
     }
 
 //    @GetMapping("/{id}")

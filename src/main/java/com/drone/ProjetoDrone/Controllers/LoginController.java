@@ -8,6 +8,9 @@ package com.drone.ProjetoDrone.Controllers;
 import com.drone.ProjetoDrone.Classes.Cliente.Cliente;
 import com.drone.ProjetoDrone.Classes.Login.Login;
 import com.drone.ProjetoDrone.Repository.ClienteRepository;
+import java.util.ArrayList;
+import com.drone.ProjetoDrone.Classes.Produto.Produto;
+import java.util.List;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,7 +69,15 @@ public class LoginController {
 
     @GetMapping("/logout")
     public ModelAndView logout(HttpSession session) {
-        session.invalidate();
+        session.removeAttribute("venda");
+        session.removeAttribute("usuario");
+        
+        List<Produto> carrinho = (List<Produto>) session.getAttribute("carrinho");
+        for (int i = 0; i < carrinho.size(); i++) {
+            carrinho.remove(i);
+        }
+        session.setAttribute("carrinho", carrinho);
+                
         return new ModelAndView("Home");
     }
 

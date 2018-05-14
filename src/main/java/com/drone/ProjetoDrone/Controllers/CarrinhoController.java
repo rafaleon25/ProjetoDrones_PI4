@@ -81,15 +81,38 @@ public class CarrinhoController {
     }
 
     @PostMapping("/update/{id}")
-    public ModelAndView removerDoCarrinho(@ModelAttribute("quantidade") Quantidade qtd, @PathVariable("id") Long idProduto , HttpSession sessao) {
+    public ModelAndView removerDoCarrinho(@ModelAttribute("quantidade") Quantidade qtd, @PathVariable("id") Long idProduto, HttpSession sessao) {
         for (int i = 0; i < carrinho.size(); i++) {
             if (carrinho.get(i).getIdProd() == idProduto) {
                 carrinho.get(i).setQuantidadeUsu((int) qtd.getQuantidade());
             }
-            
+
         }
         sessao.setAttribute("carrinho", carrinho);
-        
+
         return new ModelAndView("Cart").addObject("prodQtd", new Quantidade());
     }
+
+//    @GetMapping("/add/(id)")
+//    public ModelAndView addCart(@PathVariable("id") Long idProduto, HttpSession sessao) {
+//        Produto p = repository.obter(idProduto);
+//
+//        boolean naoEstaNaLista = true;
+//        if (carrinho != null) {
+//            for (int i = 0; i < carrinho.size(); i++) {
+//                if (p.getIdProd() == carrinho.get(i).getIdProd()) {
+//                    naoEstaNaLista = false;
+//                }
+//            }
+//
+//            if (naoEstaNaLista) {
+//                carrinho.add(p);
+//                sessao.setAttribute("carrinho", carrinho);
+//            }
+//        } else {
+//            return new ModelAndView("Cart").addObject("prodQtd", new Quantidade());
+//        }
+//
+//        return new ModelAndView("Cart").addObject("prodQtd", new Quantidade());
+//    }
 }
