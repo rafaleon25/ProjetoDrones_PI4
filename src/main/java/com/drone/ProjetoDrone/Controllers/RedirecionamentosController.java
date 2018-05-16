@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import com.drone.ProjetoDrone.Classes.Produto.Produto;
+import java.util.List;
 /**
  *
  * @author Rafael Rodrigues
@@ -23,6 +24,8 @@ public class RedirecionamentosController {
 
     @GetMapping("/paginaInicial")
     public ModelAndView home(HttpSession session) {
+        List<Produto> carrinho = null;
+        session.setAttribute("carrinho", carrinho);
         return new ModelAndView("Home");
     }
     @GetMapping("/desc")
