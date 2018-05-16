@@ -101,6 +101,7 @@ public class Produto implements Serializable {
 
     //-------------------------Construtores--------------------
     public Produto() {
+        quantidadeUsu = 1;
     }
 
     public Produto(int velocidadeMax, int bateriaDuracao, int camera, String nome, String descricao, String fabricante, double peso) {
