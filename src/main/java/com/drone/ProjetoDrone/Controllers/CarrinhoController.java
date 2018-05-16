@@ -75,8 +75,11 @@ public class CarrinhoController {
                 break;
             }
         }
-        sessao.setAttribute("carrinho", carrinho);
-
+        if (carrinho.isEmpty() || carrinho == null) {
+            sessao.removeAttribute("carrinho");
+        } else {
+            sessao.setAttribute("carrinho", carrinho);
+        }
         return new ModelAndView("Cart").addObject("prodQtd", new Quantidade());
     }
 

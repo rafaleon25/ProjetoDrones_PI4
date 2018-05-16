@@ -58,7 +58,7 @@
 
         <!-- Frete e total COMEÇO-->    
 
-        <div class="py-3">
+        <div class="py-3" th:if="${session.carrinho} != null">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
@@ -95,6 +95,9 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="alert alert-info" th:if="${session.carrinho} == null" role="alert">
+            Não há produtos no carrinho!
         </div>
         <!-- Frete e total FIM-->    
         <div th:replace="Master :: footer">

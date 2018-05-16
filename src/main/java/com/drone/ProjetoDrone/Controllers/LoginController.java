@@ -69,15 +69,26 @@ public class LoginController {
 
     @GetMapping("/logout")
     public ModelAndView logout(HttpSession session) {
-        session.removeAttribute("venda");
         session.removeAttribute("usuario");
+        session.removeAttribute("venda");
         
-        List<Produto> carrinho = (List<Produto>) session.getAttribute("carrinho");
-        for (int i = 0; i < carrinho.size(); i++) {
-            carrinho.remove(i);
+        try {
+            List<Produto> carrinho = (List<Produto>) session.getAttribute("carrinho");
+
+            if (!carrinho.isEmpty() && carrinho != null) {
+                for (int i = 0; i < carrinho.size(); i++) {
+                    carrinho.remove(i);
+                }
+                carrinho = null;
+                session.setAttribute("carrinho", carrinho);
+            }
+        } catch (Exception e) {
+            return new ModelAndView("Home");
         }
-        session.setAttribute("carrinho", carrinho);
-                
+//        session.removeAttribute("carrinho");
+//        List<Produto> carrinho = null;
+//        session.setAttribute("carrinho", carrinho);
+
         return new ModelAndView("Home");
     }
 
