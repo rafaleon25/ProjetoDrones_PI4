@@ -1,46 +1,43 @@
 <!DOCTYPE html>
 <html>
-   <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-      <link rel="stylesheet" th:href="@{/theme.css}" type="text/css"/>
-   </head>
-   <body>
-      <div th:replace="Master:: nav">
-      </div>
-      <div class="py-5">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-3"> 
-               </div>
-               <div class="col-md-6">
-                  <div class="card text-white p-5 bg-dark">
-                     <div class="card-body bg-dark">
-                        <h1 class="mb-4"><b>Login
-                            </b></h1>
-                        <form th:action="@{/login/logando}" th:object="${login}" method="post">
-                           <div class="form-group"> <label>Email
-                               </label>
-                              <input type="email" th:field="*{user}" class="form-control" placeholder="Email"> 
-                           </div>
-                           <div class="form-group"> <label>Senha
-                               </label>
-                              <input type="password" th:field="*{senha}"s class="form-control" placeholder="Senha"> 
-                           </div>
-                           <button type="submit" class="btn btn-info btn-lg">Login
-                           </button>
-                        </form>
-                        <a class="btn btn-danger btn-lg my-1" href="#">Login with Google <br> </a>
-                        <a class="btn btn-secondary btn-lg my-1" href="#">;Login with Facebook 
-                        </a>
-                     </div>
-                  </div>
-               </div>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+        <link rel="stylesheet" th:href="@{/theme.css}" type="text/css"/>
+    </head>
+    <body>
+        <div th:replace="Master:: nav">
+        </div>
+        <div class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3"> 
+                    </div>
+                    <div class="card">
+                        <article class="card-body">
+                            <a href="" class="float-right btn btn-outline-primary">Cadastrar-se</a>
+                            <h4 class="card-title mb-4 mt-1">Login</h4>
+                            <form th:action="@{/login/logando}" th:object="${login}" method="post">
+                                <div class="form-group" >
+                                    <label>E-Mail</label>
+                                    <input name="" th:field="*{user}" class="form-control" placeholder="Email" type="email">
+                                </div> <!-- form-group// -->
+                                <div class="form-group">
+                                    <a class="float-right" href="#">Esqueceu sua senha?</a>
+                                    <label>Senha</label>
+                                    <input class="form-control" th:field="*{senha}" placeholder="******" type="password">
+                                </div> <!-- form-group// --> 
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary btn-block"> Login  </button>
+                                </div> <!-- form-group// -->                                                           
+                            </form>
+                        </article>
+                    </div> <!-- card.// -->
+                </div>
             </div>
-         </div>
-      </div>
-      <div th:replace="master :: footer">
-      </div>
-   </body>
+        </div>
+        <div th:replace="master :: footer">
+        </div>
+    </body>
 </html>

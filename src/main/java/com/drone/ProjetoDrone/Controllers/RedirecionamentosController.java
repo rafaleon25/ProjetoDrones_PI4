@@ -24,6 +24,8 @@ public class RedirecionamentosController {
 
     @GetMapping("/paginaInicial")
     public ModelAndView home(HttpSession session) {
+        List<Produto> carrinho = null;
+        session.setAttribute("carrinho", carrinho);
         return new ModelAndView("Home");
     }
     @GetMapping("/desc")
