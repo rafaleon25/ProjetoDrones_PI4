@@ -10,31 +10,27 @@
         <div th:replace="Master:: nav">
         </div>
         <div class="py-5">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3"> 
-                    </div>
-                    <div class="card">
-                        <article class="card-body">
-                            <a href="" class="float-right btn btn-outline-primary">Cadastrar-se</a>
-                            <h4 class="card-title mb-4 mt-1">Login</h4>
-                            <form th:action="@{/login/logando}" th:object="${login}" method="post">
-                                <div class="form-group" >
-                                    <label>E-Mail</label>
-                                    <input name="" th:field="*{user}" class="form-control" placeholder="Email" type="email">
-                                </div> <!-- form-group// -->
-                                <div class="form-group">
-                                    <a class="float-right" href="#">Esqueceu sua senha?</a>
-                                    <label>Senha</label>
-                                    <input class="form-control" th:field="*{senha}" placeholder="******" type="password">
-                                </div> <!-- form-group// --> 
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-primary btn-block"> Login  </button>
-                                </div> <!-- form-group// -->                                                           
-                            </form>
-                        </article>
-                    </div> <!-- card.// -->
-                </div>
+            <div class="container" style="align-content: center">
+                <div class="col-md-4 card">
+                    <article class="card-body">
+                        <a href="" class="float-right btn btn-outline-primary">Cadastrar-se</a>
+                        <h4 class="card-title mb-4 mt-1">Login</h4>
+                        <form th:action="@{/login/logando}" th:object="${login}" method="post">
+                            <div class="form-group" >
+                                <label>E-Mail</label>
+                                <input name="" th:field="*{user}" class="form-control" placeholder="Email" type="email">
+                            </div> <!-- form-group// -->
+                            <div class="form-group">
+                                <a class="float-right" href="#">Esqueceu sua senha?</a>
+                                <label>Senha</label>
+                                <input class="form-control" th:field="*{senha}" placeholder="******" type="password">
+                            </div> <!-- form-group// --> 
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary btn-block"> Login  </button>
+                            </div> <!-- form-group// -->                                                           
+                        </form>
+                    </article>
+                </div> <!-- card.// -->
             </div>
         </div>
         <div th:replace="master :: footer">

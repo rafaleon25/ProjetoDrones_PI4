@@ -1,59 +1,59 @@
 <!DOCTYPE html>
 <html>
-   <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-      <link rel="stylesheet" th:href="@{/theme.css}" type="text/css"/>
-   </head>
-   <body>
-      <div th:replace="Master:: nav">
-      </div>
-      <div class="py-3 bg-dark">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-12">
-                  <h1 class="display-3">Produtos
-                     <br> 
-                  </h1>
-               </div>
-            </div>
-         </div>
-      </div>
-      <div class="py-5">
-         <ul class="nav flex-column">
-            <li class="nav-item">
-               <button class="btn btn-info ml-4 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-               Preço:
-               </button>
-               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="#"> R$0 até R$1499,00</a>
-                  <a class="dropdown-item" href="#">R$1500,00 até R$3999,00</a>
-                  <a class="dropdown-item" href="#">R$4000,00 até R$7999,00</a>
-                  <a class="dropdown-item" href="#">R$8000,00 + </a>
-               </div>
-            </li>
-         </ul>
-         <!-- thymeleaf do rafa -->
-         <div class="container mt-6">
-            <div class="row mt-6 ">
-               <div class="col-md-4 mt-6" th:each="p :${session.prods}">
-                  <div class="card ">
-                     <img class="card-img-top mt-6" th:src="${p.imagem_url}" alt="Card image cap">
-                     <div class="card-body">
-                        <h5 class="card-title" th:text="${p.nome}"><br></h5>
-                        <h5 class="card-title" th:text="${p.precos.precoFormatado}"><br></h5>
-                        <p class="card-text" th:text="${p.descricao}"></p>
-                        <a  class="btn btn-lg btn-success" th:href="@{/produtos/add/{id}(id=${p.idProd})}">Adicionar ao carrinho</a>
-                        <a class="btn btn-lg btn-info" th:href="@{/produtos/{id}(id=${p.idProd})}">Ver Detalhes</a>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-      <!-- thymeleaf do rafa -->
-      <div th:replace="Master :: footer">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+        <link rel="stylesheet" th:href="@{/theme.css}" type="text/css"/>
+    </head>
+    <body>
+        <div th:replace="Master:: nav">
         </div>
-   </body>
+        <div class="py-3 bg-dark">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="display-3">Produtos
+                            <br> 
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="py-5">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <button class="btn btn-info ml-4 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Preço:
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#"> R$0 até R$1499,00</a>
+                        <a class="dropdown-item" href="#">R$1500,00 até R$3999,00</a>
+                        <a class="dropdown-item" href="#">R$4000,00 até R$7999,00</a>
+                        <a class="dropdown-item" href="#">R$8000,00 + </a>
+                    </div>
+                </li>
+            </ul>
+            <!-- thymeleaf do rafa -->
+            <div class="container mt-6">
+                <div class="row mt-6 ">
+                    <div class="col-md-4 mt-6" th:each="p :${session.prods}">
+                        <div class="card ">
+                            <img class="card-img-top mt-6" th:src="${p.imagem_url}" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title" th:text="${p.nome}"><br></h5>
+                                <h5 class="card-title" th:text="${p.precos.precoFormatado}"><br></h5>
+                                <p class="card-text" style="text-overflow: ellipsis; overflow: hidden; width: 160px;height: 1.2em; white-space: nowrap;" th:text="${p.descricao}"></p>
+                                <a  class="btn btn-lg btn-success" th:href="@{/produtos/add/{id}(id=${p.idProd})}">Adicionar ao carrinho</a>
+                                <a class="btn btn-lg btn-info" th:href="@{/produtos/{id}(id=${p.idProd})}">Ver Detalhes</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- thymeleaf do rafa -->
+        <div th:replace="Master :: footer">
+        </div>
+    </body>
 </html>
