@@ -8,6 +8,7 @@ package com.drone.ProjetoDrone.Repository;
 import com.drone.ProjetoDrone.Classes.Venda.Venda;
 import com.drone.ProjetoDrone.Classes.Venda.VendaProd;
 import com.drone.ProjetoDrone.Services.VendaService;
+import java.util.Iterator;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
@@ -31,8 +32,19 @@ public class VendaRepository implements VendaService {
 //        entityManager.flush();
 //        Integer id = v.getIdVenda();
         
-        for (int i = 0; i < v.getVendaProd().size(); i++) {
-            VendaProd vp = v.getVendaProd().iterator().next();
+//        Iterator it = v.getVendaProd().iterator();
+//        
+//        while(it.hasNext()) {
+//            VendaProd vp = (VendaProd) it.next();
+//             vp.setVenda(v);
+//            entityManager.persist(vp);
+//        }
+//        for (int i = 0; i < v.getVendaProd().size(); i++) {
+//            VendaProd vp = v.getVendaProd().iterator().next();
+//            vp.setVenda(v);
+//            entityManager.persist(vp);
+//        }
+        for (VendaProd vp : v.getVendaProd()) {
             vp.setVenda(v);
             entityManager.persist(vp);
         }
