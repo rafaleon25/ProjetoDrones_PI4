@@ -9,7 +9,6 @@ import com.drone.ProjetoDrone.Classes.Cliente.Cliente;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -18,7 +17,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -74,6 +72,43 @@ public class Venda implements Serializable {
     //total venda
     @Column(name = "totalVenda", precision = 6, scale = 2, nullable = false)
     private double totalVenda;
+
+    //estado
+    @NotNull
+    @Size(min = 1, max = 45)
+    @Column(name = "estado", length = 45, nullable = false, unique = false)
+    private String estado;
+    //cidade
+    @NotNull
+    @Size(min = 1, max = 45)
+    @Column(name = "cidade", length = 45, nullable = false, unique = false)
+    private String cidade;
+    //rua
+    @NotNull
+    @Size(min = 1, max = 45)
+    @Column(name = "rua", length = 45, nullable = false, unique = false)
+    private String rua;
+    //cep
+    @NotNull
+    @Size(min = 8, max = 8)
+    @Column(name = "cep", length = 8, nullable = false, unique = false)
+    private String cep;
+
+    //numero
+    @NotNull
+    @Digits(integer = 5, fraction = 0)
+    @Column(name = "numero", precision = 5, scale = 0, nullable = false)
+    private int numero;
+    //nome
+    @NotNull
+    @Size(min = 1, max = 45)
+    @Column(name = "nome", length = 45, nullable = false, unique = false)
+    private String nome;
+    //celular
+    @NotNull
+    @Size(min = 9, max = 11)
+    @Column(name = "celular", length = 11, nullable = false, unique = false)
+    private String celular;
 
     public Venda() {
     }
@@ -143,6 +178,62 @@ public class Venda implements Serializable {
 
     public void setVendaProd(Set<VendaProd> vendaProd) {
         this.vendaProd = vendaProd;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public String getRua() {
+        return rua;
+    }
+
+    public void setRua(String rua) {
+        this.rua = rua;
+    }
+
+    public String getCep() {
+        return cep;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getCelular() {
+        return celular;
+    }
+
+    public void setCelular(String celular) {
+        this.celular = celular;
     }
 
 }

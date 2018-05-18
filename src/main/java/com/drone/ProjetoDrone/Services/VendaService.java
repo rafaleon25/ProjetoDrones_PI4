@@ -19,7 +19,7 @@ public interface VendaService extends Serializable {
 //
 //    public Venda obter(long idVenda);
 
-    public void incluir(Venda v);
+    public String incluir(Venda v);
 
 //    public void alterar(Venda v);
 //
