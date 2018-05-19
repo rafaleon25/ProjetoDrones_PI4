@@ -7,6 +7,7 @@ package com.drone.ProjetoDrone.Controllers;
 
 import com.drone.ProjetoDrone.Classes.Produto.Produto;
 import com.drone.ProjetoDrone.Classes.Produto.Quantidade;
+import com.drone.ProjetoDrone.Classes.Produto.QuantidadeProdutos;
 import com.drone.ProjetoDrone.Classes.Venda.VendaProd;
 import com.drone.ProjetoDrone.Repository.ProdutoRepository;
 import java.util.ArrayList;
@@ -35,7 +36,6 @@ public class CarrinhoController {
     private ProdutoRepository repository;
 
     private List<Produto> carrinho = new ArrayList<Produto>();
-    private List<Quantidade> quantidade = new ArrayList<Quantidade>();
 
     @PostMapping("/{id}")
     public ModelAndView carrinhoDeCompras(@PathVariable("id") Long idProduto, HttpSession sessao) {
@@ -53,16 +53,28 @@ public class CarrinhoController {
                 carrinho.add(p);
                 sessao.setAttribute("carrinho", carrinho);
             }
+
         } else {
-            return new ModelAndView("Cart").addObject("prodQtd", new Quantidade());
+            return new ModelAndView("Cart").addObject("prodQtd", new QuantidadeProdutos());
         }
 
-        return new ModelAndView("Cart").addObject("prodQtd", new Quantidade());
+        List<Quantidade> quantidades = new ArrayList<>();
+        
+        for (Produto p2 : carrinho) {
+            Quantidade q = new Quantidade();
+            q.setId(p2.getIdProd());
+            q.setQuantidade(1L);
+            quantidades.add(q);
+        }
+        QuantidadeProdutos qp = new QuantidadeProdutos();
+        qp.setQuantidade(quantidades);
+
+        return new ModelAndView("Cart").addObject("prodQtd", qp);
     }
 
     @GetMapping("/telaCarrinho")
     public ModelAndView telaCarrinho() {
-        return new ModelAndView("Cart").addObject("prodQtd", new Quantidade());
+        return new ModelAndView("Cart").addObject("prodQtd", new QuantidadeProdutos());
     }
 
     @GetMapping("/remover/{id}")

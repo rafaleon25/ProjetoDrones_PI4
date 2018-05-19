@@ -24,9 +24,9 @@
     <body>
         <div th:replace="Master :: nav">
         </div>
-
+        <form th:action="@{/venda}" method="post" th:object="${prodQtd}">
         <!-- product generated -->
-        <div class="py-3" th:each="c : ${session.carrinho}">
+        <div class="py-3" th:each="c, rowStat : ${session.carrinho}">
             <div class="container">
                 <div class="row">
                     <div class="col-md-3">
@@ -42,15 +42,19 @@
                         <a class="btn btn-lg btn-danger" th:href="@{/carrinho/remover/{id}(id=${c.idProd})}" type="submit">Remover do Carrinho</a>
                         <br>
 
-                        <form th:action="@{/carrinho/update/{id}(id=${c.idProd})}" th:Object="${prodQtd}" method="post">
-                            <div id="ProdId"  th:value="${c.idProd}"></div>
-                            <div id="qtdUsu"  th:value="${c.quantidadeUsu}">Quantidade: [[${c.quantidadeUsu}]]</div>
-                            <input id="inp" class="btn-light col-md-3 rounded btn-md"  th:field="*{quantidade}" th:type="number" >
+                        <input type="hidden" th:field="*{quantidade[__${rowStat.index}__].id}" />
+                          
+                            <input id="inp" class="btn-light col-md-3 rounded btn-md"  th:field="*{quantidade[__${rowStat.index}__].quantidade}" th:type="number" >
 
                             <button id="qtdBtnPlus" th:type="submit" class="btn btn-dark text-left btn-lg" onclick="pegarQtd()">Atualizar Quantidade</button>
 
                             <p><span  style="display: none" th:text="${c.precos.precoFormatado}"></span></p>
-                        </form>
+                            
+                            
+                            
+                            
+                            
+                            
                     </div>
                 </div>
             </div>
@@ -88,7 +92,7 @@
                                 <p class="lead m-2">SubTotal: </p>
                                 <p class="lead m-2">Frete:  </p>
                                 <p class="lead m-2">TOTAL: </p>
-                                <a class="btn btn-success btn-lg" type="submit" th:if="${session.usuario != null}" th:href="@{/venda}">Comprar</a>
+                                <button class="btn btn-success btn-lg" type="submit" th:if="${session.usuario != null}">Comprar</button>
                                 <a class="btn btn-success btn-lg" type="submit" th:if="${session.usuario == null}" th:href="@{/login/telaLogin}">Comprar</a>
                             </div>
                         </div>
@@ -96,6 +100,7 @@
                 </div>
             </div>
         </div>
+        </form>
         <div class="alert alert-info" th:if="${session.carrinho} == null" role="alert">
             Não há produtos no carrinho!
         </div>
