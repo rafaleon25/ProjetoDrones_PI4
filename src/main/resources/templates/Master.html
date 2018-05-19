@@ -59,9 +59,9 @@
                            <a th:text="${session.usuario.nome}" th:unless="${session == null}"></a>
                            </button>
                            <div class="dropdown-menu btn-light">
-                              <a class="dropdown-item" href="#">Alterar Cadastro</a>
+                              <a class="dropdown-item" >Alterar Cadastro</a>
                               <div class="dropdown-divider"></div>
-                              <a class="dropdown-item" href="#">Acompanhar Pedido</a>
+                              <a class="dropdown-item" th:href="@{/home/acompanharPedido}">Acompanhar Pedido</a>
                               <div class="dropdown-divider"></div>
                               <a class="dropdown-item" th:href="@{/login/logout}">Logout</a>
                            </div>

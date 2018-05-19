@@ -49,5 +49,8 @@ public class RedirecionamentosController {
         return new ModelAndView("Ajuda");
     }
     
-    
+    @GetMapping("/acompanharPedido")
+    public ModelAndView acompPedido(){
+        return new ModelAndView("AcomPedido");
+    }
 }

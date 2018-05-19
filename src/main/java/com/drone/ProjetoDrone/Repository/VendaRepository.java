@@ -5,6 +5,7 @@
  */
 package com.drone.ProjetoDrone.Repository;
 
+import com.drone.ProjetoDrone.Classes.Venda.CodigoCompra;
 import com.drone.ProjetoDrone.Classes.Venda.Venda;
 import com.drone.ProjetoDrone.Classes.Venda.VendaProd;
 import com.drone.ProjetoDrone.Services.VendaService;
@@ -26,12 +27,13 @@ public class VendaRepository implements VendaService {
 
     @Override
     @Transactional
-    public void incluir(Venda v) {
-
+    public String incluir(Venda v) {
+        String codigoCompra = "";
+        boolean sucesso = true;
         entityManager.persist(v);
 //        entityManager.flush();
 //        Integer id = v.getIdVenda();
-        
+
 //        Iterator it = v.getVendaProd().iterator();
 //        
 //        while(it.hasNext()) {
@@ -44,9 +46,16 @@ public class VendaRepository implements VendaService {
 //            vp.setVenda(v);
 //            entityManager.persist(vp);
 //        }
+        
         for (VendaProd vp : v.getVendaProd()) {
+            sucesso = false;
             vp.setVenda(v);
             entityManager.persist(vp);
+            sucesso = true;
         }
+        if(sucesso == true){
+            codigoCompra = CodigoCompra.randomString(10);
+        }
+        return codigoCompra;
     }
 }

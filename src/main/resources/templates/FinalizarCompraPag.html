@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+        <link rel="stylesheet" th:href="@{/theme.css}" type="text/css"/>
+    </head>
+    <body>
+        <div th:replace="Master :: nav">
+        </div>
+        <div class="py-3 bg-dark">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="display-4">Pagamento
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class=" col-md-12">
+            <div class="container">
+                <div class="row">
+                    <div class=" card col-md-3">
+                    </div>
+                    <div class=" card col-md-6 ">
+                        <p class="mb-0">Dados de Pagamento:</p>
+                        <label for="NumeroCartao" >Numero do Cartão: </label>
+                        <input id="NumeroCartao" th:field="*{numeroCartao}" class="form-control" >
+                        <label for="nome">Nome do titular:</label>
+                        <input id="nome" class="form-control" >
+                        <label for="validade">Validade:</label>
+                        <input class="form-control" type="date" id="validade">
+                            <label for="segCod">Código de Segurança:</label>
+                            <input id="segCod" class="form-control" >
+                            <label for="parcelas" >Parcelas</label>
+                            <input id="parcelas" th:field="*{parcelas}" class="form-control" >
+                            <select id="formaPag" class="form-control mt-2" th:field="*{formaPagamento}">
+                                <option value="MC">MC</option>
+                                <option value="VI">VI</option>
+                                <option value="HE">HE</option>
+                                <option value="AX">AX</option>
+                            </select>
+                    </div>
+                    <div class=" card col-md-3">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class=" col-md-3" >
+                <button >Voltar</button>
+            </div>
+            <div class=" col-md-6" >
+
+            </div>
+            <div class=" col-md-3" >
+                <button>Finalizar compra</button>
+            </div>
+        </div>
+        <div th:replace="master :: footer">
+        </div>
+    </body>
+</html>
