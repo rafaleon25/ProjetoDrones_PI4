@@ -24,7 +24,7 @@
     <body>
         <div th:replace="Master :: nav">
         </div>
-        <form th:action="@{/venda}" method="post" th:object="${prodQtd}">
+        <form th:action="@{/venda/vendaFim}" method="post" th:object="${prodQtd}">
         <!-- product generated -->
         <div class="py-3" th:each="c, rowStat : ${session.carrinho}">
             <div class="container">

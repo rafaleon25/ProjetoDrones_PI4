@@ -33,7 +33,7 @@
                                         <div class="blockquote" th:each="c : ${session.carrinho}">
                                             <div class="blockquote-footer " th:text="${c.nome}">Prod</div>
                                             <div class="col-md-4" th:text="'Quantidade: '+${c.quantidadeUsu}">qtd</div>
-                                            <div class="col-md-4" th:text="'preco '+${c.precos.precoFormatado}">qtd</div>
+                                            <div class="col-md-4" th:text="'preco '+${c.precos.precoFormatado}">preço</div>
                                         </div>
                                         <div class="col-md-4" th:text="'SubTotal: ' + ${venda.totalVenda}">total</div>
                                     </div>
@@ -41,39 +41,53 @@
                                         <div class="card p-1 blockquote">
                                             <p class="mb-0">Dados de entrega:</p>
                                             <label for="End">Endereço:</label>
-                                            <input id="End" class=" form-control" th:value="${session.usuario.rua}">
+                                            <input id="End" class=" form-control" th:field="*{rua}">
+                                            <p class="text-danger" th:if="${#fields.hasErrors('rua')}" th:errors="*{rua}">rua incorreto</p>
                                             <label for="num">Número:</label>
-                                            <input id="num" class="form-control">
+                                            <input id="num" class="form-control" th:field="*{numero}">
+                                            <p class="text-danger" th:if="${#fields.hasErrors('numero')}" th:errors="*{numero}">numero incorreto</p>
                                             <label for="cep">CEP:</label>
-                                            <input id="cep" class="form-control">
+                                            <input id="cep" class="form-control" th:field="*{cep}">
+                                            <p class="text-danger" th:if="${#fields.hasErrors('cep')}" th:errors="*{cep}">cep incorreto</p>
                                             <label for="cidade">Cidade:</label>
-                                            <input id="cidade" class="form-control">
+                                            <input id="cidade" class="form-control" th:field="*{cidade}">
+                                            <p class="text-danger" th:if="${#fields.hasErrors('cidade')}" th:errors="*{cidade}">cidade incorreto</p>
                                             <label for="estado">Estado:</label>
-                                            <input id="estado" class="form-control">
+                                            <input id="estado" class="form-control" th:field="*{estado}">
+                                            <p class="text-danger" th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}">estado incorreto</p>
                                             <label for="nome">Nome:</label>
-                                            <input id="nome"class="form-control" th:value="${session.usuario.nome}">
+                                            <input id="nome" class="form-control" th:field="*{nome}">
+                                            <p class="text-danger" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">nome incorreto</p>
                                             <label for="tel">Telefone:</label>
-                                            <input id="tel" class="form-control" th:value="${session.usuario.celular}">
+                                            <input id="tel" class="form-control" th:field="*{celular}">
+                                            <p class="text-danger" th:if="${#fields.hasErrors('celular')}" th:errors="*{celular}">celular incorreto</p>
                                         </div>
                                     </div>
                                     <div class=" card col-md-4 ">
                                         <p class="mb-0">Dados de Pagamento:</p>
+                                        
                                         <label for="NumeroCartao" >Numero do Cartão: </label>
                                         <input id="NumeroCartao" th:field="*{numeroCartao}" class="form-control" >
-                                        <label for="nome">Nome do titular:</label>
-                                        <input id="nome" class="form-control" >
+                                         <p class="text-danger" th:if="${#fields.hasErrors('numeroCartao')}" th:errors="*{numeroCartao}">numeroCartao incorreto</p>
+                                         <label for="nome">Nome do titular:</label>
+                                        <input id="nome" class="form-control" th:field="*{nomeTitular}">
+                                        <p class="text-danger" th:if="${#fields.hasErrors('nomeTitular')}" th:errors="*{nomeTitular}">nomeTitular incorreto</p>
                                         <label for="validade">Validade:</label>
-                                        <input <button class="form-control" type="date" id="validade">
+                                        <input  class="form-control" type="date" id="validade" th:field="*{validadeCartao}">
+                                        <p class="text-danger" th:if="${#fields.hasErrors('validadeCartao')}" th:errors="*{validadeCartao}">date incorreto</p>
                                         <label for="segCod">Código de Segurança:</label>
-                                        <input id="segCod" class="form-control" >
+                                        <input id="segCod" class="form-control" th:field="*{codigoSeguranca}">
+                                         <p class="text-danger" th:if="${#fields.hasErrors('codigoSeguranca')}" th:errors="*{codigoSeguranca}">codigoSeguranca incorreto</p>
                                         <label for="parcelas" >Parcelas</label>
                                         <input id="parcelas" th:field="*{parcelas}" class="form-control" >
+                                         <p class="text-danger" th:if="${#fields.hasErrors('parcelas')}" th:errors="*{parcelas}">parcelas incorreto</p>
                                         <select id="formaPag" class="form-control mt-2" th:field="*{formaPagamento}">
                                             <option value="MC">MC</option>
                                             <option value="VI">VI</option>
                                             <option value="HE">HE</option>
                                             <option value="AX">AX</option>
                                         </select>
+                                         <p class="text-danger" th:if="${#fields.hasErrors('formaPagamento')}" th:errors="*{formaPagamento}">formaPagamento incorreto</p>
                                     </div>
                                 </div>
                             </div>

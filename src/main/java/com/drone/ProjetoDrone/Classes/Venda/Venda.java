@@ -22,8 +22,12 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.validation.constraints.Digits;
+import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
+import javax.ws.rs.POST;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -68,6 +72,20 @@ public class Venda implements Serializable {
     @Size(min = 16, max = 16)
     @Column(name = "numeroCartao", length = 16, nullable = false, unique = false)
     private String numeroCartao;
+    
+    //validade do cartão
+    @NotNull
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Future
+    @Column(name = "ValidadeCartao", nullable = false)
+    @Temporal(TemporalType.DATE)
+    private Date validadeCartao;
+    
+    //Codigo de segurança 
+    @NotNull
+    @Digits(integer = 3, fraction = 0)
+    @Column(name = "codigoSeguranca", length =3, nullable = false, unique = false)
+    private long codigoSeguranca;
 
     //total venda
     @Column(name = "totalVenda", precision = 6, scale = 2, nullable = false)
@@ -109,6 +127,13 @@ public class Venda implements Serializable {
     @Size(min = 9, max = 11)
     @Column(name = "celular", length = 11, nullable = false, unique = false)
     private String celular;
+    
+    //nome do titular do cartão
+    @NotNull
+    @Size(min = 1, max = 45)
+    @Column(name = "nomeTitularCard", length = 45, nullable = false, unique = false)
+    private String nomeTitular;
+    
 
     public Venda() {
     }
@@ -234,6 +259,30 @@ public class Venda implements Serializable {
 
     public void setCelular(String celular) {
         this.celular = celular;
+    }
+
+    public Date getValidadeCartao() {
+        return validadeCartao;
+    }
+
+    public void setValidadeCartao(Date validadeCartao) {
+        this.validadeCartao = validadeCartao;
+    }
+
+    public long getCodigoSeguranca() {
+        return codigoSeguranca;
+    }
+
+    public void setCodigoSeguranca(long codigoSeguranca) {
+        this.codigoSeguranca = codigoSeguranca;
+    }
+
+    public String getNomeTitular() {
+        return nomeTitular;
+    }
+
+    public void setNomeTitular(String nomeTitular) {
+        this.nomeTitular = nomeTitular;
     }
 
 }
