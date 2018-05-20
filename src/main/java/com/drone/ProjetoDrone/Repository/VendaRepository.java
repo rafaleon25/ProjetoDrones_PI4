@@ -28,7 +28,7 @@ public class VendaRepository implements VendaService {
     @Override
     @Transactional
     public String incluir(Venda v) {
-        String codigoCompra = "";
+        String codigoCompra = "Pagamento Reprovado";
         boolean sucesso = true;
         entityManager.persist(v);
 //        entityManager.flush();
