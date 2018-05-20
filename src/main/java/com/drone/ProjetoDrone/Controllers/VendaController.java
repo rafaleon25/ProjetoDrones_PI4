@@ -42,8 +42,6 @@ public class VendaController {
     @PostMapping("/vendaFim")
     public ModelAndView telaVenda(@ModelAttribute(value = "prodQtd") QuantidadeProdutos prodQtd, HttpSession sessao){
         Venda venda = new Venda();
-        Cliente cli = (Cliente) sessao.getAttribute("usuario");
-        venda.setCliente(cli);
         
         List<Produto> carrinho = (List<Produto>) sessao.getAttribute("carrinho");
         QuantidadeProdutos quantidadesProd =  prodQtd;
@@ -84,6 +82,9 @@ public class VendaController {
     public ModelAndView finalizar(HttpSession sessao, @ModelAttribute("venda") @Valid Venda venda, BindingResult bindingResult, RedirectAttributes redirectAttributes){
         
         Venda vendaSession = (Venda) sessao.getAttribute("venda");
+        
+        Cliente cli = (Cliente) sessao.getAttribute("usuario");
+        vendaSession.setCliente(cli);
         vendaSession.setFormaPagamento(venda.getFormaPagamento());
         vendaSession.setNumeroCartao(venda.getNumeroCartao());
         vendaSession.setParcelas(venda.getParcelas());
@@ -104,7 +105,7 @@ public class VendaController {
         }
 
         try {
-            String cod = repository.incluir(venda);
+            String cod = repository.incluir(vendaSession);
         } catch (Exception e) {
             return new ModelAndView("FinalizarCompra");
         }
