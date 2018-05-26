@@ -7,12 +7,15 @@ package com.drone.ProjetoDrone.Controllers;
 
 import com.drone.ProjetoDrone.Classes.Cliente.Cliente;
 import com.drone.ProjetoDrone.Repository.ClienteRepository;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import org.eclipse.persistence.exceptions.PersistenceUnitLoadingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -55,7 +58,10 @@ public class CadastroClienteController {
         return new ModelAndView("redirect:/login/telaLogin");
     }
 
-    
+    @GetMapping("/alterar")
+    public ModelAndView TelaAlterar(HttpSession sessao){ 
+        return new ModelAndView("AlterarCadastro").addObject("cliente", new Cliente());
+    }
     
     
 }
