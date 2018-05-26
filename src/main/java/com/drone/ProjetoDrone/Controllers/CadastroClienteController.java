@@ -60,7 +60,9 @@ public class CadastroClienteController {
 
     @GetMapping("/alterar")
     public ModelAndView TelaAlterar(HttpSession sessao){ 
-        return new ModelAndView("AlterarCadastro").addObject("cliente", new Cliente());
+        Cliente cliente = (Cliente) sessao.getAttribute("usuario");
+        return new ModelAndView("AlterarCadastro").addObject("cliente", cliente);
+        
     }
     
     
