@@ -50,7 +50,7 @@ public class ClienteRepository implements ClienteService {
         } else {
             entityManager.merge(c);
         }
-        entityManager.persist(c);
+        //entityManager.persist(c);
     }
 
 //    @Override
