@@ -29,7 +29,7 @@
                            <div class="blockquote">
                               <p class="mb-0">Produtos:</p>
                            </div>
-                            <div class="blockquote" th:each="c : ${session.carrinho}">
+                            <div class="blockquote" th:each="c : ${session.prodsComp}">
                               <div class="blockquote-footer" th:text="${c.nome}">Produto1</div>
                            </div>
                            
@@ -37,9 +37,9 @@
                         <div class=" col-md-4">
                            <div class="blockquote">
                               <p class="mb-0">Dados de entrega:</p>
-                              <div class="blockquote-footer" th:text="${session.usuario.rua}">Endereço:RUA DA PUT* QUE TE PARIU, 2469
+                              <div class="blockquote-footer" th:text="${session.venda.rua}">Endereço:RUA DA PUT* QUE TE PARIU, 2469
                               </div>
-                              <div class="blockquote-footer" th:text="${session.usuario.nome} + ' ' + ${session.usuario.sobrenome}">Destinatário: Lúcifer da silva
+                              <div class="blockquote-footer" th:text="${session.venda.nome}">Destinatário: Lúcifer da silva
                               </div>
                               <div class="blockquote-footer" th:text="${session.usuario.celular}">Telefone de contato : (11)6669-6669
                               </div>
@@ -48,10 +48,10 @@
                         <div class="col-md-4 ">
                            <div class="blockquote">
                               <p class="mb-0">Método de pagamento:</p>
-                              <div class="blockquote-footer">Cartão de Crédito: Visa</div>
-                              <div class="blockquote-footer">Número:123 456 789-123</div>
-                              <div class="blockquote-footer">Nome impresso: LUCIFER DA SILVA</div>
-                              <div class="blockquote-footer">Preço: 616,66<br></div>
+                              <div class="blockquote-footer" th:text="${session.venda.formaPagamento}">Cartão de Crédito: Visa</div>
+                              <div class="blockquote-footer" th:text="${session.venda.numero}">Número:123 456 789-123</div>
+                              <div class="blockquote-footer" th:text="${session.venda.nomeTitular}">Nome impresso: LUCIFER DA SILVA</div>
+                              <div class="blockquote-footer" th:text="${session.venda.totalVenda}">Preço: 616,66<br></div>
                            </div>
                         </div>
                      </div>

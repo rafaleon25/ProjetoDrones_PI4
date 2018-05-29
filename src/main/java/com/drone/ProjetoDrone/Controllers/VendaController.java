@@ -114,7 +114,7 @@ public class VendaController {
         List<Produto> prodsComprados = (List<Produto>) sessao.getAttribute("carrinho");
         List<Produto> carrinho = null;
         sessao.setAttribute("carrinho", carrinho);
-        
+        sessao.setAttribute("prodsComp", prodsComprados);
         return new ModelAndView("ResumoCompra");
     }
 }

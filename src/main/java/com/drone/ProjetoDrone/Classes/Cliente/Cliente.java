@@ -42,7 +42,7 @@ public class Cliente implements Serializable {
     @Id
     @Column(name = "cliente_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idCli;
+    private long idCli;
 
     //numero
     @NotNull
@@ -133,11 +133,11 @@ public class Cliente implements Serializable {
     }
 
     //--------------------fim construtores---------------------
-    public Integer getIdCli() {
+    public long getIdCli() {
         return idCli;
     }
 
-    public void setIdCli(Integer idCli) {
+    public void setIdCli(long idCli) {
         this.idCli = idCli;
     }
 

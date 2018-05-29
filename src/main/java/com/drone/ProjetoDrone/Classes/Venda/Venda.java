@@ -165,6 +165,8 @@ public class Venda implements Serializable {
         return formaPagamento;
     }
 
+    
+    
     public void setFormaPagamento(String formaPagamento) {
         this.formaPagamento = formaPagamento;
     }
@@ -284,5 +286,7 @@ public class Venda implements Serializable {
     public void setNomeTitular(String nomeTitular) {
         this.nomeTitular = nomeTitular;
     }
+    
+    
 
 }

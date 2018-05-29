@@ -31,7 +31,8 @@
                               <label for="nome" class="col-sm-2 col-form-label">Nome*
                               <br></label>
                               <div class="col-sm-10">
-                                 <input type="text"  name="nome" th:field="*{nome}" id="nome" class="form-control " placeholder="Insira seu nome"> 
+                                 <input type="hidden" name="id" th:field="*{idCli}" id="nome" class="form-control " placeholder="Insira seu id"> 
+                                  <input type="text" name="nome" th:field="*{nome}" id="nome" class="form-control " placeholder="Insira seu nome"> 
                                  <p class="text-danger" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">name incorreto
                                  </p>
                               </div>

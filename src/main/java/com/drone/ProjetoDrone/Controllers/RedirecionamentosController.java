@@ -24,10 +24,17 @@ public class RedirecionamentosController {
 
     @GetMapping("/paginaInicial")
     public ModelAndView home(HttpSession session) {
-        List<Produto> carrinho = null;
-        session.setAttribute("carrinho", carrinho);
         return new ModelAndView("Home");
     }
+    
+    @GetMapping("/homeNova")
+    public ModelAndView homeNova(HttpSession sessao) {
+        List<Produto> prodsComprados = (List<Produto>) sessao.getAttribute("prodsComp");
+        prodsComprados = null;
+        sessao.setAttribute("prodsComp", prodsComprados);
+        return new ModelAndView("Home");
+    }
+    
     @GetMapping("/desc")
     public ModelAndView desc() {
         return new ModelAndView("DescProd");
