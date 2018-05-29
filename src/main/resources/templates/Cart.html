@@ -18,8 +18,8 @@
                 }
 
             }
+            
         </script>
-
     </head>
     <body>
         <div th:replace="Master :: nav">
@@ -60,78 +60,76 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                                <article class="card-body">
-                                    <a class="float-right btn btn-outline-info" data-toggle="modal" data-target="#modalLogin">Cadastrar-se</a>
-                                    <h4 class="card-title mb-1 mt-1">Login</h4>
-                                    <form>
-                                        <div class="form-group" >
-                                            <label>E-Mail</label>
-                                            <input name=""  class="form-control" placeholder="Email" type="email">
-                                        </div> <!-- form-group// -->
-                                        <div class="form-group">
-                                            <a class="float-right" href="#">Esqueceu sua senha?</a>
-                                            <label>Senha</label>
-                                            <input class="form-control" placeholder="******" type="password">
-                                        </div> <!-- form-group// --> 
-                                    </form>
-                                </article>
-                            </div> <!-- card.// -->
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-info btn-lg" data-dismiss="modal">Voltar</button>
-                                <button type="submit"  class="btn btn-dark text-left btn-lg">login</button>
-                            </div>
-                            </form>
+                            <article class="card-body">
+                                <a class="float-right btn btn-outline-info" data-toggle="modal" data-target="#modalLogin">Cadastrar-se</a>
+                                <h4 class="card-title mb-1 mt-1">Login</h4>
+                                <form>
+                                    <div class="form-group" >
+                                        <label>E-Mail</label>
+                                        <input name=""  class="form-control" placeholder="Email" type="email">
+                                    </div> <!-- form-group// -->
+                                    <div class="form-group">
+                                        <a class="float-right" href="#">Esqueceu sua senha?</a>
+                                        <label>Senha</label>
+                                        <input class="form-control" placeholder="******" type="password">
+                                    </div> <!-- form-group// --> 
+                                </form>
+                            </article>
+                        </div> <!-- card.// -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-info btn-lg" data-dismiss="modal">Voltar</button>
+                            <button type="submit"  class="btn btn-dark text-left btn-lg">login</button>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>
-        </div>
-        <!--    Modal      -->  
-        <!-- Frete e total COMEÇO-->    
-        <div class="py-3" th:if="${session.carrinho} != null">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="card-body">
-                            <h5 class="">Calcular Frete:</h5>
-                            <input class="form-control mr-2" type="text" placeholder="CEP"> 
-                        </div>
-                        <div class="col-md-12">
-                            <div class="col-md-12  ">
-                                <div class="card">
-                                    <div class="form-check m-1">
-                                        <input class="form-check-input" name="group100" type="radio" id="radio100" value="on"> <label class="form-check-label" for="radio100">Sedex - 3 dias</label> 
-                                    </div>
-                                    <div class="form-check m-1">
-                                        <input class="form-check-input" name="group100" type="radio" id="radio101" checked="" value="on"> <label class="form-check-label" for="radio101">Pac - 7 dias</label> 
-                                    </div>
-                                    <div class="form-check m-1">
-                                        <input class="form-check-input" name="group100" type="radio" id="radio102" value="on"> <label class="form-check-label" for="radio102">Padrão - 14 dias</label> 
+            <!--    Modal      -->  
+            <!-- Frete e total COMEÇO-->    
+            <div class="py-3" th:if="${session.carrinho} != null">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card-body">
+                                <h5 class="">Calcular Frete:</h5>
+                                <input class="form-control mr-2" type="text" placeholder="CEP"> 
+                            </div>
+                            <div class="col-md-12">
+                                <div class="col-md-12  ">
+                                    <div class="card">
+                                        <div class="form-check m-1">
+                                            <input class="form-check-input" name="group100" type="radio" id="radio100" value="on"> <label class="form-check-label" for="radio100">Sedex - 3 dias</label> 
+                                        </div>
+                                        <div class="form-check m-1">
+                                            <input class="form-check-input" name="group100" type="radio" id="radio101" checked="" value="on"> <label class="form-check-label" for="radio101">Pac - 7 dias</label> 
+                                        </div>
+                                        <div class="form-check m-1">
+                                            <input class="form-check-input" name="group100" type="radio" id="radio102" value="on"> <label class="form-check-label" for="radio102">Padrão - 14 dias</label> 
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="col-md-12">
-                            <div class="card">
-                                <p class="lead m-2">SubTotal: </p>
-                                <p class="lead m-2">Frete:  </p>
-                                <p class="lead m-2">TOTAL: </p>
-                                <button class="btn btn-success btn-lg" type="submit" th:if="${session.usuario != null}">Comprar</button>
-                                <a class="btn btn-success btn-lg" type="submit" th:if="${session.usuario == null}" data-toggle="modal" data-target="#modalLogin">Comprar</a>
+                        <div class="col-md-6">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <p class="lead m-2">SubTotal: </p>
+                                    <p class="lead m-2">Frete:  </p>
+                                    <p class="lead m-2">TOTAL: </p>
+                                    <button class="btn btn-success btn-lg" type="submit" th:if="${session.usuario != null}">Comprar</button>
+                                    <a class="btn btn-success btn-lg" type="submit" th:if="${session.usuario == null}" data-toggle="modal" data-target="#modalLogin">Comprar</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </form>
+        <div class="alert alert-info" th:if="${session.carrinho} == null" role="alert">
+            Não há produtos no carrinho!
         </div>
-    </form>
-    <div class="alert alert-info" th:if="${session.carrinho} == null" role="alert">
-        Não há produtos no carrinho!
-    </div>
-    <!-- Frete e total FIM-->    
-    <div th:replace="Master :: footer">
-    </div>
-</body>
+        <!-- Frete e total FIM-->    
+        <div th:replace="Master :: footer">
+        </div>
+    </body>
 </html>
