@@ -57,12 +57,29 @@ public class CadastroClienteController {
 
         return new ModelAndView("redirect:/login/telaLogin");
     }
+    
+    @PostMapping("/salvarAlteracao")
+    public ModelAndView realizarAlteracao(@ModelAttribute("cliente") @Valid Cliente cliente,BindingResult bindingResult,
+            RedirectAttributes redirectAttributes) {
+
+        if (bindingResult.hasErrors()) {
+            return new ModelAndView("/cadastro");
+        }
+
+        try {
+            repository.incluir(cliente);
+        } catch (Exception e) {
+            return new ModelAndView("Cadastro");
+        }
+        
+
+        return new ModelAndView("Home");
+    }
 
     @GetMapping("/alterar")
     public ModelAndView TelaAlterar(HttpSession sessao){ 
         Cliente cliente = (Cliente) sessao.getAttribute("usuario");
         return new ModelAndView("AlterarCadastro").addObject("cliente", cliente);
-        
     }
     
     

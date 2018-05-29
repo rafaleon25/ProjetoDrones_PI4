@@ -26,7 +26,7 @@
                <div class="col-md-12">
                   <div class="card bg-info p-1" id="Cadastro">
                      <div class="card-body text-dark">
-                        <form th:action="@{/cadastrar/cliente/salvar}" th:object="${cliente}" method="post">
+                        <form th:action="@{/cadastrar/cliente/salvarAlteracao}" th:object="${cliente}" method="post">
                            <div class="form-group text-dark w-75 form-row">
                               <label for="nome" class="col-sm-2 col-form-label">Nome*
                               <br></label>
@@ -59,7 +59,7 @@
                               <label for="dataNascimento" class="col-sm-2 col-form-label">Nascimento*
                               <br></label>
                               <div class="col-sm-5">
-                                 <input type="date" name="dataNascimento" th:field="*{dataNascimento}" id="cpf" class="form-control col-sm-6" placeholder="Insira seu CPF"> 
+                                 <input type="date" name="dataNascimento" th:field="*{dataNascimento}" id="cpf" class="form-control col-sm-6" placeholder="Insira sua data de nascimento"> 
                                  <p class="text-danger" th:if="${#fields.hasErrors('dataNascimento')}" th:errors="*{dataNascimento}">dataNascimento incorreta
                                  </p>
                               </div>
