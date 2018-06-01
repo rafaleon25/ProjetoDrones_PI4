@@ -24,9 +24,7 @@ import javax.persistence.Transient;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
-import javax.ws.rs.POST;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -72,6 +70,9 @@ public class Venda implements Serializable {
     @Size(min = 16, max = 16)
     @Column(name = "numeroCartao", length = 16, nullable = false, unique = false)
     private String numeroCartao;
+    
+    @Column(name= "codigoCompra", length = 10, nullable = true, unique = false)
+    private String codigoCompra;
     
     //validade do cartão
     @NotNull
@@ -122,6 +123,11 @@ public class Venda implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "nome", length = 45, nullable = false, unique = false)
     private String nome;
+    
+    @Size(min = 1, max = 45)
+    @Column(name = "statusPedido", length = 45, nullable = true, unique = false)
+    private String statusPedido;
+    
     //celular
     @NotNull
     @Size(min = 9, max = 11)
@@ -285,6 +291,22 @@ public class Venda implements Serializable {
 
     public void setNomeTitular(String nomeTitular) {
         this.nomeTitular = nomeTitular;
+    }
+
+    public String getCodigoCompra() {
+        return codigoCompra;
+    }
+
+    public void setCodigoCompra(String codigoCompra) {
+        this.codigoCompra = codigoCompra;
+    }
+
+    public String getStatusPedido() {
+        return statusPedido;
+    }
+
+    public void setStatusPedido(String statusPedido) {
+        this.statusPedido = statusPedido;
     }
     
     

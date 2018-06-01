@@ -9,7 +9,6 @@ import com.drone.ProjetoDrone.Classes.Venda.CodigoCompra;
 import com.drone.ProjetoDrone.Classes.Venda.Venda;
 import com.drone.ProjetoDrone.Classes.Venda.VendaProd;
 import com.drone.ProjetoDrone.Services.VendaService;
-import java.util.Iterator;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
@@ -31,21 +30,6 @@ public class VendaRepository implements VendaService {
         String codigoCompra = "Pagamento Reprovado";
         boolean sucesso = true;
         entityManager.persist(v);
-//        entityManager.flush();
-//        Integer id = v.getIdVenda();
-
-//        Iterator it = v.getVendaProd().iterator();
-//        
-//        while(it.hasNext()) {
-//            VendaProd vp = (VendaProd) it.next();
-//             vp.setVenda(v);
-//            entityManager.persist(vp);
-//        }
-//        for (int i = 0; i < v.getVendaProd().size(); i++) {
-//            VendaProd vp = v.getVendaProd().iterator().next();
-//            vp.setVenda(v);
-//            entityManager.persist(vp);
-//        }
         
         for (VendaProd vp : v.getVendaProd()) {
             sucesso = false;
@@ -56,6 +40,11 @@ public class VendaRepository implements VendaService {
         if(sucesso == true){
             codigoCompra = CodigoCompra.randomString(10);
         }
+        
+        v.setCodigoCompra(codigoCompra);
+        v.setStatusPedido("A caminho");
+        entityManager.merge(v);
+       
         return codigoCompra;
     }
 }
