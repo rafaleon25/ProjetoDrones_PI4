@@ -8,7 +8,8 @@
         <link rel="stylesheet" th:href="@{/theme.css}" type="text/css"/>
         <script>
             function reqCorreios() {
-                var url = "http://ws.correios.com.br/calculador/CalcPrecoPrazo.aspx?nCdEmpresa=08082650&sDsSenha=564321&sCepOrigem=04696000&sCepDestino=" + document.getElementById("cepDest").value + "&nVlPeso=1&nCdFormato=1&nVlComprimento=20&nVlAltura=20&nVlLargura=20&sCdMaoPropria=s&nVlValorDeclarado=0&sCdAvisoRecebimento=s&nCdServico=40010&nVlDiametro=0&StrRetorno=xml&nIndicaCalculo=3";
+                if(document.getElementById("cepDest").value!=null){
+                var url = "http://ws.correios.com.br/calculador/CalcPrecoPrazo.aspx?nCdEmpresa=&sDsSenha=&sCepOrigem=04696000&sCepDestino=" + document.getElementById("cepDest").value + "&nVlPeso=1&nCdFormato=1&nVlComprimento=20&nVlAltura=20&nVlLargura=20&sCdMaoPropria=s&nVlValorDeclarado=0&sCdAvisoRecebimento=s&nCdServico=40010&nVlDiametro=0&StrRetorno=xml&nIndicaCalculo=3";
                 var ajax = new XMLHttpRequest();
                 ajax.open("GET", url, true);
                 ajax.send();
@@ -16,16 +17,18 @@
                     if (ajax.readyState == 4 && ajax.status == 200) {
                         var data = ajax.responseText;
                         console.log(data);
-                        alert(data);
                         document.getElementById("valorFreteNorm").innerHTML = "Correios Pac - " + this.responseText.substring(121, this.responseText.indexOf("<", 121)) + " dias para entrega:" + this.responseText.substring(94, 99);
                     }
                 }
                 reqCorreios2();
+            }else{
+               alert("Insira o CEP"); 
+            }
             }
 
 
             function reqCorreios2() {
-                var urlPac = "http://ws.correios.com.br/calculador/CalcPrecoPrazo.aspx?nCdEmpresa=08082650&sDsSenha=564321&sCepOrigem=04696000&sCepDestino=" + document.getElementById("cepDest").value + "&nVlPeso=1&nCdFormato=1&nVlComprimento=20&nVlAltura=20&nVlLargura=20&sCdMaoPropria=s&nVlValorDeclarado=0&sCdAvisoRecebimento=s&nCdServico=41106&nVlDiametro=0&StrRetorno=xml&nIndicaCalculo=3";
+                var urlPac = "http://ws.correios.com.br/calculador/CalcPrecoPrazo.aspx?nCdEmpresa=&sDsSenha=&sCepOrigem=04696000&sCepDestino=" + document.getElementById("cepDest").value + "&nVlPeso=1&nCdFormato=1&nVlComprimento=20&nVlAltura=20&nVlLargura=20&sCdMaoPropria=s&nVlValorDeclarado=0&sCdAvisoRecebimento=s&nCdServico=41106&nVlDiametro=0&StrRetorno=xml&nIndicaCalculo=3";
                 var ajax = new XMLHttpRequest();
                 ajax.open("GET", urlPac, true);
                 ajax.send();
@@ -33,7 +36,6 @@
                     if (ajax.readyState == 4 && ajax.status == 200) {
                         var data1 = ajax.responseText;
                         console.log(data1);
-                        alert(data1);
                         document.getElementById("valorFretePac").innerHTML = "Correios Normal - " + this.responseText.substring(121, this.responseText.indexOf("<", 121)) + " dias para entrega:" + this.responseText.substring(94, 99);
                     }
                 }
@@ -72,19 +74,23 @@
                         </ul>
                     </div>
                     <div class="col-md-4  ">
-                        <div class="card">
+                        <div class="card pb-3">
                             <div class="card-body">
-                                <h4 class="border">Calcular Frete:</h4>
-                                <input class="form-control mr-2" type="text" id="cepDest" placeholder="CEP"> 
+                                <h4>Calcular Frete:</h4>
+                                <input class="form-control mb-1 mr-2" type="text" id="cepDest" placeholder="CEP"> 
+                                
+                                <button class="form-control btn-light mt-2 col-md-5" onclick="reqCorreios()">Calcular Frete</button>
                             </div>
-                            <div class="form-check">
-                                <input class="form-check-input" name="group100" type="radio" id="radio100" value="on"> <label class="form-check-label" id="valorFreteNorm" for="radio100"></label> 
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" name="group100" type="radio" id="radio101" checked="" value="on"> <label class="form-check-label" id="valorFretePac" for="radio101"></label> 
+                            <div class="form-check ml-3">
+                                <input class="form-check-input" name="group100" type="radio" id="radio100" value="on">
+                                <label class="form-check-label" id="valorFreteNorm" for="radio100">
+                                </label><br>
+                                <input class="form-check-input" name="group100" type="radio" id="radio101" checked="" value="on">
+                                <label class="form-check-label" id="valorFretePac" for="radio101">
+                                </label> 
                             </div>
                             <form method="post" th:action="@{/carrinho/{id}(id=${produto.idProd})}">
-                                <button class="btn btn-light py-2 btn-lg" type="submit">Adicionar ao Carrinho</button>
+                                <button class="btn btn-success py-2 ml-3 mt-2 btn-lg" type="submit">Adicionar ao Carrinho</button>
                             </form>
                         </div>
                     </div>
@@ -103,7 +109,7 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <h1 class="">Detalhes técnicos&nbsp;</h1>
+                        <h1 class="">Detalhes técnicos</h1>
                         <ul class="">
                             <li th:text="'Duração da bateria de ' + ${produto.bateriaDuracao} + ' ' + 'Horas'">Duração da bateria</li>
                             <li th:text="'Camera de ' + ${produto.camera} + ' ' + 'Mega Pixel'">Camera</li>
