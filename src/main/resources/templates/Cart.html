@@ -49,42 +49,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Modal -->
-            <div class="modal fade lg" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel" >Cadastro</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true"></span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <article class="card-body">
-                                <a class="float-right btn btn-outline-info" data-toggle="modal" data-target="#modalLogin">Cadastrar-se</a>
-                                <h4 class="card-title mb-1 mt-1">Login</h4>
-                                <form>
-                                    <div class="form-group" >
-                                        <label>E-Mail</label>
-                                        <input name=""  class="form-control" placeholder="Email" type="email">
-                                    </div> <!-- form-group// -->
-                                    <div class="form-group">
-                                        <a class="float-right" href="#">Esqueceu sua senha?</a>
-                                        <label>Senha</label>
-                                        <input class="form-control" placeholder="******" type="password">
-                                    </div> <!-- form-group// --> 
-                                </form>
-                            </article>
-                        </div> <!-- card.// -->
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-info btn-lg" data-dismiss="modal">Voltar</button>
-                            <button type="submit"  class="btn btn-dark text-left btn-lg">login</button>
-                        </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <!--    Modal      -->  
             <!-- Frete e total COMEÇO-->    
             <div class="py-3" th:if="${session.carrinho} != null">
                 <div class="container">
