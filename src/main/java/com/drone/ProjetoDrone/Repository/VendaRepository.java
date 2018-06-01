@@ -54,7 +54,7 @@ public class VendaRepository implements VendaService {
     public List<Venda> listarVendas(long idCliente) {
         Query query = entityManager.createQuery(
                 "SELECT DISTINCT v FROM Venda v"
-                        + "WHERE v.cliente_id = :idCliente");
+                        + "WHERE v.cliente.idCli = :idCliente");
         query.setParameter("idCliente", idCliente);
         List<Venda> resultados = query.getResultList();
         return resultados;

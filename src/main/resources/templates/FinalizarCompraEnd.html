@@ -19,47 +19,56 @@
                 </div>
             </div>
         </div>
-        <div class=" col-md-12">
-            <div class="container">
-                <div class="row">
-                    <div class=" col-md-3" >
-                    </div>
-                    <div class=" col-md-6" >
-                        <div class="card p-1 blockquote">
-                            <p class="mb-0">Dados de entrega:</p>
-                            <label for="End">Endereço:</label>
-                            <input id="End" class=" form-control" th:value="${session.usuario.rua}">
-                            <label for="num">Número:</label>
-                            <input id="num" class="form-control">
-                            <label for="cep">CEP:</label>
-                            <input id="cep" class="form-control">
-                            <label for="cidade">Cidade:</label>
-                            <input id="cidade" class="form-control">
-                            <label for="estado">Estado:</label>
-                            <input id="estado" class="form-control">
-                            <label for="nome">Nome:</label>
-                            <input id="nome"class="form-control" th:value="${session.usuario.nome}">
-                            <label for="tel">Telefone:</label>
-                            <input id="tel" class="form-control" th:value="${session.usuario.celular}">
+        <form th:action="@{/venda/vendaEnd}" th:object="${vendaEndereco}" method="post">
+            <div class=" col-md-12">
+                <div class="container">
+                    <div class="row">
+                        <div class=" col-md-3" >
+                        </div>
+                        <div class=" col-md-6" >
+                            <div class="card p-1 blockquote">
+                                <p class="mb-0">Dados de entrega:</p>
+                                <label for="End">Endereço:</label>
+                                <input id="End" class=" form-control" th:field="*{rua}">
+                                <p class="text-danger" th:if="${#fields.hasErrors('rua')}" th:errors="*{rua}">rua incorreto</p>
+                                <label for="num">Número:</label>
+                                <input id="num" class="form-control" th:field="*{numero}">
+                                <p class="text-danger" th:if="${#fields.hasErrors('numero')}" th:errors="*{numero}">numero incorreto</p>
+                                <label for="cep">CEP:</label>
+                                <input id="cep" class="form-control" th:field="*{cep}">
+                                <p class="text-danger" th:if="${#fields.hasErrors('cep')}" th:errors="*{cep}">cep incorreto</p>
+                                <label for="cidade">Cidade:</label>
+                                <input id="cidade" class="form-control" th:field="*{cidade}">
+                                <p class="text-danger" th:if="${#fields.hasErrors('cidade')}" th:errors="*{cidade}">cidade incorreto</p>
+                                <label for="estado">Estado:</label>
+                                <input id="estado" class="form-control" th:field="*{estado}">
+                                <p class="text-danger" th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}">estado incorreto</p>
+                                <label for="nome">Nome:</label>
+                                <input id="nome"class="form-control" th:field="*{nome}">
+                                <p class="text-danger" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">nome incorreto</p>
+                                <label for="tel">Telefone:</label>
+                                <input id="tel" class="form-control" th:field="*{celular}">
+                                <p class="text-danger" th:if="${#fields.hasErrors('celular')}" th:errors="*{celular}">celular incorreto</p>
+                            </div>
+                        </div>
+                        <div class=" col-md-3" >
                         </div>
                     </div>
-                    <div class=" col-md-3" >
+                    <div class="row">
+                        <div class=" col-md-3" >
+                            <input type="button"><p>Voltar</p>
+                        </div>
+                        <div class=" col-md-6" >
+
+                        </div>
+                        <div class=" col-md-3" >
+                            <button type="submit">Proximo</button>
+                        </div>
                     </div>
+
                 </div>
-                 <div class="row">
-                    <div class=" col-md-3" >
-                        <input type="button"><p>Voltar</p>
-                    </div>
-                    <div class=" col-md-6" >
-                        
-                    </div>
-                    <div class=" col-md-3" >
-                        <input type="button"><p>Próximo</p>
-                    </div>
-                </div>
-                
             </div>
-        </div>
+        </form>
         <div th:replace="master :: footer">
         </div>
     </body>
