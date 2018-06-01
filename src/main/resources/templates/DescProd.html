@@ -6,6 +6,41 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
         <link rel="stylesheet" th:href="@{/theme.css}" type="text/css"/>
+        <script>
+            function reqCorreios() {
+                var url = "http://ws.correios.com.br/calculador/CalcPrecoPrazo.aspx?nCdEmpresa=08082650&sDsSenha=564321&sCepOrigem=04696000&sCepDestino=" + document.getElementById("cepDest").value + "&nVlPeso=1&nCdFormato=1&nVlComprimento=20&nVlAltura=20&nVlLargura=20&sCdMaoPropria=s&nVlValorDeclarado=0&sCdAvisoRecebimento=s&nCdServico=40010&nVlDiametro=0&StrRetorno=xml&nIndicaCalculo=3";
+                var ajax = new XMLHttpRequest();
+                ajax.open("GET", url, true);
+                ajax.send();
+                ajax.onreadystatechange = function () {
+                    if (ajax.readyState == 4 && ajax.status == 200) {
+                        var data = ajax.responseText;
+                        console.log(data);
+                        alert(data);
+                        document.getElementById("valorFreteNorm").innerHTML = "Correios Pac - " + this.responseText.substring(121, this.responseText.indexOf("<", 121)) + " dias para entrega:" + this.responseText.substring(94, 99);
+                    }
+                }
+                reqCorreios2();
+            }
+
+
+            function reqCorreios2() {
+                var urlPac = "http://ws.correios.com.br/calculador/CalcPrecoPrazo.aspx?nCdEmpresa=08082650&sDsSenha=564321&sCepOrigem=04696000&sCepDestino=" + document.getElementById("cepDest").value + "&nVlPeso=1&nCdFormato=1&nVlComprimento=20&nVlAltura=20&nVlLargura=20&sCdMaoPropria=s&nVlValorDeclarado=0&sCdAvisoRecebimento=s&nCdServico=41106&nVlDiametro=0&StrRetorno=xml&nIndicaCalculo=3";
+                var ajax = new XMLHttpRequest();
+                ajax.open("GET", urlPac, true);
+                ajax.send();
+                ajax.onreadystatechange = function () {
+                    if (ajax.readyState == 4 && ajax.status == 200) {
+                        var data1 = ajax.responseText;
+                        console.log(data1);
+                        alert(data1);
+                        document.getElementById("valorFretePac").innerHTML = "Correios Normal - " + this.responseText.substring(121, this.responseText.indexOf("<", 121)) + " dias para entrega:" + this.responseText.substring(94, 99);
+                    }
+                }
+
+            }
+
+        </script>
     </head>
     <body>
         <div th:replace="Master :: nav ">
@@ -40,20 +75,17 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="border">Calcular Frete:</h4>
-                                <input class="form-control mr-2" type="text" placeholder="CEP"> 
+                                <input class="form-control mr-2" type="text" id="cepDest" placeholder="CEP"> 
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" name="group100" type="radio" id="radio100" value="on"> <label class="form-check-label" for="radio100">Sedex - 3 dias</label> 
+                                <input class="form-check-input" name="group100" type="radio" id="radio100" value="on"> <label class="form-check-label" id="valorFreteNorm" for="radio100"></label> 
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" name="group100" type="radio" id="radio101" checked="" value="on"> <label class="form-check-label" for="radio101">Pac - 7 dias</label> 
+                                <input class="form-check-input" name="group100" type="radio" id="radio101" checked="" value="on"> <label class="form-check-label" id="valorFretePac" for="radio101"></label> 
                             </div>
-                            <div class="form-check">
-                                <input class="form-check-input" name="group100" type="radio" id="radio102" value="on"> <label class="form-check-label" for="radio102">Padrão - 14 dias</label> 
-                            </div>
-                                <form method="post" th:action="@{/carrinho/{id}(id=${produto.idProd})}">
-                                    <button class="btn btn-light py-2 btn-lg" type="submit">Adicionar ao Carrinho</button>
-                                </form>
+                            <form method="post" th:action="@{/carrinho/{id}(id=${produto.idProd})}">
+                                <button class="btn btn-light py-2 btn-lg" type="submit">Adicionar ao Carrinho</button>
+                            </form>
                         </div>
                     </div>
                 </div>
