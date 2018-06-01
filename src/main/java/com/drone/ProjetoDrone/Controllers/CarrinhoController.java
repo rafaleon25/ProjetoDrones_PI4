@@ -74,7 +74,18 @@ public class CarrinhoController {
 
     @GetMapping("/telaCarrinho")
     public ModelAndView telaCarrinho() {
-        return new ModelAndView("Cart").addObject("prodQtd", new QuantidadeProdutos());
+        List<Quantidade> quantidades = new ArrayList<>();
+        
+        for (Produto p2 : carrinho) {
+            Quantidade q = new Quantidade();
+            q.setId(p2.getIdProd());
+            q.setQuantidade(1L);
+            quantidades.add(q);
+        }
+        QuantidadeProdutos qp = new QuantidadeProdutos();
+        qp.setQuantidade(quantidades);
+
+        return new ModelAndView("Cart").addObject("prodQtd", qp);
     }
 
     @GetMapping("/remover/{id}")
