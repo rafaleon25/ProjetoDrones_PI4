@@ -5,6 +5,28 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
         <link rel="stylesheet" th:href="@{/theme.css}" type="text/css"/>
+        <script type="text/javascript">
+            var btnContainer = document.getElementById("myBtnContainer");
+            var btns = btnContainer.getElementsByPrice("btn");
+                for (var i = 0; i < btns.length; i++) {
+                    btns[i].addEventListener("click", function(){
+                    var current = document.getElementsByPrice("active");
+                    current[0].price = current[0].price.replace(" active", "");
+                    this.price += " active";
+                    });
+                }
+           filterSelection("allprice")
+           function filterSelection(p) {
+             var x, i;
+             x = document.getElementsByClassName("filterDiv");
+                if (p == "allprice") p = "";
+                for (i = 0; i < x.length; i++) {
+                    w3RemoveClass(x[i], "show");
+                    if (x[i].price.indexOf(p) > -1) w3AddClass(x[i], "show");
+            }
+               }
+            
+        </script>    
     </head>
     <body>
         <div th:replace="Master:: nav">
@@ -23,15 +45,15 @@
         <div class="py-5">
             <ul class="nav flex-column">
                 <li class="nav-item">
-                    <button class="btn btn-info ml-4 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Preço:
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#"> R$0 até R$1499,00</a>
-                        <a class="dropdown-item" href="#">R$1500,00 até R$3999,00</a>
-                        <a class="dropdown-item" href="#">R$4000,00 até R$7999,00</a>
-                        <a class="dropdown-item" href="#">R$8000,00 + </a>
+                    <h2>Filtro por preço</h2>
+                    <div id="myBtnContainer">
+                        <button class="btn active" onclick="filterSelection('allprice')"> Mostrar todos</button>
+                        <button class="btn" onclick="filterSelection('${p.precos.precoFormatado}')">R$0 até R$1.499,00</button>
+                        <button class="btn" onclick="filterSelection('${p.precos.precoFormatado}')">R$1.500,00 até R$3.999,00</button>
+                        <button class="btn" onclick="filterSelection('${p.precos.precoFormatado}')">R$4.000,00 até R$7.999,00</button>
+                        <button class="btn" onclick="filterSelection('${p.precos.precoFormatado}')">R$8.000,00 + </button>   
                     </div>
+                    
                 </li>
             </ul>
             <!-- thymeleaf do rafa -->

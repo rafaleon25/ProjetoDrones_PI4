@@ -104,6 +104,14 @@ public class Produto implements Serializable {
         quantidadeUsu = 1;
     }
 
+    public int getEstoque() {
+        return estoque;
+    }
+
+    public void setEstoque(int estoque) {
+        this.estoque = estoque;
+    }
+
     public Produto(int velocidadeMax, int bateriaDuracao, int camera, String nome, String descricao, String fabricante, double peso) {
         this.velocidadeMax = velocidadeMax;
         this.bateriaDuracao = bateriaDuracao;

@@ -43,6 +43,7 @@
                             <br>
                             <input type="hidden" th:field="*{quantidade[__${rowStat.index}__].id}" />
                             <input id="inp" class="btn-light col-md-3 rounded btn-md"  th:field="*{quantidade[__${rowStat.index}__].quantidade}" th:type="number" >
+                            <input type="hidden" th:value="${c.estoque}">
                             <button id="qtdBtnPlus" th:type="submit" class="btn btn-dark text-left btn-lg" onclick="pegarQtd()">Atualizar Quantidade</button>
                             <p><span  style="display: none" th:text="${c.precos.precoFormatado}"></span></p>
                         </div>
