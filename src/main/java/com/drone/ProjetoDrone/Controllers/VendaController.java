@@ -143,12 +143,12 @@ public class VendaController {
         double total = 0;
 
         for (int i = 0; i < carrinho.size(); i++) {
-//            total = total + (carrinho.get(i).getPrecos().getPreco() * carrinho.get(i).getQuantidadeUsu());
-            for (int j = 0; j < quantidades.size(); j++) {
-                if (carrinho.get(i).getIdProd() == quantidades.get(j).getId()) {
-                    total = total + (carrinho.get(i).getPrecos().getIdPrrco() * quantidades.get(j).getQuantidade());
-                }
-            }
+            total = total + (carrinho.get(i).getPrecos().getPreco() * carrinho.get(i).getQuantidadeUsu());
+//            for (int j = 0; j < quantidades.size(); j++) {
+//                if (carrinho.get(i).getIdProd() == quantidades.get(j).getId()) {
+//                    total = total + (carrinho.get(i).getPrecos().getIdPrrco() * quantidades.get(j).getQuantidade());
+//                }
+//            }
         }
         venda.setTotalVenda(total);
         sessao.setAttribute("venda", venda);

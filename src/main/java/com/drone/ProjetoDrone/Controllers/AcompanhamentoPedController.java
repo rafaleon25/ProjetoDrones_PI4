@@ -6,8 +6,10 @@
 package com.drone.ProjetoDrone.Controllers;
 
 import com.drone.ProjetoDrone.Classes.Cliente.Cliente;
+import com.drone.ProjetoDrone.Classes.Venda.Acompanhamento;
 import com.drone.ProjetoDrone.Classes.Venda.Venda;
-import com.drone.ProjetoDrone.Repository.VendaRepository;
+import com.drone.ProjetoDrone.Repository.AcompanhaRepository;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,16 +27,18 @@ import org.springframework.web.servlet.ModelAndView;
 public class AcompanhamentoPedController {
     
     @Autowired
-    VendaRepository repository;
+    AcompanhaRepository repository;
     
     @GetMapping
     public ModelAndView acompanhamentoTela(HttpSession sessao){
         Cliente cli = (Cliente) sessao.getAttribute("usuario");
+        List<Acompanhamento> listaAcomp = new ArrayList<>();
         try {
-            List<Venda> listaAcomp = repository.listarVendas(cli.getIdCli());
+            listaAcomp = repository.listarVendas(cli.getIdCli());
         } catch (Exception e) {
             return new ModelAndView("Home");
         }
+        sessao.setAttribute("listaAcomp", listaAcomp);
         return new ModelAndView("AcomPedido");
     }
     
