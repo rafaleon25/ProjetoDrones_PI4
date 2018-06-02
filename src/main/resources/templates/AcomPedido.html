@@ -38,20 +38,17 @@
          </div>
       </div>
       <div class="py-5">
-         <div class="container">
+          <div class="container" th:each="a :${session.listaAcomp}">
             <div class="row">
-               <div class="col-md-3">
-                  <h1 class="">Aguardando pagamentno</h1>
-               </div>
-               <div class="col-md-3">
-                  <h1 class="">Preparando para envio</h1>
-               </div>
-               <div class="col-md-3">
-                  <h1 class="">Pedido em transporte</h1>
-               </div>
-               <div class="col-md-3">
-                  <h1 class="">Pedido Entregue</h1>
-               </div>
+                <div>
+                    <h1>Pedido</h1>
+                    <p th:text="${a.dataVenda}"></p>
+                    <p th:text="${a.codigoCompra}"></p>
+                    <p th:text="${a.nome}"></p>
+                    <p th:text="${a.qtd}"></p>
+                    <p th:text="${a.formaPagamento}"></p>
+                    <p th:text="${a.statusPedido}"></p>
+                </div>
             </div>
          </div>
       </div>

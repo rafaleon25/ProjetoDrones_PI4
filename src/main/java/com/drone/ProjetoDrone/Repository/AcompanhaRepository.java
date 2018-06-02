@@ -5,7 +5,7 @@
  */
 package com.drone.ProjetoDrone.Repository;
 
-import com.drone.ProjetoDrone.Classes.Venda.Venda;
+import com.drone.ProjetoDrone.Classes.Venda.Acompanhamento;
 import com.drone.ProjetoDrone.Services.AcompanhaPedido;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -24,7 +24,7 @@ public class AcompanhaRepository implements AcompanhaPedido {
     private EntityManager entityManager;
     
     @Override
-    public List<Venda> listarVendas(long idCliente) {
+    public List<Acompanhamento> listarVendas(long idCliente) {
         Query query = entityManager.createQuery(
                 "SELECT DISTINCT v.dataVenda, v.codigoCompra, p.nome, vp.qtd, v.formaPagamento, v.statusPedido "
                         + "FROM Venda v "
@@ -32,7 +32,7 @@ public class AcompanhaRepository implements AcompanhaPedido {
                         + "INNER JOIN Produto p "
                         + "WHERE v.cliente.idCli = :idCliente");
         query.setParameter("idCliente", idCliente);
-        List<Venda> resultados = query.getResultList();
+        List<Acompanhamento> resultados = query.getResultList();
         return resultados;
     }       
 }
