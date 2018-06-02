@@ -7,21 +7,34 @@ package com.drone.ProjetoDrone.Classes.Venda;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import org.hibernate.annotations.Subselect;
 
 /**
  *
  * @author Rafael Rodrigues
  */
-public class Acompanhamento implements Serializable{
+@Entity
+@Subselect("select v.dt_venda data_venda, v.codigo_compra, "
+                        + "p.nome, vp.qtd, v.forma_pagamento, v.status_pedido "
+                        + "from vendas v " +
+                            "inner join venda_prod vp on vp.venda_id = v.vendaid " +
+                            "inner join produtos p on p.produto_id = vp.produto_id " +
+                            "where v.cliente_id = ?1")
+public class Acompanhamento implements Serializable {
+
     private String nome;
+    @Id
     private String codigoCompra;
-    private Date dataVenda;
+    @Id
+    private Date data_venda;
     private int qtd;
-    private String formaPagameto;
+    private String forma_pagamento;
     private String statusPedido;
 
-    public Acompanhamento(){
-        
+    public Acompanhamento() {
+
     }
 
     public String getNome() {
@@ -41,11 +54,11 @@ public class Acompanhamento implements Serializable{
     }
 
     public Date getDataVenda() {
-        return dataVenda;
+        return data_venda;
     }
 
     public void setDataVenda(Date dataVenda) {
-        this.dataVenda = dataVenda;
+        this.data_venda = dataVenda;
     }
 
     public int getQtd() {
@@ -56,14 +69,6 @@ public class Acompanhamento implements Serializable{
         this.qtd = qtd;
     }
 
-    public String getFormaPagameto() {
-        return formaPagameto;
-    }
-
-    public void setFormaPagameto(String formaPagameto) {
-        this.formaPagameto = formaPagameto;
-    }
-
     public String getStatusPedido() {
         return statusPedido;
     }
@@ -71,9 +76,21 @@ public class Acompanhamento implements Serializable{
     public void setStatusPedido(String statusPedido) {
         this.statusPedido = statusPedido;
     }
-    
-  
-    
-    
-    
+
+    public Date getData_venda() {
+        return data_venda;
+    }
+
+    public void setData_venda(Date data_venda) {
+        this.data_venda = data_venda;
+    }
+
+    public String getForma_pagamento() {
+        return forma_pagamento;
+    }
+
+    public void setForma_pagamento(String forma_pagamento) {
+        this.forma_pagamento = forma_pagamento;
+    }
+
 }
