@@ -25,12 +25,14 @@ public class AcompanhaRepository implements AcompanhaPedido {
     
     @Override
     public List<Acompanhamento> listarVendas(long idCliente) {
-        Query query = entityManager.createQuery(
-                "SELECT DISTINCT v.dataVenda, v.codigoCompra, p.nome, vp.qtd, v.formaPagamento, v.statusPedido "
-                        + "FROM Venda v "
-                        + "INNER JOIN VendaProd vp "
-                        + "INNER JOIN Produto p "
-                        + "WHERE v.cliente.idCli = :idCliente");
+        Query query = entityManager.createNativeQuery(
+                "select v.dt_venda dataVenda, v.codigo_compra codigoCompra, "
+                        + "p.nome, vp.qtd, v.forma_pagamento formaPagto, v.status_pedido statusPedido "
+                        + "from vendas v " +
+                            "inner join venda_prod vp on vp.venda_id = v.vendaid " +
+                            "inner join produtos p on p.produto_id = vp.produto_id " +
+                            "where v.cliente_id = :idCliente" 
+);
         query.setParameter("idCliente", idCliente);
         List<Acompanhamento> resultados = query.getResultList();
         return resultados;
