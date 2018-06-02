@@ -219,5 +219,12 @@ public class Produto implements Serializable {
         this.quantidadeUsu = qtd;
     }
   
+    public int getEstoque() {
+        return estoque;
+    }
+
+    public void setEstoque(int qtd) {
+        this.estoque = qtd;
+    }
     
 }
