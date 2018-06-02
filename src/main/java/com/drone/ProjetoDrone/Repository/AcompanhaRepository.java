@@ -26,7 +26,10 @@ public class AcompanhaRepository implements AcompanhaPedido {
     @Override
     public List<Venda> listarVendas(long idCliente) {
         Query query = entityManager.createQuery(
-                "SELECT DISTINCT v FROM Venda v "
+                "SELECT DISTINCT v.dataVenda, v.codigoCompra, p.nome, vp.qtd, v.formaPagamento, v.statusPedido "
+                        + "FROM Venda v "
+                        + "INNER JOIN VendaProd vp "
+                        + "INNER JOIN Produto p "
                         + "WHERE v.cliente.idCli = :idCliente");
         query.setParameter("idCliente", idCliente);
         List<Venda> resultados = query.getResultList();
