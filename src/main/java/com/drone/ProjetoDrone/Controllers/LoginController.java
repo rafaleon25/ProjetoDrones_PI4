@@ -90,8 +90,18 @@ public class LoginController {
 ////        session.setAttribute("carrinho", carrinho);
 //
 //        return new ModelAndView("Home");
-            session.invalidate();
-            return new ModelAndView("Home");
+
+        List<Produto> carrinho = (List<Produto>) session.getAttribute("carrinho");
+        if (carrinho != null) {
+            for (int i = 0; i < carrinho.size(); i++) {
+                carrinho.remove(i);
+            }
+             session.setAttribute("carrinho", carrinho);
+        }
+
+       
+        session.invalidate();
+        return new ModelAndView("Home");
     }
 
 }

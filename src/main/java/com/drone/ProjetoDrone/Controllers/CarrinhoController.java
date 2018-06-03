@@ -106,18 +106,18 @@ public class CarrinhoController {
         return new ModelAndView("Cart").addObject("prodQtd", new Quantidade());
     }
 
-    @PostMapping("/update/{id}")
-    public ModelAndView removerDoCarrinho(@ModelAttribute("quantidade") Quantidade qtd, @PathVariable("id") Long idProduto, HttpSession sessao) {
-        for (int i = 0; i < carrinho.size(); i++) {
-            if (carrinho.get(i).getIdProd() == idProduto) {
-                carrinho.get(i).setQuantidadeUsu((int) qtd.getQuantidade());
-            }
-
-        }
-        sessao.setAttribute("carrinho", carrinho);
-
-        return new ModelAndView("Cart").addObject("prodQtd", new Quantidade());
-    }
+//    @PostMapping("/update/{id}")
+//    public ModelAndView removerDoCarrinho(@ModelAttribute("quantidade") Quantidade qtd, @PathVariable("id") Long idProduto, HttpSession sessao) {
+//        for (int i = 0; i < carrinho.size(); i++) {
+//            if (carrinho.get(i).getIdProd() == idProduto) {
+//                carrinho.get(i).setQuantidadeUsu((int) qtd.getQuantidade());
+//            }
+//
+//        }
+//        sessao.setAttribute("carrinho", carrinho);
+//
+//        return new ModelAndView("Cart").addObject("prodQtd", new Quantidade());
+//    }
 
 //    @GetMapping("/add/(id)")
 //    public ModelAndView addCart(@PathVariable("id") Long idProduto, HttpSession sessao) {
