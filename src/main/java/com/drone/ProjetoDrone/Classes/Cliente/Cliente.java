@@ -101,8 +101,8 @@ public class Cliente implements Serializable {
     private String cep;
     //Senha
     @NotNull
-    @Size(min = 1, max = 45)
-    @Column(name = "senha", length = 45, nullable = false, unique = false)
+    @Size(min = 1, max = 100)
+    @Column(name = "senha", length = 100, nullable = false, unique = false)
     private String senha;
     //Data de nascimento
     @NotNull

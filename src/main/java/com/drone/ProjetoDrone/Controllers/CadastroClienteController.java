@@ -6,6 +6,7 @@
 package com.drone.ProjetoDrone.Controllers;
 
 import com.drone.ProjetoDrone.Classes.Cliente.Cliente;
+import com.drone.ProjetoDrone.Classes.Login.CriptoSenha;
 import com.drone.ProjetoDrone.Repository.ClienteRepository;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -18,7 +19,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 /**
  *
  * @author Rafael Rodrigues
@@ -47,6 +47,9 @@ public class CadastroClienteController {
         }
 
         try {
+            CriptoSenha criptografia = new CriptoSenha();
+            String senhaCripto = criptografia.cripto(cliente.getSenha());
+            cliente.setSenha(senhaCripto);
             repository.incluir(cliente);
         } catch (Exception e) {
             return new ModelAndView("Cadastro");
