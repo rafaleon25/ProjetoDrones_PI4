@@ -16,13 +16,9 @@ import org.springframework.stereotype.Component;
  * @author Josué
  */
 @Component
-    public class EmailServiceImpl extends EmailService {
+    public class EmailServiceImpl {
     @Autowired
     public JavaMailSender emailSender;
-
-    public EmailServiceImpl(JavaMailSender mailSender, String loginUrl, String brand) {
-        super(mailSender, loginUrl, brand);
-    }
  
     public void sendSimpleMessage(
       String to, String subject, String text) {
