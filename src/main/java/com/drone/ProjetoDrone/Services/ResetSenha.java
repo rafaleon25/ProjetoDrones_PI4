@@ -5,14 +5,10 @@
  */
 package com.drone.ProjetoDrone.Services;
 
-import com.drone.ProjetoDrone.Classes.Venda.Acompanhamento;
-import java.io.Serializable;
-import java.util.List;
-
 /**
  *
  * @author Josué
  */
-public interface AcompanhaPedido extends Serializable {
-     public List<Acompanhamento> listarVendas(long idCliente);
+public interface ResetSenha {
+    public void atualizarSenha(int idCli, String senha);
 }
